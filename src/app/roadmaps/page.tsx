@@ -28,26 +28,25 @@ export default function Roadmaps() {
           </div>
           <div className="flex justify-center items-center my-2">
             <div className="">
-              <h2 className="font-sans text-3xl font-semibold">
-                Frontend Developer
-              </h2>
+              <h2 className="font-sans text-3xl font-semibold">Frontend Developer</h2>
             </div>
           </div>
           <div>
             <div className="text-sm mt-3">
-              <p className="text-sm text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
-                Creates and maintains the user interface of websites and
-                applications, focusing on what users see and interact with in
-                their browsers.
-              </p>
+            <p className="text-sm text-gray-400">
+      Creates and maintains the user interface of websites and applications, 
+      focusing on what users see and interact with in their browsers.
+        </p>
             </div>
           </div>
-          <div>
+        <div>
             <div className="flex flex-row space-x-2 my-3 text-sm text-gray-500">
-              <h2>Prerequisites:</h2>
-              <p>None</p>
+                <h2>
+                    Prerequisites:
+                </h2>
+                <p>None</p>
             </div>
-          </div>
+        </div>
         </div>
       </div>
     </>
