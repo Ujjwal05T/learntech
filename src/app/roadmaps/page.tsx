@@ -1,5 +1,6 @@
 import React from "react";
 import roadmapsData from "@/data/index.json";
+import Link from "next/link";
 
 interface Roadmap {
   id: number;
@@ -27,22 +28,23 @@ export default function Roadmaps() {
       </div>
 
       <hr />
-      <div>
+
+      <Link href="#">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-4">
         {roadmapsData.roadmaps.map((roadmap: Roadmap) => (
-          <div className="flex flex-row justify-center items-center mt-2">
-            <div className="border-2 border-gray-200 hover:border-gray-400 rounded-lg pt-1  px-4 mx-2 my-2 w-1/4">
+            <div className="border-2 hover:shadow-lg rounded-lg pt-1 min-w-auto  px-4 mx-2 my-2">
               <div>
-                <div className="flex flex-row justify-between text-gray-400 text-sm">
+                <div className="flex justify-between text-gray-400 text-sm">
                   <div>{roadmap.time}</div>
                   <div>{roadmap.difficulty}</div>
                 </div>
               </div>
               <div className="flex justify-center items-center my-2">
-                <div className="">
+               
                   <h2 className="font-sans text-3xl font-semibold">
                     {roadmap.title}
                   </h2>
-                </div>
+               
               </div>
               <div>
                 <div className="text-sm mt-3">
@@ -50,15 +52,15 @@ export default function Roadmaps() {
                 </div>
               </div>
               <div>
-                <div className="flex flex-row space-x-2 my-3 text-sm text-gray-500">
+                <div className="flex space-x-2 my-3 text-sm text-gray-500">
                   <h2>Prerequisites:</h2>
                   <p>{roadmap.preRequisites}</p>
                 </div>
               </div>
             </div>
-          </div>
         ))}
-      </div>
+        </div>
+      </Link>
     </>
   );
 }
