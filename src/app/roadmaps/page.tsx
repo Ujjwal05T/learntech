@@ -1,5 +1,14 @@
 import React from "react";
+import roadmapsData from "@/data/index.json";
 
+interface Roadmap {
+  id: number;
+  title: string;
+  description: string;
+  time: string;
+  difficulty: string;
+  preRequisites: string;
+}
 export default function Roadmaps() {
   return (
     <>
@@ -18,36 +27,37 @@ export default function Roadmaps() {
       </div>
 
       <hr />
-      <div className="flex flex-row justify-center items-center mt-2">
-        <div className="border-2 border-gray-200 hover:border-gray-400 rounded-lg pt-1  px-4 mx-2 my-2 w-1/4">
-          <div>
-            <div className="flex flex-row justify-between text-gray-400 text-sm">
-              <div>3-6 Months</div>
-              <div>Easy</div>
+      <div>
+        {roadmapsData.roadmaps.map((roadmap: Roadmap) => (
+          <div className="flex flex-row justify-center items-center mt-2">
+            <div className="border-2 border-gray-200 hover:border-gray-400 rounded-lg pt-1  px-4 mx-2 my-2 w-1/4">
+              <div>
+                <div className="flex flex-row justify-between text-gray-400 text-sm">
+                  <div>{roadmap.time}</div>
+                  <div>{roadmap.difficulty}</div>
+                </div>
+              </div>
+              <div className="flex justify-center items-center my-2">
+                <div className="">
+                  <h2 className="font-sans text-3xl font-semibold">
+                    {roadmap.title}
+                  </h2>
+                </div>
+              </div>
+              <div>
+                <div className="text-sm mt-3">
+                  <p className="text-sm text-gray-400">{roadmap.description}</p>
+                </div>
+              </div>
+              <div>
+                <div className="flex flex-row space-x-2 my-3 text-sm text-gray-500">
+                  <h2>Prerequisites:</h2>
+                  <p>{roadmap.preRequisites}</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="flex justify-center items-center my-2">
-            <div className="">
-              <h2 className="font-sans text-3xl font-semibold">Frontend Developer</h2>
-            </div>
-          </div>
-          <div>
-            <div className="text-sm mt-3">
-            <p className="text-sm text-gray-400">
-      Creates and maintains the user interface of websites and applications, 
-      focusing on what users see and interact with in their browsers.
-        </p>
-            </div>
-          </div>
-        <div>
-            <div className="flex flex-row space-x-2 my-3 text-sm text-gray-500">
-                <h2>
-                    Prerequisites:
-                </h2>
-                <p>None</p>
-            </div>
-        </div>
-        </div>
+        ))}
       </div>
     </>
   );

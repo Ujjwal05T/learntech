@@ -1,0 +1,124 @@
+{
+    "roadmaps": [
+        {
+            "id": 1,
+            "title": "Frontend Developer",
+            "description": "Crafts responsive user interfaces and engaging web experiences using HTML, CSS, and JavaScript frameworks to bring designs to life in the browser.",
+            "difficulty": "Beginner",
+            "time": "3 months",
+            "preRequisites": "None"
+        },
+        {
+            "id": 2,
+            "title": "Backend Developer",
+            "description": "Builds and maintains server-side applications, handles data storage, and creates APIs to power web applications with focus on security and performance.",
+            "difficulty": "Beginner",
+            "time": "3 months",
+            "preRequisites": "None"
+        },
+        {
+            "id": 3,
+            "title": "Fullstack Developer",
+            "description": "Masters both frontend and backend development to create complete web applications, from user interfaces to server architecture.",
+            "difficulty": "Intermediate",
+            "time": "6 months",
+            "preRequisites": "Basic Programming"
+        },
+        {
+            "id": 4,
+            "title": "DevOps Engineer",
+            "description": "Automates deployment processes, manages cloud infrastructure, and ensures smooth collaboration between development and operations teams.",
+            "difficulty": "Advanced",
+            "time": "4 months",
+            "preRequisites": "Linux Basics"
+        },
+        {
+            "id": 5,
+            "title": "Cloud Engineer",
+            "description": "Designs, implements, and manages cloud-based solutions using platforms like AWS, Azure, or Google Cloud.",
+            "difficulty": "Intermediate",
+            "time": "5 months",
+            "preRequisites": "Networking Basics"
+        },
+        {
+            "id": 6,
+            "title": "Data Scientist",
+            "description": "Analyzes complex data sets to help organizations make data-driven decisions using statistics, machine learning, and programming.",
+            "difficulty": "Advanced",
+            "time": "6 months",
+            "preRequisites": "Statistics, Python"
+        },
+        {
+            "id": 7,
+            "title": "UI/UX Designer",
+            "description": "Creates intuitive and visually appealing user interfaces while ensuring excellent user experience through research and testing.",
+            "difficulty": "Beginner",
+            "time": "3 months",
+            "preRequisites": "Design Basics"
+        },
+        {
+            "id": 8,
+            "title": "Mobile Developer",
+            "description": "Develops applications for mobile devices using platforms like React Native, Flutter, or native Android/iOS development.",
+            "difficulty": "Intermediate",
+            "time": "4 months",
+            "preRequisites": "Programming Basics"
+        },
+        {
+            "id": 9,
+            "title": "Blockchain Developer",
+            "description": "Creates decentralized applications and smart contracts using blockchain technologies like Ethereum and Solidity.",
+            "difficulty": "Advanced",
+            "time": "5 months",
+            "preRequisites": "JavaScript, Cryptography Basics"
+        },
+        {
+            "id": 10,
+            "title": "Game Developer",
+            "description": "Develops video games using engines like Unity or Unreal, combining programming skills with creative design.",
+            "difficulty": "Intermediate",
+            "time": "6 months",
+            "preRequisites": "C# or C++"
+        },
+        {
+            "id": 11,
+            "title": "AI/ML Engineer",
+            "description": "Develops artificial intelligence and machine learning models to solve complex problems and automate tasks.",
+            "difficulty": "Advanced",
+            "time": "8 months",
+            "preRequisites": "Python, Math, Statistics"
+        },
+        {
+            "id": 12,
+            "title": "Security Engineer",
+            "description": "Protects systems and networks from cyber threats, implementing security measures and conducting vulnerability assessments.",
+            "difficulty": "Advanced",
+            "time": "6 months",
+            "preRequisites": "Networking, Linux"
+        },
+        {
+            "id": 13,
+            "title": "QA Engineer",
+            "description": "Ensures software quality through systematic testing, automation, and establishing quality assurance processes.",
+            "difficulty": "Beginner",
+            "time": "3 months",
+            "preRequisites": "Basic Programming"
+        },
+        {
+            "id": 14,
+            "title": "Database Administrator",
+            "description": "Manages and optimizes database systems, ensuring data integrity, security, and high performance.",
+            "difficulty": "Intermediate",
+            "time": "4 months",
+            "preRequisites": "SQL Basics"
+        },
+        {
+            "id": 15,
+            "title": "Technical Product Manager",
+            "description": "Bridges technical and business aspects, leading product development while understanding both user needs and technical constraints.",
+            "difficulty": "Intermediate",
+            "time": "5 months",
+            "preRequisites": "Product Management Basics"
+        }
+    ]
+}
