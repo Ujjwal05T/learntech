@@ -1,0 +1,60 @@
+{
+   "frontend": {
+     "Level 1": {
+         "HTML": ["Semantic HTML", "Forms and Validation", "SEO Best Practices"],
+         "CSS": ["Flexbox", "Grid", "Animations", "Responsive Design", "SASS/SCSS"],
+       "JavaScript Basics": ["ES6+ Features", "DOM Manipulation", "Event Handling"]
+     },
+     "Level 2": {     
+         "Advanced JavaScript": ["Fetch API & AJAX", "Closures", "Async/Await"],
+         "TypeScript": ["Types", "Interfaces", "Generics"]
+     },
+     "Level 3": {
+       "Frontend Frameworks": {
+         "React": ["Hooks", "Context API", "React Router"],
+         "Vue": ["Composition API", "Vue Router"],
+         "Angular": ["RxJS", "TypeScript"]
+       },
+       "State Management": {
+         "React": ["Redux Toolkit", "Zustand"],
+         "Vue": ["Pinia", "Vuex"]
+       }
+     },
+     "Level 4": {
+         "REST APIs": ["Axios", "Fetch API"],
+         "Techniques": ["Code Splitting", "Lazy Loading", "Server-Side Rendering (SSR)", "Static Site Generation (SSG)"],
+         "Deployment & Hosting": ["GitHub Pages", "Vercel", "Netlify", "Heroku"]
+     },
+     "Extras": {
+       "Version Control": ["Git", "GitHub/GitLab/Bitbucket"],
+       "Package Managers": ["NPM", "Yarn"],
+       "Testing": ["Jest", "Mocha", "Cypress", "Playwright", "Selenium"]
+     }
+   },
+   "backend": {
+     "Level 1": {
+       "Node.js": ["Express", "RESTful APIs", "CRUD Operations"],
+       "Databases": ["MongoDB", "Mongoose", "SQL", "PostgreSQL"]
+     },
+     "Level 2": {
+       "Authentication": ["JWT", "OAuth", "Passport.js"],
+       "Validation": ["Joi", "Yup"],
+       "WebSockets": ["Socket.io", "WebSocket API"]
+     },
+     "Level 3": {
+       "GraphQL": ["Apollo Server", "TypeGraphQL"],
+       "Testing": ["Jest", "Mocha", "Chai", "Supertest"]
+     },
+     "Level 4": {
+       "Deployment": ["Heroku", "AWS", "Google Cloud", "Azure"],
+       "Docker": ["Containers", "Images", "Docker Compose"],
+       "CI/CD": ["GitHub Actions", "Travis CI", "Circle CI"]
+     },
+     "Extras": {
+       "Caching": ["Redis", "Memcached"],
+       "Message Brokers": ["RabbitMQ", "Kafka"],
+       "Search Engines": ["Elasticsearch", "Solr"]
+     }
+   }
+ }
+ 

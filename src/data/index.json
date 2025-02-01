@@ -2,7 +2,7 @@
     "roadmaps": [
         {
             "id": 1,
-            "slug": "frontend-developer",
+            "slug": "frontend",
             "title": "Frontend Developer",
             "description": "Crafts responsive user interfaces and engaging web experiences using HTML, CSS, and JavaScript frameworks to bring designs to life in the browser.",
             "difficulty": "Beginner",
@@ -11,7 +11,7 @@
         },
         {
             "id": 2,
-            "slug": "backend-developer",
+            "slug": "backend",
             "title": "Backend Developer",
             "description": "Builds and maintains server-side applications, handles data storage, and creates APIs to power web applications with focus on security and performance.",
             "difficulty": "Beginner",
