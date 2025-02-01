@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import roadmapData from "@/data/data.json";
 import slugData from "@/data/index.json";
 import Link from "next/link";
+import ErrorPage from "@/components/ErrorPage";
 
 interface PageProps {
   params: {
@@ -50,7 +51,7 @@ export default function RoadmapPage({ params }: PageProps) {
   )[0];
 
   if (!roadmap) {
-    return <div className="text-red-500">Roadmap not found</div>;
+    return <ErrorPage />;
   }
 
   const ArrowDown = () => (
