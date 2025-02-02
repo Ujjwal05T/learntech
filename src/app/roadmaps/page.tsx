@@ -4,6 +4,7 @@ import Link from "next/link";
 
 interface Roadmap {
   id: number;
+  slug: string;
   title: string;
   description: string;
   time: string;
@@ -28,18 +29,17 @@ export default function Roadmaps() {
       </div>
 
       <hr />
-
-      <Link href="#">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:mx-6 my-4">
         {roadmapsData.roadmaps.map((roadmap: Roadmap) => (
-            <div className="border-2 hover:shadow-lg rounded-lg pt-1 min-w-auto  px-4 mx-2 my-2">
+          <div className="border-2 hover:shadow-lg rounded-lg pt-1 min-w-auto  px-4 mx-2 my-2" key={roadmap.id}>
+              <Link href={`/roadmaps/${roadmap.slug}`}>
               <div>
                 <div className="flex justify-between text-gray-400 text-sm">
-                  <div>{roadmap.time}</div>
+                  <div className="">{roadmap.time}</div>
                   <div>{roadmap.difficulty}</div>
                 </div>
               </div>
-              <div className="flex justify-center items-center my-2">
+              <div className="flex justify-center items-center my-1">
                
                   <h2 className="font-sans text-3xl font-semibold">
                     {roadmap.title}
@@ -51,16 +51,18 @@ export default function Roadmaps() {
                   <p className="text-sm text-gray-400">{roadmap.description}</p>
                 </div>
               </div>
-              <div>
-                <div className="flex space-x-2 my-3 text-sm text-gray-500">
-                  <h2>Prerequisites:</h2>
-                  <p>{roadmap.preRequisites}</p>
-                </div>
-              </div>
+              
+              <div className="mt-3 pb-3">
+          <div className="flex space-x-2 text-sm text-gray-500">
+            <h2>Prerequisites:</h2>
+            <p>{roadmap.preRequisites}</p>
+          </div>
+        </div>
+              
+        </Link>
             </div>
         ))}
         </div>
-      </Link>
     </>
   );
 }

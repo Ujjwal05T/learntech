@@ -1,0 +1,390 @@
+{
+   "frontend": {
+     "Level 1": {
+         "HTML": ["Semantic HTML", "Forms and Validation", "SEO Best Practices"],
+         "CSS": ["Flexbox", "Grid", "Animations", "Responsive Design", "SASS/SCSS"],
+       "JavaScript Basics": ["ES6+ Features", "DOM Manipulation", "Event Handling"]
+     },
+     "Level 2": {     
+         "Advanced JavaScript": ["Fetch API & AJAX", "Closures", "Async/Await"],
+         "TypeScript": ["Types", "Interfaces", "Generics"]
+     },
+     "Level 3": {
+         "React": ["Hooks", "Context API", "React Router"],
+         "Vue": ["Composition API", "Vue Router"],
+         "Angular": ["RxJS", "TypeScript"]  
+     },
+     "Level 4": {
+         "REST APIs": ["Axios", "Fetch API"],
+         "Techniques": ["Code Splitting", "Lazy Loading", "Server-Side Rendering (SSR)", "Static Site Generation (SSG)"],
+         "Deployment & Hosting": ["GitHub Pages", "Vercel", "Netlify", "Heroku"]
+     },
+     "Extras": {
+       "Version Control": ["Git", "GitHub/GitLab/Bitbucket"],
+       "Package Managers": ["NPM", "Yarn"],
+       "Testing": ["Jest", "Mocha", "Cypress", "Playwright", "Selenium"]
+     }
+   },
+   "backend": {
+     "Level 1": {
+       "Node.js": ["Express", "RESTful APIs", "CRUD Operations"],
+       "Databases": ["MongoDB", "Mongoose", "SQL", "PostgreSQL"]
+     },
+     "Level 2": {
+       "Authentication": ["JWT", "OAuth", "Passport.js"],
+       "Validation": ["Joi", "Yup"],
+       "WebSockets": ["Socket.io", "WebSocket API"]
+     },
+     "Level 3": {
+       "GraphQL": ["Apollo Server", "TypeGraphQL"],
+       "Testing": ["Jest", "Mocha", "Chai", "Supertest"]
+     },
+     "Level 4": {
+       "Deployment": ["Heroku", "AWS", "Google Cloud", "Azure"],
+       "Docker": ["Containers", "Images", "Docker Compose"],
+       "CI/CD": ["GitHub Actions", "Travis CI", "Circle CI"]
+     },
+     "Extras": {
+       "Caching": ["Redis", "Memcached"],
+       "Message Brokers": ["RabbitMQ", "Kafka"],
+       "Search Engines": ["Elasticsearch", "Solr"]
+     }
+   },
+   "fullstack-developer": {
+    "Level 1": {
+      "Frontend": ["HTML", "CSS", "JavaScript"],
+      "Backend": ["Node.js", "Express", "MongoDB"]
+    },
+    "Level 2": {
+      "Frontend Frameworks": ["React", "Vue", "Angular"],
+      "Backend Frameworks": ["Express", "NestJS", "AdonisJS"]
+    },
+    "Level 3": {
+      "State Management": ["Redux", "Vuex", "NgRx"],
+      "GraphQL": ["Apollo Client", "Vue Apollo", "Apollo Angular"]
+    },
+    "Level 4": {
+      "Deployment": ["Vercel", "Netlify", "Heroku", "AWS"],
+      "CI/CD": ["GitHub Actions", "Travis CI", "Circle CI"],
+      "Testing": ["Jest", "Mocha", "Cypress", "Playwright"],
+      "Security": ["OWASP", "OWASP ZAP", "OWASP ESAPI"],
+      "Docker": ["Containers", "Images", "Docker Compose"]
+    },
+    "Extras": {
+      "WebSockets": ["Socket.io", "WebSocket API"],
+      "Caching": ["Redis", "Memcached"],
+      "Message Brokers": ["RabbitMQ", "Kafka"]
+    }
+   },
+   "devops-engineer": {
+    "Level 1": {
+      "Linux": ["File System", "Permissions", "Processes"],
+      "Networking": ["OSI Model", "TCP/IP", "DNS", "HTTP/HTTPS"]
+    },
+    "Level 2": {
+      "Containers": ["Docker", "Podman", "Kubernetes"],
+      "CI/CD": ["Jenkins", "GitLab CI", "Circle CI"]
+    },
+    "Level 3": {
+      "Infrastructure as Code": ["Terraform", "CloudFormation"],
+      "Monitoring": ["Prometheus", "Grafana", "ELK Stack"]
+    },
+    "Level 4": {
+      "Cloud Providers": ["AWS", "Azure", "Google Cloud"],
+      "Security": ["Firewalls", "VPN", "SSH", "SSL/TLS"],
+      "Networking": ["VPC", "Subnets", "Route Tables"]
+    },
+    "Extras": {
+      "Scripting": ["Bash", "Python", "Ruby"],
+      "Version Control": ["Git", "GitHub/GitLab/Bitbucket"],
+      "Web Servers": ["Nginx", "Apache"]
+    }
+    },
+    "cloud-engineer": {
+      "Level 1": {
+        "Networking": ["OSI Model", "TCP/IP", "DNS", "HTTP/HTTPS"],
+        "Cloud Providers": ["AWS", "Azure", "Google Cloud"]
+      },
+      "Level 2": {
+        "Compute": ["EC2", "VMs", "App Services"],
+        "Storage": ["S3", "Blob Storage", "File Storage"]
+      },
+      "Level 3": {
+        "Databases": ["RDS", "Cosmos DB", "Cloud SQL"],
+        "Security": ["IAM", "Firewalls", "Encryption"]
+      },
+      "Level 4": {
+        "Networking": ["VPC", "Subnets", "Route Tables"],
+        "Monitoring": ["CloudWatch", "Azure Monitor", "Stackdriver"],
+        "Deployment": ["Elastic Beanstalk", "App Services", "Cloud Functions"]
+      },
+      "Extras": {
+        "Scripting": ["Bash", "Python", "Ruby"],
+        "Containers": ["Docker", "Podman", "Kubernetes"],
+        "CI/CD": ["Jenkins", "GitLab CI", "Circle CI"]
+        }
+    },
+    "data-engineer": {
+      "Level 1": {
+        "Databases": ["SQL", "NoSQL", "NewSQL"],
+        "ETL": ["Talend", "Informatica", "Apache Nifi"]
+      },
+      "Level 2": {
+        "Big Data": ["Hadoop", "Spark", "Hive"],
+        "Data Warehousing": ["Redshift", "BigQuery", "Snowflake"]
+      },
+      "Level 3": {
+        "Data Modeling": ["ER Diagrams", "Star Schema", "Snowflake Schema"],
+        "Data Pipelines": ["Airflow", "Luigi", "Prefect"]
+      },
+      "Level 4": {
+        "Data Lakes": ["S3", "Azure Data Lake", "Google Cloud Storage"],
+        "Data Governance": ["GDPR", "CCPA", "HIPAA"],
+        "Data Quality": ["Data Profiling", "Data Cleansing", "Data Validation"]
+      },
+      "Extras": {
+        "Scripting": ["Python", "R", "Scala"],
+        "Version Control": ["Git", "GitHub/GitLab/Bitbucket"],
+        "Cloud Providers": ["AWS", "Azure", "Google Cloud"]
+      }
+    },
+    "data-scientist": {
+      "Level 1": {
+        "Statistics": ["Descriptive Statistics", "Inferential Statistics", "Hypothesis Testing"],
+        "Python": ["NumPy", "Pandas", "Matplotlib"]
+      },
+      "Level 2": {
+        "Machine Learning": ["Linear Regression", "Logistic Regression", "Decision Trees"],
+        "Data Visualization": ["Seaborn", "Plotly", "Tableau"]
+      },
+      "Level 3": {
+        "Deep Learning": ["Neural Networks", "CNNs", "RNNs"],
+        "Natural Language Processing": ["NLTK", "SpaCy", "BERT"]
+      },
+      "Level 4": {
+        "Big Data": ["Hadoop", "Spark", "Hive"],
+        "Data Engineering": ["ETL", "Data Warehousing", "Data Lakes"],
+        "Deployment": ["Heroku", "AWS", "Google Cloud"]
+      },
+      "Extras": {
+        "Version Control": ["Git", "GitHub/GitLab/Bitbucket"],
+        "Databases": ["SQL", "NoSQL", "NewSQL"],
+        "Cloud Providers": ["AWS", "Azure", "Google Cloud"]
+      }
+    },
+    "ui-ux-designer": {
+      "Level 1": {
+        "Design Principles": ["Typography", "Color Theory", "Grid Systems"],
+        "Wireframing": ["Sketch", "Figma", "Adobe XD"]
+      },
+      "Level 2": {
+        "User Research": ["Surveys", "Interviews", "Personas"],
+        "Prototyping": ["InVision", "Marvel", "Framer"]
+      },
+      "Level 3": {
+        "User Testing": ["A/B Testing", "Usability Testing", "Accessibility Testing"],
+        "Design Systems": ["Atomic Design", "Material Design", "Ant Design"]
+      },
+      "Level 4": {
+        "Frontend Development": ["HTML", "CSS", "JavaScript"],
+        "Version Control": ["Git", "GitHub/GitLab/Bitbucket"],
+        "Deployment": ["Vercel", "Netlify", "GitHub Pages"]
+      },
+      "Extras": {
+        "Animation": ["CSS Animations", "GSAP", "Lottie"],
+        "Microinteractions": ["Hover Effects", "Click Animations"],
+        "Responsive Design": ["Media Queries", "Viewport Units"]
+      }
+    },
+    "mobile-developer": {
+      "Level 1": {
+        "Android": ["Java", "Kotlin", "Android Studio"],
+        "iOS": ["Swift", "Objective-C", "Xcode"]
+      },
+      "Level 2": {
+        "Cross-Platform": ["React Native", "Flutter", "Xamarin"],
+        "State Management": ["Redux", "MobX", "Provider"]
+      },
+      "Level 3": {
+        "APIs": ["Fetch API", "Axios", "GraphQL"],
+        "Push Notifications": ["Firebase Cloud Messaging", "OneSignal"]
+      },
+      "Level 4": {
+        "Deployment": ["Google Play Store", "Apple App Store"],
+        "Testing": ["Jest", "Detox", "Appium"],
+        "Security": ["ProGuard", "App Transport Security"]
+      },
+      "Extras": {
+        "Version Control": ["Git", "GitHub/GitLab/Bitbucket"],
+        "Databases": ["SQLite", "Realm", "Core Data"],
+        "WebViews": ["WebView", "Safari View Controller"]
+      }
+    },
+    "blockchain-developer": {
+      "Level 1": {
+        "Blockchain Basics": ["Decentralization", "Consensus Mechanisms", "Cryptography"],
+        "Ethereum": ["Solidity", "Web3.js", "Truffle"]
+      },
+      "Level 2": {
+        "Smart Contracts": ["ERC-20", "ERC-721", "ERC-1155"],
+        "DApps": ["Metamask", "Infura", "IPFS"]
+      },
+      "Level 3": {
+        "DeFi": ["Uniswap", "Compound", "Aave"],
+        "NFTs": ["OpenSea", "Rarible", "Foundation"]
+      },
+      "Level 4": {
+        "Layer 2 Solutions": ["Polygon", "Optimism", "zkSync"],
+        "Oracles": ["Chainlink", "Band Protocol", "API3"],
+        "Security": ["OWASP Top 10", "Smart Contract Audits"]
+      },
+      "Extras": {
+        "Version Control": ["Git", "GitHub/GitLab/Bitbucket"],
+        "Web3 Libraries": ["Ethers.js", "ethers-rs", "web3.py"],
+        "IPFS": ["Pinata", "Fleek", "Textile"]
+      }
+    },
+    "game-developer": {
+      "Level 1": {
+        "Game Design": ["Game Mechanics", "Game Loops", "Game Engines"],
+        "C#": ["Unity", "MonoDevelop", "Visual Studio"]
+      },
+      "Level 2": {
+        "3D Modeling": ["Blender", "Maya", "3ds Max"],
+        "2D Animation": ["Spine", "DragonBones", "Spriter"]
+      },
+      "Level 3": {
+        "Physics": ["Unity Physics", "Box2D", "Bullet Physics"],
+        "AI": ["Pathfinding", "Decision Trees", "Behavior Trees"]
+      },
+      "Level 4": {
+        "Networking": ["Photon", "Mirror", "UNET"],
+        "Deployment": ["Steam", "Google Play Store", "Apple App Store"],
+        "Testing": ["Unity Test Framework", "Play Mode Tests", "Edit Mode Tests"]
+      },
+      "Extras": {
+        "Version Control": ["Git", "GitHub/GitLab/Bitbucket"],
+        "Game Development Tools": ["Unity Editor", "Visual Studio Code", "Blender"],
+        "Game Engines": ["Unity", "Unreal Engine", "Godot"]
+      }
+    },
+    "ai-ml-engineer": {
+      "Level 1": {
+        "Python": ["NumPy", "Pandas", "Matplotlib"],
+        "Statistics": ["Descriptive Statistics", "Inferential Statistics", "Hypothesis Testing"]
+      },
+      "Level 2": {
+        "Machine Learning": ["Linear Regression", "Logistic Regression", "Decision Trees"],
+        "Deep Learning": ["Neural Networks", "CNNs", "RNNs"]
+      },
+      "Level 3": {
+        "Natural Language Processing": ["NLTK", "SpaCy", "BERT"],
+        "Computer Vision": ["OpenCV", "TensorFlow", "Keras"]
+      },
+      "Level 4": {
+        "Big Data": ["Hadoop", "Spark", "Hive"],
+        "Data Engineering": ["ETL", "Data Warehousing", "Data Lakes"],
+        "Deployment": ["Heroku", "AWS", "Google Cloud"]
+      },
+      "Extras": {
+        "Version Control": ["Git", "GitHub/GitLab/Bitbucket"],
+        "Databases": ["SQL", "NoSQL", "NewSQL"],
+        "Cloud Providers": ["AWS", "Azure", "Google Cloud"]
+      }
+    },
+    "security-engineer": {
+      "Level 1": {
+        "Networking": ["OSI Model", "TCP/IP", "DNS", "HTTP/HTTPS"],
+        "Cryptography": ["Symmetric Encryption", "Asymmetric Encryption", "Hashing"]
+      },
+      "Level 2": {
+        "Web Security": ["OWASP Top 10", "CORS", "CSP"],
+        "Network Security": ["Firewalls", "IDS/IPS", "VPN"]
+      },
+      "Level 3": {
+        "Security Protocols": ["SSL/TLS", "SSH", "OAuth"],
+        "Security Tools": ["Nmap", "Wireshark", "Metasploit"]
+      },
+      "Level 4": {
+        "Incident Response": ["Forensics", "Chain of Custody", "Legal Considerations"],
+        "Security Audits": ["Vulnerability Scanning", "Penetration Testing", "Compliance Audits"],
+        "Security Operations": ["SIEM", "SOAR", "Threat Intelligence"]
+      },
+      "Extras": {
+        "Scripting": ["Bash", "Python", "PowerShell"],
+        "Cloud Security": ["AWS Security Groups", "Azure Network Security", "Google Cloud IAM"],
+        "Container Security": ["Docker Bench", "Kubernetes CIS", "Container Scanning"]
+      }
+    },
+    "qa-engineer": {
+      "Level 1": {
+        "Software Testing": ["Types of Testing", "Testing Techniques", "Testing Levels"],
+        "Test Design": ["Test Cases", "Test Plans", "Test Strategies"]
+      },
+      "Level 2": {
+        "Test Automation": ["Selenium", "Cypress", "TestCafe"],
+        "API Testing": ["Postman", "REST Assured", "SoapUI"]
+      },
+      "Level 3": {
+        "Performance Testing": ["JMeter", "LoadRunner", "Gatling"],
+        "Security Testing": ["OWASP ZAP", "Burp Suite", "Nessus"]
+      },
+      "Level 4": {
+        "CI/CD": ["Jenkins", "GitLab CI", "Circle CI"],
+        "Test Management": ["TestRail", "Zephyr", "PractiTest"],
+        "Defect Tracking": ["Jira", "Bugzilla", "Mantis"]
+      },
+      "Extras": {
+        "Version Control": ["Git", "GitHub/GitLab/Bitbucket"],
+        "Agile Methodologies": ["Scrum", "Kanban", "XP"],
+        "Cloud Providers": ["AWS", "Azure", "Google Cloud"]
+      }
+    },
+    "database-administrator": {
+      "Level 1": {
+        "SQL": ["DDL", "DML", "DCL", "TCL"],
+        "Database Design": ["ER Diagrams", "Normalization", "Indexing"]
+      },
+      "Level 2": {
+        "Database Management": ["Backup & Recovery", "Performance Tuning", "Security"],
+        "SQL Tuning": ["Execution Plans", "Indexing Strategies", "Query Optimization"]
+      },
+      "Level 3": {
+        "High Availability": ["Replication", "Clustering", "Log Shipping"],
+        "Disaster Recovery": ["Backup Strategies", "Point-in-Time Recovery", "Site Failover"]
+      },
+      "Level 4": {
+        "Database Monitoring": ["Alerts & Notifications", "Performance Metrics", "Health Checks"],
+        "Database Security": ["Users & Roles", "Permissions", "Encryption"],
+        "Database Migration": ["Data Transfer", "Schema Conversion", "Compatibility Testing"]
+      },
+      "Extras": {
+        "NoSQL Databases": ["MongoDB", "Cassandra", "Couchbase"],
+        "NewSQL Databases": ["CockroachDB", "Google Spanner", "NuoDB"],
+        "Cloud Databases": ["RDS", "Azure SQL Database", "Google Cloud SQL"]
+        }
+        },
+        "technical-manager": {
+          "Level 1": {
+            "Product Management": ["Product Lifecycle", "Market Research", "Competitor Analysis"],
+            "Project Management": ["Scoping", "Scheduling", "Budgeting"]
+          },
+          "Level 2": {
+            "Team Management": ["Leadership", "Mentorship", "Conflict Resolution"],
+            "Stakeholder Management": ["Communication", "Expectation Setting", "Feedback"]
+          },
+          "Level 3": {
+            "Agile Methodologies": ["Scrum", "Kanban", "XP"],
+            "Risk Management": ["Risk Identification", "Risk Assessment", "Risk Mitigation"]
+          },
+          "Level 4": {
+            "Quality Assurance": ["Testing Strategies", "Quality Control", "Process Improvement"],
+            "Resource Management": ["Resource Allocation", "Capacity Planning", "Resource Forecasting"]
+          },
+          "Extras": {
+            "Technical Skills": ["Programming", "Database Management", "Cloud Computing"],
+            "Soft Skills": ["Communication", "Problem Solving", "Decision Making"]
+          }
+        }
+ }
+ 
