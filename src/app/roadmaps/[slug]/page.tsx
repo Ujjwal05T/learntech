@@ -104,15 +104,23 @@ export default function RoadmapPage({ params }: PageProps) {
           {Object.keys(roadmap).map((level) => (
             <>
               <div className="flex justify-center">
-                <div className="border-2 px-4 py-3 text-lg rounded-lg w-full sm:w-[60%] md:w-[50%] mx-auto">
+                <div className="border-2 px-4 py-3 text-lg rounded-lg w-full sm:w-[60%] md:w-[50%] mx-2 sm:mx-auto">
                   <div className="font-sans text-xl">
                     <h1> {level}</h1>
                   </div>
-                  <div className="mt-2 flex space-x-2 items-center">
+                  <div className="mt-2 flex flex-col md:flex-row space-x-2 justify-center md:items-center">
                     {Object.keys(roadmap[level]).map((tech) => (
                       <>
+                      <div className="hidden">
+
+                      </div>
                         <Button>{tech}</Button>
+                        <div className="hidden md:flex">
                         <Arrow />
+                        </div>
+                        <div className="md:hidden">
+                        <ArrowDown />
+                        </div>  
                       </>
                     ))}
                     <Button className="my-4">Completed</Button>
