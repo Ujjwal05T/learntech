@@ -3,6 +3,7 @@ import roadmapData from "@/data/data.json";
 import slugData from "@/data/index.json";
 import Link from "next/link";
 import ErrorPage from "@/components/ErrorPage";
+import { notFound } from "next/navigation";
 
 interface PageProps {
   params: {
@@ -42,8 +43,8 @@ const TechnologyList = ({ items }: { items: string[] }) => (
   </div>
 );
 
-export default function RoadmapPage({ params }: PageProps) {
-  const { slug } = params;
+export default async function RoadmapPage({ params }: PageProps) {
+  const { slug } =  await params;
   const roadmaps: Roadmap = roadmapData;
   const roadmap = roadmaps[slug];
   const response: Roadmaps = slugData.roadmaps.filter(
@@ -51,6 +52,7 @@ export default function RoadmapPage({ params }: PageProps) {
   )[0];
 
   if (!roadmap) {
+    // notFound()
     return <ErrorPage />;
   }
 
@@ -103,8 +105,8 @@ export default function RoadmapPage({ params }: PageProps) {
         <div>
           {Object.keys(roadmap).map((level) => (
             <>
-              <div className="flex justify-center">
-                <div className="border-2 px-4 py-3 text-lg rounded-lg w-full sm:w-[60%] md:w-[50%] mx-2 sm:mx-auto">
+              <div className="flex justify-center" key={level}>
+                <div className="border-2 bg-gray-100 px-4 py-3 text-lg rounded-lg w-[90%] sm:w-[70%] md:w-[70%] lg:w-[60%] mx-2 sm:mx-auto">
                   <div className="font-sans text-xl">
                     <h1> {level}</h1>
                   </div>

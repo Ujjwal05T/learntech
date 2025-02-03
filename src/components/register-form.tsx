@@ -49,12 +49,16 @@ export function RegisterForm({
               type="password"
             />
           </div>
-        </CardContent>
-        <CardFooter>
           <Button className="w-full" >
             Create account
-          </Button>
-        </CardFooter>
+          </Button>  
+          <div className="mt-2 text-center text-sm">
+              Already have an account?{" "}
+              <a href="/login" className="underline underline-offset-4">
+                Login here
+              </a>
+            </div>
+        </CardContent>
       </Card>
     </div>
   );
