@@ -3,7 +3,18 @@ import roadmapData from "@/data/data.json";
 import slugData from "@/data/index.json";
 import Link from "next/link";
 import ErrorPage from "@/components/ErrorPage";
-import { notFound } from "next/navigation";
+import { Roadmaps, DetailedRoadmap, RoadmapData } from "@/types/types";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+import { MoveDown, MoveRight } from "lucide-react";
 
 interface PageProps {
   params: {
@@ -11,88 +22,18 @@ interface PageProps {
   };
 }
 
-interface Roadmaps {
-  id: number;
-  slug: string;
-  title: string;
-  description: string;
-  time: string;
-  difficulty: string;
-  preRequisites: string;
-}
-
-interface Roadmap {
-  [key: string]: RoadmapData;
-}
-
-interface Level {
-  [key: string]: string[];
-}
-
-interface RoadmapData {
-  [key: string]: Level;
-}
-
-const TechnologyList = ({ items }: { items: string[] }) => (
-  <div className="grid grid-cols-2 gap-2 mt-2">
-    {items.map((item) => (
-      <div key={item} className="bg-white/20 px-3 py-1 rounded text-sm">
-        {item}
-      </div>
-    ))}
-  </div>
-);
 
 export default async function RoadmapPage({ params }: PageProps) {
-  const { slug } =  await params;
-  const roadmaps: Roadmap = roadmapData;
-  const roadmap = roadmaps[slug];
+  const { slug } = await params;
+  const roadmaps: DetailedRoadmap = roadmapData;
+  const roadmap:RoadmapData = roadmaps[slug];
   const response: Roadmaps = slugData.roadmaps.filter(
     (title) => title.slug === slug
   )[0];
 
   if (!roadmap) {
-    // notFound()
     return <ErrorPage />;
   }
-
-  const ArrowDown = () => (
-    <div className="flex justify-center my-4">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="lucide lucide-move-down">
-        <path d="M8 18L12 22L16 18" />
-        <path d="M12 2V22" />
-      </svg>
-    </div>
-  );
-
-  const Arrow = () => (
-    <div className="text-gray-600">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="lucide lucide-move-right">
-        <path d="M18 8L22 12L18 16" />
-        <path d="M2 12H22" />
-      </svg>
-    </div>
-  );
 
   return (
     <>
@@ -113,16 +54,52 @@ export default async function RoadmapPage({ params }: PageProps) {
                   <div className="mt-2 flex flex-col md:flex-row space-x-2 justify-center md:items-center">
                     {Object.keys(roadmap[level]).map((tech) => (
                       <>
-                      <div className="hidden">
-
-                      </div>
-                        <Button>{tech}</Button>
+                        <div className="hidden"></div>
+                        <Drawer>
+                          <DrawerTrigger asChild>
+                            <Button variant="outline">{tech}</Button>
+                          </DrawerTrigger>
+                          <DrawerContent>
+                            <div className="mx-auto sm:w-xl">
+                              <DrawerHeader>
+                                <DrawerTitle className="text-center underline m-3 text-xl">
+                                  {tech} Topics
+                                </DrawerTitle>
+                                <div>
+                                  {Object.keys(roadmap[level][tech]).map(
+                                    (items) => (
+                                      <DrawerDescription>
+                                        <div className="flex space-x-2 w-">
+                                          <div className="font-bold mx-2 capitalize">
+                                            {items} :
+                                          </div>
+                                          {roadmap[level][tech][items].map(
+                                            (item: string) => (
+                                              <div className="mx-2 ">
+                                                {item},
+                                              </div>
+                                            )
+                                          )}
+                                        </div>
+                                      </DrawerDescription>
+                                    )
+                                  )}
+                                </div>
+                              </DrawerHeader>
+                              <DrawerFooter>
+                                <DrawerClose asChild>
+                                  <Button variant="outline">Cancel</Button>
+                                </DrawerClose>
+                              </DrawerFooter>
+                            </div>
+                          </DrawerContent>
+                        </Drawer>
                         <div className="hidden md:flex">
-                        <Arrow />
+                        <MoveRight />
                         </div>
                         <div className="md:hidden">
-                        <ArrowDown />
-                        </div>  
+                          <MoveDown />
+                        </div>
                       </>
                     ))}
                     <Button className="my-4">Completed</Button>
@@ -130,7 +107,7 @@ export default async function RoadmapPage({ params }: PageProps) {
                 </div>
               </div>
               <div className="flex justify-center my-4">
-                <ArrowDown />
+                <MoveDown />
               </div>
             </>
           ))}

@@ -1,20 +1,13 @@
 import React from "react";
 import roadmapsData from "@/data/index.json";
 import Link from "next/link";
+import { Roadmaps } from "@/types/types";
 
-interface Roadmap {
-  id: number;
-  slug: string;
-  title: string;
-  description: string;
-  time: string;
-  difficulty: string;
-  preRequisites: string;
-}
-export default function Roadmaps() {
+
+export default function RoadmapPage() {
   return (
     <div className="bg-black">
-      <h1 className="text-5xl pt-2 sm:pt-4 md:text-6xl font-bold text-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text mb-8 animate-fade-in">
+      <h1 className="text-5xl pt-12 sm:pt-6 md:text-6xl font-bold text-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text mb-8 animate-fade-in">
         Tech Roadmaps
       </h1>
       <div className="flex flex-row justify-center items-center my-4">
@@ -30,7 +23,7 @@ export default function Roadmaps() {
 
       <hr className="h-px my-4 mx-4 bg-gray-600 border-0" />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
-  {roadmapsData.roadmaps.map((roadmap: Roadmap) => (
+  {roadmapsData.roadmaps.map((roadmap: Roadmaps) => (
     <div
       key={roadmap.id}
       className="group bg-white/10 backdrop-blur-sm  border-2 rounded-xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10"

@@ -5,7 +5,7 @@ export default function LandingPage() {
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800">
       <div className="container mx-auto px-6 py-16">
         {/* Hero Section */}
-        <div className="flex flex-col items-center justify-center h-[80vh]">
+        <div className="flex flex-col items-center justify-center sm:h-[80vh]">
           <h1 className="text-5xl md:text-6xl font-bold text-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text mb-6">
             Learn Tech Roadmaps
           </h1>
