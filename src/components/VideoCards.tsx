@@ -3,7 +3,7 @@ import { VideoCardProps } from "@/types/types";
 
 function VideoCards({ videoSrc, title, authorName, aboutAuthor, description, uploadedTime, views }: VideoCardProps) {
 	return (
-		<div className="max-w-sm overflow-hidden ">
+		<div className="max-w-sm overflow-hidden bg-[#0603179e] rounded-lg shadow-lg">
 			{/* Video Player */}
 			<div className="relative h-52 shadow-lg">
 				<iframe src={videoSrc.replace("youtu.be/", "www.youtube.com/embed/")} className="w-full h-full rounded-2xl" title={title} allowFullScreen />
