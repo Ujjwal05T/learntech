@@ -13,8 +13,7 @@ const ProgressTimelineBar = () => {
   ];
 
 
-//   can anyone reslove this error??
-  const handleStepClick = (stepId) => {
+  const handleStepClick = (stepId:number) => {
     setCurrentStep(stepId);
   };
 
