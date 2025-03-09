@@ -12,7 +12,7 @@ const ProgressTimelineBar = () => {
     { id: 5, title: "Topic 5", description: "description about topic" }
   ];
 
-
+//error resolved
   const handleStepClick = (stepId:number) => {
     setCurrentStep(stepId);
   };
