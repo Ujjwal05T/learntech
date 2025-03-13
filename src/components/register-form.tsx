@@ -31,8 +31,7 @@ export function RegisterForm({
   const [success, setSuccess] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // if (error) setError(null);
-    // if (success) setSuccess(null);
+    if (error) setError(null);
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
