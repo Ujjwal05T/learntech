@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
 
   return (
     <nav className="bg-[#060317] shadow-md sticky top-0 z-50">
@@ -33,9 +34,21 @@ function Navbar() {
               News
             </Link>
             <Button>
-              {/* Mode toggle or profile section here */}
-              <Link href="/login">Login</Link>
-            </Button>
+            {/* {isLoggedIn ? (
+                <Link href="/profile" className="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md transition-colors">
+                  Profile
+                </Link>
+              ) : (
+                <Link href="/login" className="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md transition-colors">
+                  Login
+                </Link>
+              )} */}
+              <Link 
+              href="/profile"
+              className="text-orange-600 hover:border-blue-600 px-3 py-2 rounded-full transition-colors font-bold">
+              P
+            </Link>
+              </Button>
           </div>
 
           {/* Mobile Menu Button */}
