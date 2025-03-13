@@ -11,11 +11,22 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
+import ErrorPage from "@/components/ErrorPage";
+
+const validateEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
 
 export default function VerifyPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get("email");
+
+  
+  if (!email || !validateEmail(email)) {
+      return <ErrorPage />;
+  }  
 
   const [otp, setOtp] = useState("");
   const [error, setError] = useState<string | null>(null);
