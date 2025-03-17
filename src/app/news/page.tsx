@@ -1,7 +1,31 @@
+'use client'
 import React from "react";
 import VideoCards from "@/components/VideoCards";
 import NewsSidebar from "@/components/NewsSidebar";
+import { useState, useEffect } from "react";
+import { useToken } from '@/hooks/useToken'
+import {useRouter} from 'next/navigation'
+import LoadingScreen from '@/components/Loading'
+
 function page() {
+    const [authorized, setAuthorized] = useState(false);
+    const router = useRouter();
+    const { isAuthenticated } = useToken();
+  
+    useEffect(() => {
+      if (!isAuthenticated()) {
+        setTimeout(() => {
+          router.push('/login');
+        }, 500);
+      } else {
+        setAuthorized(true);
+      }
+    }, [router, isAuthenticated]);
+  
+    if (!authorized) {
+      return <LoadingScreen />;
+    }
+
   return (
     <>
 	<div className="flex flex-col md:flex-row bg-[#060317] h-full">

@@ -1,8 +1,10 @@
 'use client'
+import LoadingScreen from '@/components/Loading';
+import { useToken } from '@/hooks/useToken';
 import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
-import { FaGraduationCap, FaCode, FaLink, FaMedal, FaUser, FaEnvelope, FaPhone, FaUniversity, FaBookOpen } from 'react-icons/fa';
+import { FaGraduationCap, FaCode, FaLink, FaMedal, FaUser, FaEnvelope, FaPhone, FaUniversity, FaBookOpen, FaSignOutAlt } from 'react-icons/fa';
 
 
 function page() {
@@ -22,54 +24,83 @@ function page() {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [authorized, setAuthorized] = useState(false);
+  const { removeToken,isAuthenticated } = useToken();
+
+
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      setTimeout(() => {
+        router.push("/login");
+      }, 500); 
+    } else {
+      setAuthorized(true);
+    }
+  }, [router, isAuthenticated]);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         // Get JWT token from localStorage or cookies
-        const token = localStorage.getItem('token');
-        
+        const token = localStorage.getItem("token");
+
         if (!token) {
           // Redirect to login if no token is found
-          router.push('/login');
+          router.push("/login");
           return;
         }
 
         // Fetch user data from backend API using axios
-        const response = await axios.get('http://localhost:5000/profile/get-profile', {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
+        const response = await axios.get(
+          "http://localhost:5000/profile/get-profile",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
           }
-        });
+        );
         const profileData = response.data.data;
+        console.log(profileData);
         setUser(profileData.profile);
-      } catch (err:unknown) {
-        const error = err as AxiosError
+      } catch (err: unknown) {
+        const error = err as AxiosError;
         if (error.response) {
-          //if server send response
+          // If server sends response
           if (error.response.status === 401) {
             // Token expired or invalid
-            localStorage.removeItem('token');
-            router.push('/login');
+            localStorage.removeItem("token");
+            router.push("/login");
             return;
           }
-          setError(`Error ${error.response.status}: ${error.response.statusText}`);
+          setError(
+            `Error ${error.response.status}: ${error.response.statusText}`
+          );
         } else if (error.request) {
           // The request was made but no response was received
-          setError('No response received from server. Please try again later.');
+          setError("No response received from server. Please try again later.");
         } else {
           // Something happened in setting up the request
           setError(`Error: ${error.message}`);
         }
-        console.error('Failed to fetch user data:', err);
+        console.error("Failed to fetch user data:", err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchUserData();
-  }, [router]);
+    if (authorized) {
+      fetchUserData();
+    }
+  }, [router, authorized]);
+
+  const handleLogout = () => {
+    removeToken();
+    router.push('/login');
+  };
+  if (!authorized) {
+    return <LoadingScreen />;
+  }
 
   if (loading) {
     return (
@@ -91,7 +122,7 @@ function page() {
             onClick={() => router.push('/login')}
             className="mt-4 px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-700"
           >
-            Back to Login
+            Login
           </button>
         </div>
       </div>
@@ -105,7 +136,9 @@ function page() {
           <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
             <div className="flex-shrink-0">
               <div className="w-32 h-32 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold border-4 border-[#1e2330]">
-                img
+                {/* {user.fullName.split(' ').map(name => name[0]).join('')}
+                 */}
+                 img
               </div>
             </div>
             <div className="flex-grow text-center md:text-left">
@@ -124,6 +157,24 @@ function page() {
               </div>
             </div>
           </div>
+          <div className="mt-4 flex justify-end">
+  <div className="flex gap-2">
+    <button
+      onClick={() => router.push('/profile/update')}
+      className="bg-[#1a1f2e] hover:bg-[#252a3d] text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 flex items-center gap-2 border border-gray-700 shadow-md"
+    >
+      <FaUser className="text-blue-200" />
+      <span>Edit Profile</span>
+    </button>
+    <button
+      onClick={handleLogout}
+      className="bg-[#1a1f2e] hover:bg-[#252a3d] text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 flex items-center gap-2 border border-gray-700 shadow-md"
+    >
+      <FaSignOutAlt className="text-red-400" />
+      <span>Logout</span>
+    </button>
+  </div>
+</div>
         </div>
 
         {/* Main Content */}
