@@ -18,7 +18,7 @@
     "jwt-decode": "^4.0.0",
     "learntech": "file:",
     "lucide-react": "^0.474.0",
-    "next": "15.1.4",
+    "next": "15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
