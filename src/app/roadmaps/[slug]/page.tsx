@@ -1,3 +1,4 @@
+'use client'
 import { Button } from "@/components/ui/button";
 import roadmapData from "@/data/data.json";
 import slugData from "@/data/index.json";
@@ -13,15 +14,16 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { MoveDown, MoveRight } from "lucide-react";
+import { use } from "react";
 
 interface PageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
-export default async function RoadmapPage({ params }: PageProps) {
-  const { slug } = await params;
+export default function RoadmapPage({ params }: PageProps) {
+  //From NextJS 15, the params and searchParams objects are now Promises
+  //you can use the use hook from React to unwrap the promise.
+  const { slug } =  use(params);
   const roadmaps: DetailedRoadmap = roadmapData;
   const roadmap: RoadmapData = roadmaps[slug];
   const response: Roadmaps = slugData.roadmaps.filter(

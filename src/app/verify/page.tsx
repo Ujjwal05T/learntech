@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import {
   Card,
   CardContent,
@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import ErrorPage from "@/components/ErrorPage";
 
 const validateEmail = (email: string): boolean => {
@@ -18,10 +18,13 @@ const validateEmail = (email: string): boolean => {
   return emailRegex.test(email);
 };
 
-export default function VerifyPage() {
+interface VerifyPageProps {
+  searchParams: Promise<{ email: string }>;
+}
+
+export default function VerifyPage({searchParams}:VerifyPageProps) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const email = searchParams.get("email"); 
+  const { email } = use(searchParams);
 
   const [timeRemaining, setTimeRemaining] = useState(300); // 5 minutes in seconds
   const [otp, setOtp] = useState("");
@@ -47,10 +50,6 @@ export default function VerifyPage() {
     setIsLoading(true);
     setError(null);
 
-    if (!email || !validateEmail(email)) {
-      return <ErrorPage />;
-  } 
-
     try {
       await axios.post("http://localhost:5000/auth/verify", {
         email,
@@ -71,6 +70,10 @@ export default function VerifyPage() {
       setIsLoading(false);
     }
   };
+
+  if (!email || !validateEmail(email)) {
+    return <ErrorPage />;
+}
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
