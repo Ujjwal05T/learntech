@@ -21,17 +21,12 @@ const validateEmail = (email: string): boolean => {
 export default function VerifyPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const email = searchParams.get("email");
+  const email = searchParams.get("email"); 
 
-  
-  if (!email || !validateEmail(email)) {
-      return <ErrorPage />;
-  }  
-
-  const [otp, setOtp] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(300); // 5 minutes in seconds
+  const [otp, setOtp] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -52,8 +47,12 @@ export default function VerifyPage() {
     setIsLoading(true);
     setError(null);
 
+    if (!email || !validateEmail(email)) {
+      return <ErrorPage />;
+  } 
+
     try {
-      const response = await axios.post("http://localhost:5000/auth/verify", {
+      await axios.post("http://localhost:5000/auth/verify", {
         email,
         otp,
       });

@@ -23,7 +23,7 @@ function ErrorPage() {
 
         <h1 className="text-3xl font-bold text-gray-800 mb-4">Oops!</h1>
         <p className="text-gray-600 mb-8">
-          The page you're looking for doesn't exist or has been moved.
+          The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
 
         <Link 

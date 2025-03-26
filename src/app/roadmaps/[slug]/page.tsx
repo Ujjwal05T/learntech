@@ -6,10 +6,8 @@ import ErrorPage from "@/components/ErrorPage";
 import { Roadmaps, DetailedRoadmap, RoadmapData } from "@/types/types";
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,

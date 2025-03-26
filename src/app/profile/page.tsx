@@ -4,10 +4,10 @@ import { useToken } from '@/hooks/useToken';
 import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
-import { FaGraduationCap, FaCode, FaLink, FaMedal, FaUser, FaEnvelope, FaPhone, FaUniversity, FaBookOpen, FaSignOutAlt } from 'react-icons/fa';
+import { FaGraduationCap, FaCode, FaLink, FaMedal, FaUser, FaEnvelope, FaPhone, FaBookOpen, FaSignOutAlt } from 'react-icons/fa';
 
 
-function page() {
+export default function ProfilePage() {
   //temporary data
   const projects = ['Project 1', 'Project 2', 'Project 3'];
   const router = useRouter();
@@ -263,4 +263,3 @@ function page() {
   );
 }
 
-export default page

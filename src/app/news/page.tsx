@@ -7,7 +7,7 @@ import { useToken } from '@/hooks/useToken'
 import {useRouter} from 'next/navigation'
 import LoadingScreen from '@/components/Loading'
 
-function page() {
+export default function NewsPage():React.JSX.Element {
     const [authorized, setAuthorized] = useState(false);
     const router = useRouter();
     const { isAuthenticated } = useToken();
@@ -80,4 +80,4 @@ function page() {
   );
 }
 
-export default page;
+

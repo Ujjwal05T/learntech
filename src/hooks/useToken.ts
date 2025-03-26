@@ -48,6 +48,7 @@ export const useToken = () => {
       const currentTime = Date.now() / 1000;
       return decoded.exp > currentTime;
     } catch (error) {
+      console.error('Failed to decode token:', error);
       return false;
     }
   }

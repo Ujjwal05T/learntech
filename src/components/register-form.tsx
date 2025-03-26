@@ -4,7 +4,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -45,7 +44,7 @@ export function RegisterForm({
 
     try {
       // Using axios for the request
-      const response = await axios.post(
+      await axios.post(
         "http://localhost:5000/auth/register",
         formData
       );
@@ -110,7 +109,7 @@ export function RegisterForm({
                 onChange={handleChange}
               />
             </div>
-            <Button className="w-full">Create account</Button>
+            <Button className="w-full" disabled={isLoading}>Create account</Button>
             {error && <div className="text-red-500">{error}</div>}
             {success && (
               <div className="mt-4 p-3 bg-green-100 border border-green-300 text-green-500 rounded">
