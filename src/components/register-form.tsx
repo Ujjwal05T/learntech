@@ -45,7 +45,7 @@ export function RegisterForm({
     try {
       // Using axios for the request
       await axios.post(
-        "http://localhost:5000/auth/register",
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
         formData
       );
       // Handle success

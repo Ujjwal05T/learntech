@@ -43,7 +43,7 @@ export function LoginForm({
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/login",
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
         formData
       );
       // Extract token from response

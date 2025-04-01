@@ -42,7 +42,7 @@ function ProfileUpdatePage() {
         }
 
         const response = await axios.get(
-          "http://localhost:5000/profile/get-profile",
+          `${process.env.NEXT_PUBLIC_API_URL}/profile/get-profile`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -104,7 +104,7 @@ function ProfileUpdatePage() {
         return;
       }
 
-      await axios.post("http://localhost:5000/profile/update-profile", user, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/profile/update-profile`, user, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",

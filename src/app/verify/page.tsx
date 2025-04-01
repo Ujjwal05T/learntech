@@ -51,7 +51,7 @@ export default function VerifyPage({searchParams}:VerifyPageProps) {
     setError(null);
 
     try {
-      await axios.post("http://localhost:5000/auth/verify", {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/verify`, {
         email,
         otp,
       });
