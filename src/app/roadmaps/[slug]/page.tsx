@@ -16,8 +16,10 @@ import {
   DrawerTrigger,
   DrawerClose,
 } from "@/components/ui/drawer";
-import { MoveDown, MoveRight, CheckCircle } from "lucide-react";
+import { MoveDown, MoveRight, CheckCircle, AlertTriangle, LogIn } from "lucide-react";
 import { useParams } from "next/navigation";
+import { useToken } from "@/hooks/useToken";
+import axios from "axios";
 
 // Interface for tracking item completion (more granular)
 interface CompletedItems {
@@ -39,40 +41,101 @@ export default function RoadmapPage() {
   const [roadmap, setRoadmap] = useState<RoadmapData | null>(null);
   const [response, setResponse] = useState<Roadmaps | null>(null);
   const [completedItems, setCompletedItems] = useState<CompletedItems>({});
+  const [isSaving, setIsSaving] = useState(false);
+  const [syncError, setSyncError] = useState<string | null>(null);
+  const [syncSuccess, setSyncSuccess] = useState<string | null>(null);
+  const [showAuthPrompt, setShowAuthPrompt] = useState(false);
+
+  const { isAuthenticated } = useToken();
+
+  const getToken = () => localStorage.getItem('token');
 
   // Load data and state on mount
   useEffect(() => {
-    if (slug) {
-      const roadmaps: DetailedRoadmap = roadmapData;
-      const currentRoadmap: RoadmapData = roadmaps[slug];
-      const currentResponse: Roadmaps = slugData.roadmaps.filter(
-        (title) => title.slug === slug
-      )[0];
+    async function loadData() {
+      if (slug) {
+        try {
+          // Always load roadmap structure from local data
+          const roadmaps: DetailedRoadmap = roadmapData;
+          const currentRoadmap: RoadmapData = roadmaps[slug];
+          const currentResponse: Roadmaps = slugData.roadmaps.filter(
+            (title) => title.slug === slug
+          )[0];
 
-      setRoadmap(currentRoadmap);
-      setResponse(currentResponse);
+          setRoadmap(currentRoadmap);
+          setResponse(currentResponse);
 
-      // Load saved progress
-      const savedProgress = localStorage.getItem(
-        `roadmap-items-progress-${slug}`
-      );
-      if (savedProgress) {
-        setCompletedItems(JSON.parse(savedProgress));
+          // Only fetch progress if user is authenticated
+          if (isAuthenticated()) {
+            try {
+              const token = getToken();
+              const response = await axios.get(
+                `${process.env.NEXT_PUBLIC_API_URL}/progress/${slug}`,
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                }
+              );
+
+              if (response.data.success) {
+                setCompletedItems(response.data.data.completedItems);
+                console.log("Progress loaded from API");
+              }
+            } catch (error) {
+              console.error("Error fetching progress from API:", error);
+              setSyncError("Failed to load your progress from the server");
+              setTimeout(() => setSyncError(null), 5000);
+            }
+          }
+        } catch (error) {
+          console.error("Error loading roadmap data:", error);
+        } finally {
+          setIsLoaded(true);
+        }
       }
-
-      setIsLoaded(true);
     }
-  }, [slug]);
 
-  // Save progress when it changes
+    loadData();
+  }, []);
+
+  // Save progress when it changes (only for authenticated users)
   useEffect(() => {
-    if (isLoaded && Object.keys(completedItems).length > 0) {
-      localStorage.setItem(
-        `roadmap-items-progress-${slug}`,
-        JSON.stringify(completedItems)
-      );
+    if (isLoaded && isAuthenticated() && Object.keys(completedItems).length > 0) {
+      // Debounce API saving
+      const saveToAPI = async () => {
+        try {
+          setIsSaving(true);
+          setSyncError(null);
+          
+          const token = getToken();
+          await axios.post(
+            `${process.env.NEXT_PUBLIC_API_URL}/progress/${slug}`,
+            { completedItems },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          
+          console.log("Progress saved to API");
+        } catch (error) {
+          console.error("Error saving progress to API:", error);
+          setSyncError("Failed to save your progress to the server");
+          setTimeout(() => setSyncError(null), 5000);
+        } finally {
+          setIsSaving(false);
+        }
+      };
+
+      const timeoutId = setTimeout(() => {
+        saveToAPI();
+      }, 1500);
+
+      return () => clearTimeout(timeoutId);
     }
-  }, [completedItems, slug, isLoaded]);
+  }, [completedItems]);
 
   // Toggle item completion
   const toggleItemCompletion = (
@@ -81,6 +144,13 @@ export default function RoadmapPage() {
     topic: string,
     item: string
   ) => {
+    // Show login prompt if not authenticated
+    if (!isAuthenticated()) {
+      setShowAuthPrompt(true);
+      setTimeout(() => setShowAuthPrompt(false), 3000);
+      return;
+    }
+
     setCompletedItems((prev) => {
       const updated = { ...prev };
 
@@ -128,6 +198,13 @@ export default function RoadmapPage() {
     topic: string,
     completed: boolean
   ) => {
+    // Show login prompt if not authenticated
+    if (!isAuthenticated()) {
+      setShowAuthPrompt(true);
+      setTimeout(() => setShowAuthPrompt(false), 3000);
+      return;
+    }
+
     if (!roadmap) return;
 
     setCompletedItems((prev) => {
@@ -149,7 +226,7 @@ export default function RoadmapPage() {
 
   // Calculate progress percentage for the entire roadmap
   const calculateOverallProgress = (): number => {
-    if (!roadmap) return 0;
+    if (!roadmap || !isAuthenticated()) return 0;
 
     let totalItems = 0;
     let completedCount = 0;
@@ -173,6 +250,42 @@ export default function RoadmapPage() {
     return totalItems > 0 ? Math.round((completedCount / totalItems) * 100) : 0;
   };
 
+  // Force sync with server
+  const syncWithServer = async () => {
+    if (!isAuthenticated()) {
+      setShowAuthPrompt(true);
+      setTimeout(() => setShowAuthPrompt(false), 3000);
+      return;
+    }
+
+    try {
+      setIsSaving(true);
+      setSyncError(null);
+      setSyncSuccess(null);
+      
+      const token = getToken();
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/progress/${slug}`,
+        { completedItems },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      
+      // Show success message
+      setSyncSuccess("Your progress has been saved to the server");
+      setTimeout(() => setSyncSuccess(null), 3000);
+    } catch (error) {
+      console.error("Error syncing progress:", error);
+      setSyncError("Failed to sync your progress with the server");
+      setTimeout(() => setSyncError(null), 5000);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
   // Show loading or error state
   if (!isLoaded) {
     return (
@@ -194,20 +307,91 @@ export default function RoadmapPage() {
             {response.title} Roadmap
           </div>
 
-          {/* Overall Progress Bar - ONLY THIS PROGRESS BAR IS SHOWN */}
-          <div className="mb-8">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-white text-sm">Overall Progress</span>
-              <span className="text-white text-sm font-bold">
-                {calculateOverallProgress()}%
-              </span>
+          {/* Authentication Prompt */}
+          {showAuthPrompt && (
+            <div className="mb-4 p-3 rounded bg-yellow-900/20 border border-yellow-500/30 text-yellow-400 text-sm flex items-center gap-2">
+              <LogIn className="h-4 w-4" />
+              <span>Please <Link href="/login" className="underline hover:text-yellow-300">log in</Link> to track your progress</span>
             </div>
-            <div className="w-full bg-gray-700 rounded-full h-2.5">
-              <div
-                className="bg-gradient-to-r from-blue-500 to-purple-600 h-2.5 rounded-full transition-all duration-500"
-                style={{ width: `${calculateOverallProgress()}%` }}></div>
+          )}
+
+          {/* Authentication Status & Sync Button */}
+          <div className="mb-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div className="text-sm text-slate-400">
+              {isAuthenticated() ? (
+                <span className="flex items-center gap-1.5">
+                  <span className="inline-block w-2 h-2 rounded-full bg-green-500"></span>
+                  Your progress is being saved to your account
+                </span>
+              ) : (
+                <span className="flex items-center gap-1.5">
+                  <span className="inline-block w-2 h-2 rounded-full bg-yellow-500"></span>
+                  <Link href="/login" className="text-yellow-400 hover:text-yellow-300 underline">
+                    Log in
+                  </Link> to track your progress
+                </span>
+              )}
             </div>
+            
+            {isAuthenticated() && (
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={syncWithServer}
+                disabled={isSaving}
+                className="text-xs border-blue-500/30 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20"
+              >
+                {isSaving ? "Syncing..." : "Sync Progress"}
+              </Button>
+            )}
           </div>
+
+          {/* Error and Success Messages */}
+          {syncError && (
+            <div className="mb-4 p-3 rounded bg-red-900/20 border border-red-500/30 text-red-400 text-sm flex items-center gap-2">
+              <AlertTriangle className="h-4 w-4" />
+              <span>{syncError}</span>
+            </div>
+          )}
+          
+          {syncSuccess && (
+            <div className="mb-4 p-3 rounded bg-green-900/20 border border-green-500/30 text-green-400 text-sm flex items-center gap-2">
+              <CheckCircle className="h-4 w-4" />
+              <span>{syncSuccess}</span>
+            </div>
+          )}
+
+          {/* Overall Progress Bar - Only show if authenticated */}
+          {isAuthenticated() && (
+            <div className="mb-8">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-white text-sm">Overall Progress</span>
+                <span className="text-white text-sm font-bold">
+                  {calculateOverallProgress()}%
+                </span>
+              </div>
+              <div className="w-full bg-gray-700 rounded-full h-2.5">
+                <div
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 h-2.5 rounded-full transition-all duration-500"
+                  style={{ width: `${calculateOverallProgress()}%` }}></div>
+              </div>
+            </div>
+          )}
+          
+          {/* Login prompt when not authenticated */}
+          {!isAuthenticated() && (
+            <div className="mb-8 p-4 rounded-lg border border-blue-500/30 bg-blue-900/10">
+              <h3 className="text-lg font-medium text-blue-400 mb-2">Track Your Progress</h3>
+              <p className="text-slate-400 mb-4">
+                Log in to track your learning journey and save your progress across devices.
+              </p>
+              <Link href="/login">
+                <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                  <LogIn className="w-4 h-4 mr-2" /> Log In to Track Progress
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Levels */}
@@ -255,7 +439,7 @@ export default function RoadmapPage() {
                                             className="text-slate-400">
                                             <div
                                               className={`border rounded-lg p-3 sm:p-4 backdrop-blur-sm ${
-                                                isAllItemsCompleted
+                                                isAuthenticated() && isAllItemsCompleted
                                                   ? "border-green-500/30 bg-green-900/10"
                                                   : "border-slate-700 bg-slate-800/50"
                                               }`}>
@@ -263,25 +447,35 @@ export default function RoadmapPage() {
                                                 <h3 className="font-bold text-lg text-white capitalize">
                                                   {topic}
                                                 </h3>
-                                                <Button
-                                                  size="sm"
-                                                  onClick={() =>
-                                                    toggleAllItemsInTopic(
-                                                      level,
-                                                      tech,
-                                                      topic,
-                                                      !isAllItemsCompleted
-                                                    )
-                                                  }
-                                                  className={`${
-                                                    isAllItemsCompleted
-                                                      ? "bg-green-600 hover:bg-green-700"
-                                                      : "bg-slate-700 hover:bg-slate-600"
-                                                  } text-xs px-3`}>
-                                                  {isAllItemsCompleted
-                                                    ? "Mark All Incomplete"
-                                                    : "Mark All Complete"}
-                                                </Button>
+                                                {isAuthenticated() ? (
+                                                  <Button
+                                                    size="sm"
+                                                    onClick={() =>
+                                                      toggleAllItemsInTopic(
+                                                        level,
+                                                        tech,
+                                                        topic,
+                                                        !isAllItemsCompleted
+                                                      )
+                                                    }
+                                                    className={`${
+                                                      isAllItemsCompleted
+                                                        ? "bg-green-600 hover:bg-green-700"
+                                                        : "bg-slate-700 hover:bg-slate-600"
+                                                    } text-xs px-3`}>
+                                                    {isAllItemsCompleted
+                                                      ? "Mark All Incomplete"
+                                                      : "Mark All Complete"}
+                                                  </Button>
+                                                ) : (
+                                                  <Link href="/login">
+                                                    <Button
+                                                      size="sm"
+                                                      className="bg-blue-600 hover:bg-blue-700 text-xs px-3">
+                                                      <LogIn className="w-3 h-3 mr-1" /> Login to Track
+                                                    </Button>
+                                                  </Link>
+                                                )}
                                               </div>
 
                                               <div className="flex flex-wrap gap-2">
@@ -308,11 +502,11 @@ export default function RoadmapPage() {
                                                         )
                                                       }
                                                       className={`px-3 py-1.5 rounded-full text-xs sm:text-sm flex items-center gap-1.5 transition-all ${
-                                                        isCompleted
+                                                        isAuthenticated() && isCompleted
                                                           ? "bg-green-500/10 text-green-400 border border-green-400/30 hover:bg-green-500/20"
                                                           : "bg-blue-500/10 text-blue-400 hover:bg-blue-500/20"
                                                       }`}>
-                                                      {isCompleted && (
+                                                      {isAuthenticated() && isCompleted && (
                                                         <CheckCircle className="w-3 h-3" />
                                                       )}
                                                       {item}
