@@ -52,7 +52,7 @@ function Navbar() {
 								<span className="text-white font-bold text-lg">L</span>
 							</div>
 						</div>
-						<span className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 hidden sm:inline-block">LearnTrack</span>
+						<span className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 hidden sm:inline-block">LearnTech</span>
 					</Link>
 
 					{/* Desktop Navigation */}

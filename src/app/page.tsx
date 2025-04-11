@@ -7,7 +7,7 @@ export default function LandingPage() {
 				{/* Hero Section */}
 				<div className="flex flex-col items-center justify-center sm:h-[80vh]">
 					<h1 className="text-5xl md:text-6xl font-bold text-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text mb-6">
-						Learn Track Roadmaps
+						Learn Tech Roadmaps
 					</h1>
 
 					<p className="text-slate-300 text-center max-w-2xl text-lg mb-8">
