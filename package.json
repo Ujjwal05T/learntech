@@ -15,6 +15,7 @@
     "axios": "^1.8.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.6.5",
     "jwt-decode": "^4.0.0",
     "learntech": "file:",
     "lucide-react": "^0.474.0",

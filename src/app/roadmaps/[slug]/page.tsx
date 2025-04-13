@@ -20,6 +20,7 @@ import { MoveDown, MoveRight, CheckCircle, AlertTriangle, LogIn } from "lucide-r
 import { useParams } from "next/navigation";
 import { useToken } from "@/hooks/useToken";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 // Interface for tracking item completion (more granular)
 interface CompletedItems {
@@ -48,7 +49,7 @@ export default function RoadmapPage() {
 
   const { isAuthenticated } = useToken();
 
-  const getToken = () => localStorage.getItem('token');
+  const getToken = () => localStorage.getItem("token");
 
   // Load data and state on mount
   useEffect(() => {
@@ -107,7 +108,7 @@ export default function RoadmapPage() {
         try {
           setIsSaving(true);
           setSyncError(null);
-          
+
           const token = getToken();
           await axios.post(
             `${process.env.NEXT_PUBLIC_API_URL}/progress/${slug}`,
@@ -118,7 +119,7 @@ export default function RoadmapPage() {
               },
             }
           );
-          
+
           console.log("Progress saved to API");
         } catch (error) {
           console.error("Error saving progress to API:", error);
@@ -262,7 +263,7 @@ export default function RoadmapPage() {
       setIsSaving(true);
       setSyncError(null);
       setSyncSuccess(null);
-      
+
       const token = getToken();
       await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/progress/${slug}`,
@@ -273,7 +274,7 @@ export default function RoadmapPage() {
           },
         }
       );
-      
+
       // Show success message
       setSyncSuccess("Your progress has been saved to the server");
       setTimeout(() => setSyncSuccess(null), 3000);
@@ -289,8 +290,11 @@ export default function RoadmapPage() {
   // Show loading or error state
   if (!isLoaded) {
     return (
-      <div className="bg-black text-white min-h-screen flex items-center justify-center">
-        Loading...
+      <div className="min-h-screen bg-[#0a0a20] flex items-center justify-center">
+        <div className="flex flex-col items-center">
+          <div className="w-12 h-12 rounded-full border-4 border-blue-500/30 border-t-blue-500 animate-spin mb-4"></div>
+          <p className="text-slate-300">Loading your roadmap...</p>
+        </div>
       </div>
     );
   }
@@ -300,241 +304,315 @@ export default function RoadmapPage() {
   }
 
   return (
-    <>
-      <div className="bg-black pt-4">
+    <div className="min-h-screen bg-[#0a0a20] relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-40 w-96 h-96 rounded-full bg-blue-600/10 blur-3xl"></div>
+        <div className="absolute bottom-40 left-20 w-80 h-80 rounded-full bg-purple-600/10 blur-3xl"></div>
+        <div className="absolute top-60 left-1/4 w-64 h-64 rounded-full bg-pink-600/10 blur-3xl"></div>
+      </div>
+
+      <div className="relative z-10 pt-8 pb-16">
         <div className="max-w-3xl mx-auto px-4">
-          <div className="text-center text-2xl text-white font-bold py-6 sm:py-8">
-            {response.title} Roadmap
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+          >
+            <h1 className="text-4xl font-bold py-6 sm:py-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
+              {response.title} Roadmap
+            </h1>
+            <p className="text-slate-300 mb-8 max-w-xl mx-auto">
+              Follow this step-by-step guide to master {response.title}. Track your progress and build your skills systematically.
+            </p>
+          </motion.div>
 
           {/* Authentication Prompt */}
           {showAuthPrompt && (
-            <div className="mb-4 p-3 rounded bg-yellow-900/20 border border-yellow-500/30 text-yellow-400 text-sm flex items-center gap-2">
-              <LogIn className="h-4 w-4" />
-              <span>Please <Link href="/login" className="underline hover:text-yellow-300">log in</Link> to track your progress</span>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="mb-6 p-4 rounded-xl bg-yellow-900/20 border border-yellow-500/30 text-yellow-300 backdrop-blur-md flex items-center gap-2"
+            >
+              <LogIn className="h-5 w-5" />
+              <span>
+                Please{" "}
+                <Link
+                  href="/login"
+                  className="underline font-medium hover:text-yellow-200 transition-colors"
+                >
+                  log in
+                </Link>{" "}
+                to track your progress
+              </span>
+            </motion.div>
           )}
 
           {/* Authentication Status & Sync Button */}
-          <div className="mb-4 flex flex-col sm:flex-row justify-between items-center gap-2">
-            <div className="text-sm text-slate-400">
-              {isAuthenticated() ? (
-                <span className="flex items-center gap-1.5">
-                  <span className="inline-block w-2 h-2 rounded-full bg-green-500"></span>
-                  Your progress is being saved to your account
-                </span>
-              ) : (
-                <span className="flex items-center gap-1.5">
-                  <span className="inline-block w-2 h-2 rounded-full bg-yellow-500"></span>
-                  <Link href="/login" className="text-yellow-400 hover:text-yellow-300 underline">
-                    Log in
-                  </Link> to track your progress
-                </span>
+          <div className="mb-6 p-4 rounded-xl backdrop-blur-md bg-white/5 border border-white/10">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+              <div className="text-sm text-slate-300">
+                {isAuthenticated() ? (
+                  <span className="flex items-center gap-2">
+                    <span className="inline-block w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+                    <span>Your progress is being saved to your account</span>
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    <span className="inline-block w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+                    <span>
+                      <Link
+                        href="/login"
+                        className="text-blue-400 hover:text-blue-300 underline transition-colors"
+                      >
+                        Log in
+                      </Link>{" "}
+                      to track your progress across devices
+                    </span>
+                  </span>
+                )}
+              </div>
+
+              {isAuthenticated() && (
+                <Button
+                  onClick={syncWithServer}
+                  disabled={isSaving}
+                  className="text-sm font-medium border-blue-500/30 bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 transition-all hover:scale-105"
+                >
+                  {isSaving ? (
+                    <>
+                      <div className="w-4 h-4 rounded-full border-2 border-blue-500/30 border-t-blue-500/80 animate-spin mr-2"></div>
+                      Syncing...
+                    </>
+                  ) : (
+                    <>Sync Progress</>
+                  )}
+                </Button>
               )}
             </div>
-            
-            {isAuthenticated() && (
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={syncWithServer}
-                disabled={isSaving}
-                className="text-xs border-blue-500/30 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20"
-              >
-                {isSaving ? "Syncing..." : "Sync Progress"}
-              </Button>
-            )}
           </div>
 
           {/* Error and Success Messages */}
           {syncError && (
-            <div className="mb-4 p-3 rounded bg-red-900/20 border border-red-500/30 text-red-400 text-sm flex items-center gap-2">
-              <AlertTriangle className="h-4 w-4" />
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="mb-6 p-4 rounded-xl bg-red-900/20 border border-red-500/30 text-red-300 backdrop-blur-md flex items-center gap-2"
+            >
+              <AlertTriangle className="h-5 w-5" />
               <span>{syncError}</span>
-            </div>
+            </motion.div>
           )}
-          
+
           {syncSuccess && (
-            <div className="mb-4 p-3 rounded bg-green-900/20 border border-green-500/30 text-green-400 text-sm flex items-center gap-2">
-              <CheckCircle className="h-4 w-4" />
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="mb-6 p-4 rounded-xl bg-green-900/20 border border-green-500/30 text-green-300 backdrop-blur-md flex items-center gap-2"
+            >
+              <CheckCircle className="h-5 w-5" />
               <span>{syncSuccess}</span>
-            </div>
+            </motion.div>
           )}
 
           {/* Overall Progress Bar - Only show if authenticated */}
           {isAuthenticated() && (
-            <div className="mb-8">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="mb-8 p-5 rounded-xl bg-white/5 backdrop-blur-md border border-white/10"
+            >
               <div className="flex justify-between items-center mb-2">
-                <span className="text-white text-sm">Overall Progress</span>
-                <span className="text-white text-sm font-bold">
+                <span className="text-white text-sm font-medium">Overall Progress</span>
+                <span className="text-white font-bold px-3 py-1 bg-white/10 rounded-md text-sm">
                   {calculateOverallProgress()}%
                 </span>
               </div>
-              <div className="w-full bg-gray-700 rounded-full h-2.5">
-                <div
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 h-2.5 rounded-full transition-all duration-500"
-                  style={{ width: `${calculateOverallProgress()}%` }}></div>
+              <div className="w-full bg-gray-800/80 rounded-full h-3 p-0.5">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${calculateOverallProgress()}%` }}
+                  transition={{ duration: 1, delay: 0.3 }}
+                  className="bg-gradient-to-r from-blue-500 to-indigo-600 h-full rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]"
+                ></motion.div>
               </div>
-            </div>
+            </motion.div>
           )}
-          
+
           {/* Login prompt when not authenticated */}
           {!isAuthenticated() && (
-            <div className="mb-8 p-4 rounded-lg border border-blue-500/30 bg-blue-900/10">
-              <h3 className="text-lg font-medium text-blue-400 mb-2">Track Your Progress</h3>
-              <p className="text-slate-400 mb-4">
-                Log in to track your learning journey and save your progress across devices.
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="mb-10 p-6 rounded-xl border border-blue-500/20 bg-gradient-to-br from-blue-900/20 to-purple-900/20 backdrop-blur-md"
+            >
+              <h3 className="text-xl font-bold text-white mb-3">Track Your Learning Journey</h3>
+              <p className="text-slate-300 mb-5">
+                Sign in to save your progress, track completed topics, and continue your learning journey from any device.
               </p>
               <Link href="/login">
-                <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                  <LogIn className="w-4 h-4 mr-2" /> Log In to Track Progress
+                <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg shadow-blue-700/20 hover:shadow-blue-700/30 transition-all">
+                  <LogIn className="w-4 h-4 mr-2" /> Sign In to Track Progress
                 </Button>
               </Link>
-            </div>
+            </motion.div>
           )}
         </div>
 
         {/* Levels */}
-        <div>
-          {Object.keys(roadmap).map((level) => {
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
+          {Object.keys(roadmap).map((level, index) => {
             return (
-              <div key={level}>
+              <motion.div
+                key={level}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * (index + 1) }}
+                className="mb-10"
+              >
                 <div className="flex justify-center">
-                  <div className="border-2 border-slate-700 bg-slate-800/50 backdrop-blur-sm hover:border-blue-500/50 transition-all duration-300 px-4 py-3 text-lg rounded-lg w-[90%] sm:w-[70%] md:w-[80%] lg:w-[60%] mx-2 sm:mx-auto hover:shadow-blue-500/10">
-                    <div className="font-sans text-white text-xl mb-2">
-                      <h1>{level}</h1>
+                  <div className="border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md hover:border-blue-500/40 transition-all duration-300 px-6 py-6 rounded-2xl w-[90%] sm:w-[80%] md:w-[80%] lg:w-[60%] mx-auto shadow-lg shadow-black/10 hover:shadow-blue-900/10">
+                    <div className="flex items-center gap-3 border-b border-white/10 pb-3 mb-5">
+                      <div className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
+                        {index + 1}
+                      </div>
+                      <h2 className="font-sans text-white text-xl font-bold">{level}</h2>
                     </div>
+
                     {/* Tech */}
-                    <div className="mt-2 flex flex-col md:flex-row gap-2 justify-center md:items-center">
-                      {Object.keys(roadmap[level]).map((tech) => {
+                    <div className="mt-4 flex flex-col md:flex-row gap-3 justify-center md:items-center">
+                      {Object.keys(roadmap[level]).map((tech, techIndex) => {
                         return (
                           <React.Fragment key={tech}>
                             <Drawer>
                               <DrawerTrigger asChild>
                                 <Button
                                   variant="outline"
-                                  className="hover:bg-slate-700/50 bg-blue-500/10 text-white hover:text-white border border-slate-600 hover:border-blue-400/50 transition-colors duration-300">
+                                  className="hover:bg-white/10 bg-white/5 text-white hover:text-white border border-white/10 hover:border-blue-400/50 transition-all duration-300 shadow-md hover:shadow-blue-500/10 p-4 h-auto"
+                                >
                                   <div className="flex flex-col w-full">
-                                    <span>{tech}</span>
+                                    <span className="text-base font-medium">{tech}</span>
                                   </div>
                                 </Button>
                               </DrawerTrigger>
-                              <DrawerContent className="bg-slate-900 border-t border-slate-700">
-                                <div className="max-w-3xl mx-auto px-2 sm:px-4 py-2 sm:py-4">
-                                  <DrawerHeader className="mb-2 sm:mb-4">
-                                    <DrawerTitle className="text-lg sm:text-2xl font-bold text-center bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
+                              <DrawerContent className="bg-[#0f0f2c] border-t border-white/10 rounded-t-2xl">
+                                <div className="max-w-3xl mx-auto px-4 py-6">
+                                  <DrawerHeader className="mb-4 pb-2 border-b border-white/10">
+                                    <DrawerTitle className="text-2xl font-bold text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
                                       {tech} Topics
                                     </DrawerTitle>
+                                    <DrawerDescription className="text-center text-slate-400 mt-2">
+                                      Master these topics to complete this section
+                                    </DrawerDescription>
                                   </DrawerHeader>
 
-                                  <div className="space-y-4 sm:space-y-6">
-                                    {Object.keys(roadmap[level][tech]).map(
-                                      (topic) => {
-                                        const isAllItemsCompleted =
-                                          isTopicCompleted(level, tech, topic);
+                                  <div className="space-y-6">
+                                    {Object.keys(roadmap[level][tech]).map((topic, topicIndex) => {
+                                      const isAllItemsCompleted = isTopicCompleted(level, tech, topic);
 
-                                        return (
-                                          <DrawerDescription
-                                            key={topic}
-                                            className="text-slate-400">
-                                            <div
-                                              className={`border rounded-lg p-3 sm:p-4 backdrop-blur-sm ${
-                                                isAuthenticated() && isAllItemsCompleted
-                                                  ? "border-green-500/30 bg-green-900/10"
-                                                  : "border-slate-700 bg-slate-800/50"
-                                              }`}>
-                                              <div className="flex justify-between items-center mb-2">
-                                                <h3 className="font-bold text-lg text-white capitalize">
-                                                  {topic}
-                                                </h3>
-                                                {isAuthenticated() ? (
-                                                  <Button
-                                                    size="sm"
-                                                    onClick={() =>
-                                                      toggleAllItemsInTopic(
-                                                        level,
-                                                        tech,
-                                                        topic,
-                                                        !isAllItemsCompleted
-                                                      )
-                                                    }
-                                                    className={`${
-                                                      isAllItemsCompleted
-                                                        ? "bg-green-600 hover:bg-green-700"
-                                                        : "bg-slate-700 hover:bg-slate-600"
-                                                    } text-xs px-3`}>
-                                                    {isAllItemsCompleted
-                                                      ? "Mark All Incomplete"
-                                                      : "Mark All Complete"}
-                                                  </Button>
-                                                ) : (
-                                                  <Link href="/login">
-                                                    <Button
-                                                      size="sm"
-                                                      className="bg-blue-600 hover:bg-blue-700 text-xs px-3">
-                                                      <LogIn className="w-3 h-3 mr-1" /> Login to Track
-                                                    </Button>
-                                                  </Link>
-                                                )}
-                                              </div>
-
-                                              <div className="flex flex-wrap gap-2">
-                                                {roadmap[level][tech][
-                                                  topic
-                                                ].map((item: string) => {
-                                                  const isCompleted =
-                                                    isItemCompleted(
+                                      return (
+                                        <motion.div
+                                          key={topic}
+                                          initial={{ opacity: 0, y: 10 }}
+                                          animate={{ opacity: 1, y: 0 }}
+                                          transition={{ delay: 0.05 * topicIndex }}
+                                        >
+                                          <div
+                                            className={`border rounded-xl p-5 backdrop-blur-md transition-all duration-300 ${
+                                              isAuthenticated() && isAllItemsCompleted
+                                                ? "border-green-500/30 bg-gradient-to-br from-green-900/20 to-green-900/10 shadow-lg shadow-green-900/10"
+                                                : "border-white/10 bg-gradient-to-br from-white/10 to-white/5 shadow-lg shadow-black/5"
+                                            }`}
+                                          >
+                                            <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-3 mb-4">
+                                              <h3 className="font-bold text-xl text-white capitalize">
+                                                {topic}
+                                              </h3>
+                                              {isAuthenticated() ? (
+                                                <Button
+                                                  onClick={() =>
+                                                    toggleAllItemsInTopic(
                                                       level,
                                                       tech,
                                                       topic,
-                                                      item
-                                                    );
-
-                                                  return (
-                                                    <button
-                                                      key={item}
-                                                      onClick={() =>
-                                                        toggleItemCompletion(
-                                                          level,
-                                                          tech,
-                                                          topic,
-                                                          item
-                                                        )
-                                                      }
-                                                      className={`px-3 py-1.5 rounded-full text-xs sm:text-sm flex items-center gap-1.5 transition-all ${
-                                                        isAuthenticated() && isCompleted
-                                                          ? "bg-green-500/10 text-green-400 border border-green-400/30 hover:bg-green-500/20"
-                                                          : "bg-blue-500/10 text-blue-400 hover:bg-blue-500/20"
-                                                      }`}>
-                                                      {isAuthenticated() && isCompleted && (
-                                                        <CheckCircle className="w-3 h-3" />
-                                                      )}
-                                                      {item}
-                                                    </button>
-                                                  );
-                                                })}
-                                              </div>
+                                                      !isAllItemsCompleted
+                                                    )
+                                                  }
+                                                  className={`${
+                                                    isAllItemsCompleted
+                                                      ? "bg-green-600 hover:bg-green-700 text-white"
+                                                      : "bg-white/10 hover:bg-white/20 text-white"
+                                                  } text-sm px-4 transition-all`}
+                                                >
+                                                  {isAllItemsCompleted
+                                                    ? "Mark All Incomplete"
+                                                    : "Mark All Complete"}
+                                                </Button>
+                                              ) : (
+                                                <Link href="/login">
+                                                  <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-sm px-4 transition-all">
+                                                    <LogIn className="w-4 h-4 mr-2" /> Sign In to Track
+                                                  </Button>
+                                                </Link>
+                                              )}
                                             </div>
-                                          </DrawerDescription>
-                                        );
-                                      }
-                                    )}
+
+                                            <div className="flex flex-wrap gap-2">
+                                              {roadmap[level][tech][topic].map((item: string) => {
+                                                const isCompleted = isItemCompleted(level, tech, topic, item);
+
+                                                return (
+                                                  <button
+                                                    key={item}
+                                                    onClick={() =>
+                                                      toggleItemCompletion(level, tech, topic, item)
+                                                    }
+                                                    className={`px-4 py-2 rounded-full text-sm flex items-center gap-2 transition-all transform hover:scale-105 ${
+                                                      isAuthenticated() && isCompleted
+                                                        ? "bg-green-500/20 text-green-300 border border-green-400/30 hover:bg-green-500/30 shadow-md shadow-green-900/10"
+                                                        : "bg-blue-500/10 text-blue-300 border border-blue-400/20 hover:bg-blue-500/20 shadow-md shadow-blue-900/5"
+                                                    }`}
+                                                  >
+                                                    {isAuthenticated() && isCompleted && (
+                                                      <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                                                    )}
+                                                    <span>{item}</span>
+                                                  </button>
+                                                );
+                                              })}
+                                            </div>
+                                          </div>
+                                        </motion.div>
+                                      );
+                                    })}
                                   </div>
 
-                                  <DrawerFooter className="mt-4">
+                                  <DrawerFooter className="mt-8 pt-4 border-t border-white/10">
                                     <DrawerClose>
-                                      <Button className="w-full">Close</Button>
+                                      <Button className="w-full bg-white/10 hover:bg-white/20 text-white">
+                                        Close
+                                      </Button>
                                     </DrawerClose>
                                   </DrawerFooter>
                                 </div>
                               </DrawerContent>
                             </Drawer>
-                            <div className="hidden md:flex text-slate-400">
-                              <MoveRight className="w-5 h-5" />
-                            </div>
-                            <div className="md:hidden text-slate-400 flex justify-center items-center m-1">
-                              <MoveDown className="w-5 h-5" />
-                            </div>
+                            {techIndex < Object.keys(roadmap[level]).length - 1 && (
+                              <>
+                                <div className="hidden md:flex text-blue-400">
+                                  <MoveRight className="w-6 h-6" />
+                                </div>
+                                <div className="md:hidden text-blue-400 flex justify-center items-center my-2">
+                                  <MoveDown className="w-6 h-6" />
+                                </div>
+                              </>
+                            )}
                           </React.Fragment>
                         );
                       })}
@@ -542,27 +620,31 @@ export default function RoadmapPage() {
                   </div>
                 </div>
                 {/* Only show arrow if not the last level */}
-                {Object.keys(roadmap).indexOf(level) <
-                  Object.keys(roadmap).length - 1 && (
-                  <div className="flex text-slate-400 justify-center my-6">
-                    <MoveDown className="w-6 h-6" />
+                {index < Object.keys(roadmap).length - 1 && (
+                  <div className="flex text-blue-400 justify-center my-8">
+                    <MoveDown className="w-8 h-8" />
                   </div>
                 )}
-              </div>
+              </motion.div>
             );
           })}
 
-          <div className="flex justify-center mt-6 sm:mt-12 pb-8">
-            <div className="px-4 py-3 w-full sm:w-[60%] md:w-[50%] mx-auto">
+          <div className="flex justify-center mt-12 pb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="px-4 py-3 w-full sm:w-[60%] md:w-[50%] mx-auto"
+            >
               <Link href="/roadmaps">
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 transition-colors duration-300">
+                <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-6 text-lg font-medium rounded-xl shadow-lg shadow-blue-900/20 hover:shadow-blue-900/30 transition-all">
                   Explore Other Tech Stacks
                 </Button>
               </Link>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </>
+    </div>
   );
 }
