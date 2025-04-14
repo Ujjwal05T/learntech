@@ -1,130 +1,321 @@
 "use client";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { FaGithub, FaTwitter, FaLinkedin, FaDiscord } from "react-icons/fa";
+import { Button } from "@/components/ui/button";
 
 export default function LandingPage() {
-	const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-	useEffect(() => {
-		setMounted(true);
-	}, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-	const container = {
-		hidden: { opacity: 0 },
-		show: {
-			opacity: 1,
-			transition: {
-				staggerChildren: 0.2,
-				delayChildren: 0.3,
-			}
-		}
-	};
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
 
-	const item = {
-		hidden: { opacity: 0, y: 20 },
-		show: { opacity: 1, y: 0 }
-	};
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
 
-	return (
-		<div className="min-h-screen bg-[#0a0a20] relative overflow-hidden">
-			{/* Decorative elements */}
-			<div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-				<div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-blue-600/20 blur-3xl"></div>
-				<div className="absolute bottom-20 right-10 w-72 h-72 rounded-full bg-purple-600/20 blur-3xl"></div>
-				<div className="absolute top-1/3 right-1/4 w-48 h-48 rounded-full bg-pink-600/20 blur-3xl"></div>
-			</div>
+  const features = [
+    {
+      title: "Roadmaps",
+      description: "Step-by-step guides for tech careers and education.",
+      stats: "20+ Career Paths",
+    },
+    {
+      title: "Expert Talks",
+      description: "Learn from industry pros through live sessions and AMAs.",
+      stats: "Weekly Sessions",
+    },
+    {
+      title: "Trends & News",
+      description: "Stay updated with curated tech insights and announcements.",
+      stats: "Daily Updates",
+    },
+    {
+      title: "Hackathons & Internships",
+      description: "Earn real-world experience through exclusive events.",
+      stats: "Monthly Events",
+    },
+  ];
 
-			<div className="container mx-auto px-6 py-16 relative z-10">
-				{/* Hero Section */}
-				<div className="flex flex-col items-center justify-center min-h-[85vh] pt-10 pb-20">
-					{mounted && (
-						<>
-							<motion.div
-								initial={{ opacity: 0, y: -20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.8 }}
-								className="mb-4 text-center"
-							>
-								<span className="px-4 py-1 text-sm rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 border border-blue-500/30 mb-6 inline-block">
-									Your path to tech excellence
-								</span>
-							</motion.div>
+  const upcomingEvents = [
+    {
+      title: "Web Development Bootcamp",
+      date: "April 20, 2024",
+      type: "Workshop",
+      slots: "50 slots remaining",
+    },
+    {
+      title: "Tech Interview Preparation",
+      date: "April 25, 2024",
+      type: "Masterclass",
+      slots: "Limited seats",
+    },
+    {
+      title: "Spring Hackathon 2024",
+      date: "May 1-3, 2024",
+      type: "Competition",
+      slots: "Team registrations open",
+    },
+  ];
 
-							<motion.h1 
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.8, delay: 0.2 }}
-								className="text-5xl md:text-7xl font-bold text-center bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text mb-6 tracking-tight"
-							>
-								Learn Tech Roadmaps
-							</motion.h1>
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Add form submission logic here
+  };
 
-							<motion.p
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.8, delay: 0.4 }}
-								className="text-slate-300 text-center max-w-2xl text-lg md:text-xl mb-12 leading-relaxed"
-							>
-								Discover structured learning paths for different tech roles. Our roadmaps help you navigate your journey from beginner to professional in the tech industry.
-							</motion.p>
+  return (
+    <div className="min-h-screen bg-[#0a0a20] relative overflow-hidden">
+      {/* Decorative Background */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-blue-600/20 blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-72 h-72 rounded-full bg-purple-600/20 blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/4 w-48 h-48 rounded-full bg-pink-600/20 blur-3xl animate-pulse"></div>
+      </div>
 
-							{/* CTA Buttons */}
-							<motion.div 
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.8, delay: 0.6 }}
-								className="flex flex-col sm:flex-row gap-4 mb-20"
-							>
-								<Link href="/roadmaps" className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 text-center font-semibold text-lg transform hover:scale-105">
-									View Roadmaps
-								</Link>
-								<Link href="/register" className="px-8 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-xl hover:bg-white/20 transition-all text-center font-semibold text-lg transform hover:scale-105">
-									Get Started
-								</Link>
-							</motion.div>
+      <div className="container mx-auto px-6 py-24 relative z-10 max-w-6xl">
+        {mounted && (
+          <div className="space-y-32">
+            {/* Hero Section */}
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center space-y-8 py-12"
+            >
+              <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
+                Your Career Starts Here
+              </h1>
+              <p className="text-lg text-gray-300">
+                Explore personalized roadmaps, connect with experts, and discover
+                career-starting opportunities.
+              </p>
+              <div className="flex justify-center gap-4">
+                <Link href="/roadmaps">
+                  <Button className="px-8 py-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40">
+                    Explore Roadmaps
+                  </Button>
+                </Link>
+                <Link href="/register">
+                  <Button
+                    variant="outline"
+                    className="px-8 py-6 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-xl hover:bg-white/20"
+                  >
+                    Join the Community
+                  </Button>
+                </Link>
+              </div>
+            </motion.section>
 
-							{/* Features */}
-							<motion.div 
-								variants={container}
-								initial="hidden"
-								animate="show"
-								className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl"
-							>
-								<motion.div variants={item} className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-xl transform hover:scale-105 transition-all group hover:shadow-blue-500/10">
-									<div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center mb-5 group-hover:bg-blue-500/30 transition-all">
-										<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-										</svg>
-									</div>
-									<h3 className="text-xl font-semibold text-white mb-3">Structured Learning</h3>
-									<p className="text-slate-300">Clear, step-by-step guidance designed to take you from beginner to professional with confidence.</p>
-								</motion.div>
-								
-								<motion.div variants={item} className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-xl transform hover:scale-105 transition-all group hover:shadow-purple-500/10">
-									<div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mb-5 group-hover:bg-purple-500/30 transition-all">
-										<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-										</svg>
-									</div>
-									<h3 className="text-xl font-semibold text-white mb-3">Multiple Paths</h3>
-									<p className="text-slate-300">Choose from a variety of tech career roadmaps tailored to different roles and specializations.</p>
-								</motion.div>
-								
-								<motion.div variants={item} className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-xl transform hover:scale-105 transition-all group hover:shadow-pink-500/10">
-									<div className="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center mb-5 group-hover:bg-pink-500/30 transition-all">
-										<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-										</svg>
-									</div>
-									<h3 className="text-xl font-semibold text-white mb-3">Community Driven</h3>
-									<p className="text-slate-300">Content constantly updated based on industry trends and community feedback for relevance.</p>
-								</motion.div>
-							</motion.div>
-						</>
-					)}
-				</div>
-			</div>
-		</div>
-	);
+            {/* Feature Highlights */}
+            <motion.section
+              variants={container}
+              initial="hidden"
+              animate="show"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-8"
+            >
+              {features.map(({ title, description, stats }) => (
+                <motion.div
+                  key={title}
+                  variants={item}
+                  className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-10 rounded-2xl border border-white/10 shadow-xl transform hover:scale-105 transition-all"
+                >
+                  <h3 className="text-2xl font-semibold text-white mb-4">{title}</h3>
+                  <p className="text-slate-300 mb-6 text-lg">{description}</p>
+                  <span className="text-sm font-medium px-4 py-2 rounded-full bg-white/5 text-blue-400">
+                    {stats}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.section>
+
+            {/* Testimonials with more space */}
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-white/5 backdrop-blur-md p-16 rounded-2xl border border-white/10"
+            >
+              <p className="italic max-w-3xl mx-auto text-center text-gray-300 text-xl leading-relaxed">
+                This platform gave me direction when I was lost in my tech journey. The
+                roadmap and expert guidance helped me land my first internship and made me CTO!
+                <footer className="mt-6 text-sm text-gray-400 not-italic">
+                  - Ujjwal Tamrakar, CTO at LearnTech Co.
+                </footer>
+              </p>
+            </motion.section>
+
+            {/* Upcoming Events with more details */}
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-12"
+            >
+              <h2 className="text-3xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text text-center">
+                Upcoming Events & Opportunities
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {upcomingEvents.map((event) => (
+                  <div
+                    key={event.title}
+                    className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-xl"
+                  >
+                    <span className="text-sm text-blue-400 mb-4 block">{event.type}</span>
+                    <h3 className="text-xl font-semibold text-white mb-4">{event.title}</h3>
+                    <div className="space-y-2 text-gray-400">
+                      <p>{event.date}</p>
+                      <p className="text-sm">{event.slots}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.section>
+
+            {/* Community Call to Action with more emphasis */}
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center py-12"
+            >
+              <h2 className="text-2xl font-semibold bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text mb-6">
+                Join Our Growing Community
+              </h2>
+			  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <motion.div
+      variants={item}
+      className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-6 rounded-xl border border-white/10 shadow-xl"
+    >
+      <h3 className="text-3xl font-bold text-white mb-2">2000+</h3>
+      <p className="text-gray-400">Active Students</p>
+    </motion.div>
+    <motion.div
+      variants={item}
+      className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-6 rounded-xl border border-white/10 shadow-xl"
+    >
+      <h3 className="text-3xl font-bold text-white mb-2">10+</h3>
+      <p className="text-gray-400">Partner Colleges</p>
+    </motion.div>
+    <motion.div
+      variants={item}
+      className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-6 rounded-xl border border-white/10 shadow-xl"
+    >
+      <h3 className="text-3xl font-bold text-white mb-2">100+</h3>
+      <p className="text-gray-400">Hackathons Organized</p>
+    </motion.div>
+    <motion.div
+      variants={item}
+      className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-6 rounded-xl border border-white/10 shadow-xl"
+    >
+      <h3 className="text-3xl font-bold text-white mb-2">500+</h3>
+      <p className="text-gray-400">Students Placed</p>
+    </motion.div>
+  </div>
+            </motion.section>
+          </div>
+        )}
+
+<footer className="bg-[#070714]/80 backdrop-blur-md border-t border-white/10">
+      <div className="container mx-auto px-6 py-12 max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Company Info */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-white">LearnTech</h3>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              19/B, Arun Villa<br />
+              Rajendra Nagar<br />
+              Indore, 402012<br />
+              Madhya Pradesh<br/>
+			  India
+            </p>
+            <p className="text-gray-400 text-sm">
+              Email: contact@learntech.com<br />
+              Phone: +91 123-456-7890<br />
+            </p>
+          </div>
+
+          {/* Quick Links */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-white">Quick Links</h3>
+            <ul className="space-y-2 text-gray-400 text-sm">
+              <li><Link href="/#" className="hover:text-blue-400 transition-colors">About Us</Link></li>
+              <li><Link href="/roadmaps" className="hover:text-blue-400 transition-colors">Roadmaps</Link></li>
+              <li><Link href="/#" className="hover:text-blue-400 transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/#" className="hover:text-blue-400 transition-colors">Terms of Service</Link></li>
+            </ul>
+          </div>
+
+          {/* Contact Form */}
+          <div className="space-y-4 lg:col-span-2">
+            <h3 className="text-xl font-semibold text-white">Get in Touch</h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Input
+                  type="text"
+                  placeholder="Name"
+                  className="bg-white/5 border-white/10 text-white"
+                  required
+                />
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  className="bg-white/5 border-white/10 text-white"
+                  required
+                />
+              </div>
+              <Textarea
+                placeholder="Message"
+                className="bg-white/5 border-white/10 text-white h-24"
+                required
+              />
+              <Button
+                type="submit"
+                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
+              >
+                Send Message
+              </Button>
+            </form>
+          </div>
+        </div>
+
+        {/* Social Links & Copyright */}
+        <div className="mt-12 pt-8 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+            <div className="flex space-x-6">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <FaGithub size={24} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <FaTwitter size={24} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <FaLinkedin size={24} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <FaDiscord size={24} />
+              </a>
+            </div>
+            <p className="text-gray-400 text-sm">
+              © {new Date().getFullYear()} LearnTech. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+ 
+      </div>
+    </div>	
+  );
 }
