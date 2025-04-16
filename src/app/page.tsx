@@ -8,7 +8,7 @@ import { FaGithub, FaTwitter, FaLinkedin, FaDiscord } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 
 export default function LandingPage() {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(true);
 
   useEffect(() => {
     setMounted(true);

@@ -18,6 +18,22 @@ export interface Roadmaps {
 	preRequisites: string;
  }
 
+ export interface NewsContent {
+	id: string;
+	title: string;
+	description: string;
+	type: 'article' | 'video';
+	category: 'expert' | 'news' | 'student';
+	createdAt: Date;
+	author: {
+	  id: string;
+	  name: string;
+	  role: string;
+	};
+	thumbnail?: string;
+	videoUrl?: string;
+	articleContent?: string;
+  }
  export interface DetailedRoadmap {
 	[key: string]: RoadmapData;
  }
