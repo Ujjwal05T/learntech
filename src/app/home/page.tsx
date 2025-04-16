@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import HomeHero from '@/components/HomeHero'
 import HomeProgress from '@/components/HomeProgress'
 import HomeUpdates from '@/components/HomeUpdates'
-import HomeTimeline from '@/components/HomeTimeline'
 import { useToken } from '@/hooks/useToken'
 import { useRouter } from 'next/navigation'
 import LoadingScreen from '@/components/Loading'
@@ -40,8 +39,6 @@ export default function Home() {
       </div>
 
       <div className="relative z-10 flex h-screen">
-        
-
         {/* Main Content */}
         <div className="flex-1 overflow-auto">
           <div className="container mx-auto p-6">
@@ -83,15 +80,6 @@ export default function Home() {
                   className="bg-gray-900/40 backdrop-blur-sm rounded-xl p-6 border border-gray-800/30 shadow-xl hover:border-gray-700/50 transition-colors"
                 >
                   <HomeHero />
-                </motion.div>
-
-                <motion.div
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  className="bg-gray-900/40 backdrop-blur-sm rounded-xl p-6 border border-gray-800/30 shadow-xl hover:border-gray-700/50 transition-colors"
-                >
-                  <HomeTimeline />
                 </motion.div>
               </div>
 
