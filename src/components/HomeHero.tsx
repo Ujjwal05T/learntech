@@ -48,7 +48,7 @@ function HomeHero() {
 
         if (response.data.success) {
           setRecommendationData(response.data.data);
-          // console.log('Recommendations:', response.data.data.recommendations);
+          // console.log('Recommendations:', response.data.data);
         } else {
           setError('Could not load recommendations');
         }
@@ -144,7 +144,7 @@ function HomeHero() {
       ) : null}
 
       {/* Next Topics Section */}
-      {recommendationData?.recommendations.length! > 0 ? (
+      {recommendationData?.recommendations?.length && recommendationData?.recommendations?.length > 0 ? (
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -181,7 +181,7 @@ function HomeHero() {
             ))}
           </div>
           
-          {recommendationData?.activeRoadmaps! > 0 && (
+          {recommendationData?.activeRoadmaps > 0 && (
             <div className="mt-4 text-center">
               <span className="text-sm text-gray-400">
                 You have {recommendationData?.activeRoadmaps} active roadmap{recommendationData?.activeRoadmaps !== 1 ? 's' : ''}

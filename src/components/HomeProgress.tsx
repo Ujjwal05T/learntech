@@ -168,7 +168,7 @@ function HomeProgress() {
                 ></div>
               </div>
               <div className="mt-2 text-xs text-center text-gray-500">
-                Keep going! You're making great progress.
+                Keep going! You&apos;re making great progress.
               </div>
             </motion.div>
           </Link>
