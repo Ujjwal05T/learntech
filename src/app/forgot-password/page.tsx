@@ -139,7 +139,7 @@ export default function ForgotPasswordPage() {
             </div>
             <h2 className="text-xl font-semibold text-white mb-2">Check Your Email</h2>
             <p className="text-gray-300">
-              We've sent one time password to <span className="font-medium text-blue-400">{email}</span>
+              We&apos;ve sent one time password to <span className="font-medium text-blue-400">{email}</span>
             </p>
             <p className="text-gray-400 text-sm mt-4">
               Redirecting you to the reset page...

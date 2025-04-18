@@ -1,16 +1,15 @@
 'use client'
-import React, { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 export default function ResetPasswordPage() {
-  const searchParams = useSearchParams();
   const router = useRouter();
   
   const [formData, setFormData] = useState({
-    email: searchParams.get('email') || '',
+    email: '',
     otp: '',
     password: '',
     confirmPassword: ''
@@ -270,7 +269,7 @@ export default function ResetPasswordPage() {
             
             <div className="mt-6 text-center">
               <Link href="/forgot-password" className="text-sm text-blue-500 hover:text-blue-400">
-                Didn't receive the code? Request again
+                Didn&apos;t receive the code? Request again
               </Link>
             </div>
           </>

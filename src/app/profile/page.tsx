@@ -61,7 +61,7 @@ export default function ProfilePage() {
           }
         );
         const profileData = response.data.data;
-        console.log(profileData);
+        // console.log(profileData);
         setUser(profileData.profile);
       } catch (err: unknown) {
         const error = err as AxiosError;
