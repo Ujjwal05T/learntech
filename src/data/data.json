@@ -76,30 +76,16 @@
           "Pull Requests",
           "Merge Conflicts Handling"
         ],
-        "Advanced": [
-          "Git Workflows (Gitflow, Forking Model)"
-        ]
+        "Advanced": ["Git Workflows (Gitflow, Forking Model)"]
       },
       "Package Managers": {
-        "Beginner": [
-          "Introduction to NPM",
-          "Installing Packages"
-        ],
-        "Intermediate": [
-          "Yarn Basics",
-          "Package.json Management"
-        ],
+        "Beginner": ["Introduction to NPM", "Installing Packages"],
+        "Intermediate": ["Yarn Basics", "Package.json Management"],
         "Advanced": []
       },
       "Build Tools": {
-        "Beginner": [
-          "What are Build Tools?",
-          "Basics of Webpack"
-        ],
-        "Intermediate": [
-          "Babel (JS Transpilation)",
-          "Parcel and Vite Basics"
-        ],
+        "Beginner": ["What are Build Tools?", "Basics of Webpack"],
+        "Intermediate": ["Babel (JS Transpilation)", "Parcel and Vite Basics"],
         "Advanced": [
           "Webpack Advanced Configurations",
           "Code Splitting and Lazy Loading"
@@ -108,10 +94,7 @@
     },
     "Level 3": {
       "Modern JavaScript Frameworks": {
-        "Beginner": [
-          "React Basics (JSX, Components)",
-          "State and Props"
-        ],
+        "Beginner": ["React Basics (JSX, Components)", "State and Props"],
         "Intermediate": [
           "React Hooks (useState, useEffect)",
           "Routing (React Router)",
@@ -127,10 +110,7 @@
           "Basic Types (string, number, boolean)",
           "Interfaces and Types"
         ],
-        "Intermediate": [
-          "Generics",
-          "Type Assertions"
-        ],
+        "Intermediate": ["Generics", "Type Assertions"],
         "Advanced": [
           "Typescript with React",
           "Advanced Types (utility types, intersection, union)"
@@ -139,42 +119,23 @@
     },
     "level 4": {
       "Testing": {
-        "Beginner": [
-          "Unit Testing Basics (Jest)"
-        ],
-        "Intermediate": [
-          "Testing React Components (React Testing Library)"
-        ],
-        "Advanced": [
-          "End-to-End Testing (Cypress, Playwright)"
-        ]
+        "Beginner": ["Unit Testing Basics (Jest)"],
+        "Intermediate": ["Testing React Components (React Testing Library)"],
+        "Advanced": ["End-to-End Testing (Cypress, Playwright)"]
       },
       "Performance Optimization": {
-        "Beginner": [
-          "Why Performance Matters",
-          "Image Optimization"
-        ],
+        "Beginner": ["Why Performance Matters", "Image Optimization"],
         "Intermediate": [
           "Code Splitting",
           "Lazy Loading",
           "Memoization Techniques"
         ],
-        "Advanced": [
-          "Web Vitals Monitoring",
-          "Advanced Caching Strategies"
-        ]
+        "Advanced": ["Web Vitals Monitoring", "Advanced Caching Strategies"]
       },
       "Deployment": {
-        "Beginner": [
-          "Deploying on Netlify, Vercel"
-        ],
-        "Intermediate": [
-          "CI/CD Basics",
-          "Github Actions for Deployment"
-        ],
-        "Advanced": [
-          "Docker Basics for Frontend Deployment"
-        ]
+        "Beginner": ["Deploying on Netlify, Vercel"],
+        "Intermediate": ["CI/CD Basics", "Github Actions for Deployment"],
+        "Advanced": ["Docker Basics for Frontend Deployment"]
       }
     }
   },
@@ -199,17 +160,12 @@
         ]
       },
       "Version Control": {
-        "Beginner": [
-          "Git Basics (init, add, commit)",
-          "GitHub Repositories"
-        ],
+        "Beginner": ["Git Basics (init, add, commit)", "GitHub Repositories"],
         "Intermediate": [
           "Branching, Merging",
           "Pull Requests, Merge Conflicts"
         ],
-        "Advanced": [
-          "Advanced Git Workflows (Gitflow, Forking Workflow)"
-        ]
+        "Advanced": ["Advanced Git Workflows (Gitflow, Forking Workflow)"]
       }
     },
     "Level 2": {
@@ -246,10 +202,7 @@
         ]
       },
       "Servers & Hosting": {
-        "Beginner": [
-          "What is a Server?",
-          "HTTP and HTTPS Basics"
-        ],
+        "Beginner": ["What is a Server?", "HTTP and HTTPS Basics"],
         "Intermediate": [
           "Building a Basic Web Server (Express, Flask, etc.)",
           "Middleware Concepts"
@@ -262,14 +215,8 @@
     },
     "Level 3": {
       "Frameworks and Libraries": {
-        "Beginner": [
-          "Node.js with Express.js",
-          "Flask (for Python) Basics"
-        ],
-        "Intermediate": [
-          "MVC Architecture",
-          "Dependency Injection Concepts"
-        ],
+        "Beginner": ["Node.js with Express.js", "Flask (for Python) Basics"],
+        "Intermediate": ["MVC Architecture", "Dependency Injection Concepts"],
         "Advanced": [
           "NestJS (for Node.js)",
           "Spring Boot (for Java)",
@@ -277,46 +224,21 @@
         ]
       },
       "Authentication & Authorization": {
-        "Beginner": [
-          "Session Management",
-          "Cookies and Local Storage Basics"
-        ],
-        "Intermediate": [
-          "JWT Tokens",
-          "OAuth2 Basics"
-        ],
-        "Advanced": [
-          "SSO (Single Sign-On)",
-          "Multi-Factor Authentication"
-        ]
+        "Beginner": ["Session Management", "Cookies and Local Storage Basics"],
+        "Intermediate": ["JWT Tokens", "OAuth2 Basics"],
+        "Advanced": ["SSO (Single Sign-On)", "Multi-Factor Authentication"]
       },
       "Caching & Performance Optimization": {
-        "Beginner": [
-          "What is Caching?"
-        ],
-        "Intermediate": [
-          "Redis Basics",
-          "In-Memory Caching Techniques"
-        ],
-        "Advanced": [
-          "Distributed Caching",
-          "Cache Invalidation Strategies"
-        ]
+        "Beginner": ["What is Caching?"],
+        "Intermediate": ["Redis Basics", "In-Memory Caching Techniques"],
+        "Advanced": ["Distributed Caching", "Cache Invalidation Strategies"]
       }
     },
     "Level 4": {
       "Testing and Debugging": {
-        "Beginner": [
-          "Unit Testing Basics (Jest, Mocha, Pytest)"
-        ],
-        "Intermediate": [
-          "Integration Testing",
-          "Mocking APIs and Databases"
-        ],
-        "Advanced": [
-          "Load Testing (Artillery, k6)",
-          "End-to-End Testing"
-        ]
+        "Beginner": ["Unit Testing Basics (Jest, Mocha, Pytest)"],
+        "Intermediate": ["Integration Testing", "Mocking APIs and Databases"],
+        "Advanced": ["Load Testing (Artillery, k6)", "End-to-End Testing"]
       },
       "Security Best Practices": {
         "Beginner": [
@@ -376,28 +298,17 @@
           "Intro to Databases (SQL and NoSQL)",
           "Building Simple REST APIs"
         ],
-        "Advanced": [
-          "Authentication Basics",
-          "API Security Basics"
-        ]
+        "Advanced": ["Authentication Basics", "API Security Basics"]
       },
       "Version Control": {
-        "Beginner": [
-          "Git and GitHub Basics (init, add, commit, push)"
-        ],
-        "Intermediate": [
-          "Branching, Merging, Pull Requests"
-        ],
-        "Advanced": [
-          "Git Workflows (Feature Branch, Gitflow)"
-        ]
+        "Beginner": ["Git and GitHub Basics (init, add, commit, push)"],
+        "Intermediate": ["Branching, Merging, Pull Requests"],
+        "Advanced": ["Git Workflows (Feature Branch, Gitflow)"]
       }
     },
     "Level 2": {
       "Frontend Advanced": {
-        "Beginner": [
-          "React Basics (JSX, Components, Props)"
-        ],
+        "Beginner": ["React Basics (JSX, Components, Props)"],
         "Intermediate": [
           "React Hooks (useState, useEffect)",
           "Routing (React Router)"
@@ -412,24 +323,12 @@
           "Express.js Basics (or Django Basics for Python)",
           "Creating CRUD APIs"
         ],
-        "Intermediate": [
-          "Authentication (JWT, OAuth)",
-          "MVC Architecture"
-        ],
-        "Advanced": [
-          "GraphQL APIs",
-          "Microservices Concepts"
-        ]
+        "Intermediate": ["Authentication (JWT, OAuth)", "MVC Architecture"],
+        "Advanced": ["GraphQL APIs", "Microservices Concepts"]
       },
       "Databases": {
-        "Beginner": [
-          "MongoDB Basics",
-          "MySQL/PostgreSQL Basics"
-        ],
-        "Intermediate": [
-          "Schema Design",
-          "ORM Tools (Mongoose, Sequelize)"
-        ],
+        "Beginner": ["MongoDB Basics", "MySQL/PostgreSQL Basics"],
+        "Intermediate": ["Schema Design", "ORM Tools (Mongoose, Sequelize)"],
         "Advanced": [
           "Database Optimization",
           "Database Replication and Sharding"
@@ -446,57 +345,46 @@
           "Docker Basics (Containers)",
           "Environment Variables Management"
         ],
-        "Advanced": [
-          "CI/CD Pipelines",
-          "Introduction to Kubernetes"
-        ]
+        "Advanced": ["CI/CD Pipelines", "Introduction to Kubernetes"]
       },
       "Testing and Debugging": {
         "Beginner": [
           "Unit Testing Frontend (Jest, React Testing Library)",
           "Unit Testing Backend (Mocha, Chai, Pytest)"
         ],
-        "Intermediate": [
-          "Integration Testing",
-          "Mocking APIs"
-        ],
+        "Intermediate": ["Integration Testing", "Mocking APIs"],
         "Advanced": [
           "End-to-End Testing (Cypress, Playwright)",
           "Load Testing APIs (Artillery, k6)"
         ]
+      }
+    },
+    "level 4": {
+      "Security Best Practices": {
+        "Beginner": ["Basic Web Security Concepts (XSS, CSRF, SQL Injection)"],
+        "Intermediate": [
+          "Authentication and Authorization Best Practices",
+          "Hashing Passwords Securely (bcrypt, Argon2)"
+        ],
+        "Advanced": ["Secure Headers, CORS Policies", "OAuth2, OpenID Connect"]
       },
-      "level 4": {
-        "Security Best Practices": {
-          "Beginner": [
-            "Basic Web Security Concepts (XSS, CSRF, SQL Injection)"
-          ],
-          "Intermediate": [
-            "Authentication and Authorization Best Practices",
-            "Hashing Passwords Securely (bcrypt, Argon2)"
-          ],
-          "Advanced": [
-            "Secure Headers, CORS Policies",
-            "OAuth2, OpenID Connect"
-          ]
-        },
-        "Soft Skills & System Design": {
-          "Beginner": [
-            "Effective Communication",
-            "Writing Clean and Readable Code"
-          ],
-          "Intermediate": [
-            "Understanding System Design Basics",
-            "Low-Level Design (LLD) - API Design Principles"
-          ],
-          "Advanced": [
-            "High-Level Design (HLD) - Scalability, Load Balancing",
-            "Design Patterns (Singleton, Factory, Observer)"
-          ]
-        }
+      "Soft Skills & System Design": {
+        "Beginner": [
+          "Effective Communication",
+          "Writing Clean and Readable Code"
+        ],
+        "Intermediate": [
+          "Understanding System Design Basics",
+          "Low-Level Design (LLD) - API Design Principles"
+        ],
+        "Advanced": [
+          "High-Level Design (HLD) - Scalability, Load Balancing",
+          "Design Patterns (Singleton, Factory, Observer)"
+        ]
       }
     }
   },
-  "devops": {
+  "devops-engineer": {
     "Level 1": {
       "Linux and Basics": {
         "Beginner": [
@@ -514,31 +402,20 @@
         ]
       },
       "Networking Basics": {
-        "Beginner": [
-          "What is Networking?",
-          "HTTP, HTTPS Basics",
-          "DNS Basics"
-        ],
+        "Beginner": ["What is Networking?", "HTTP, HTTPS Basics", "DNS Basics"],
         "Intermediate": [
           "IP Addressing, Subnets",
           "Ports and Protocols (TCP, UDP)"
         ],
-        "Advanced": [
-          "Load Balancers",
-          "Reverse Proxy (Nginx, HAProxy)"
-        ]
+        "Advanced": ["Load Balancers", "Reverse Proxy (Nginx, HAProxy)"]
       },
       "Version Control (Git)": {
-        "Beginner": [
-          "Git Basics (init, add, commit, push)"
-        ],
+        "Beginner": ["Git Basics (init, add, commit, push)"],
         "Intermediate": [
           "Branching Strategies",
           "Pull Requests, Merge Conflicts"
         ],
-        "Advanced": [
-          "Git Workflows (Trunk Based, Gitflow)"
-        ]
+        "Advanced": ["Git Workflows (Trunk Based, Gitflow)"]
       }
     },
     "Level 2": {
@@ -551,115 +428,78 @@
           "Virtual Machines and Compute Services (EC2, GCE)",
           "Storage Services (S3, Blob Storage)"
         ],
-        "Advanced": [
-          "Auto-scaling",
-          "High Availability Architecture"
-        ]
+        "Advanced": ["Auto-scaling", "High Availability Architecture"]
       },
       "Containers and Virtualization": {
         "Beginner": [
           "What is Virtualization?",
           "Docker Basics (Images, Containers)"
         ],
-        "Intermediate": [
-          "Docker Compose",
-          "Docker Volumes and Networks"
-        ],
-        "Advanced": [
-          "Container Orchestration Basics"
-        ]
+        "Intermediate": ["Docker Compose", "Docker Volumes and Networks"],
+        "Advanced": ["Container Orchestration Basics"]
       },
       "Configuration Management": {
-        "Beginner": [
-          "What is Configuration Management?"
-        ],
+        "Beginner": ["What is Configuration Management?"],
         "Intermediate": [
           "Introduction to Ansible",
           "Infrastructure as Code (IaC) Basics"
         ],
-        "Advanced": [
-          "Chef, Puppet Basics",
-          "Terraform Introduction"
-        ]
+        "Advanced": ["Chef, Puppet Basics", "Terraform Introduction"]
       }
     },
     "Level 3": {
       "CI/CD Pipelines": {
-        "Beginner": [
-          "What is CI/CD?",
-          "Basic CI/CD with GitHub Actions"
-        ],
-        "Intermediate": [
-          "Jenkins Basics",
-          "GitLab CI/CD"
-        ],
+        "Beginner": ["What is CI/CD?", "Basic CI/CD with GitHub Actions"],
+        "Intermediate": ["Jenkins Basics", "GitLab CI/CD"],
         "Advanced": [
           "Advanced CI/CD (Multi-stage Pipelines)",
           "Dockerized Pipelines"
         ]
       },
       "Monitoring and Logging": {
-        "Beginner": [
-          "What is Monitoring?",
-          "Basic Metrics and Logs"
-        ],
-        "Intermediate": [
-          "Prometheus Basics",
-          "Grafana Dashboards"
-        ],
+        "Beginner": ["What is Monitoring?", "Basic Metrics and Logs"],
+        "Intermediate": ["Prometheus Basics", "Grafana Dashboards"],
         "Advanced": [
           "ELK Stack (Elasticsearch, Logstash, Kibana)",
           "Distributed Tracing (Jaeger, OpenTelemetry)"
         ]
+      }
+    },
+    "level 4": {
+      "Cloud Services": {
+        "Beginner": [
+          "AWS Basics (IAM, EC2, S3)",
+          "GCP Basics (Compute Engine, Cloud Storage)"
+        ],
+        "Intermediate": ["AWS Lambda Basics", "Serverless Architecture"],
+        "Advanced": ["Kubernetes on AWS (EKS)", "GCP Kubernetes Engine (GKE)"]
       },
-      "level 4": {
-        "Cloud Services": {
-          "Beginner": [
-            "AWS Basics (IAM, EC2, S3)",
-            "GCP Basics (Compute Engine, Cloud Storage)"
-          ],
-          "Intermediate": [
-            "AWS Lambda Basics",
-            "Serverless Architecture"
-          ],
-          "Advanced": [
-            "Kubernetes on AWS (EKS)",
-            "GCP Kubernetes Engine (GKE)"
-          ]
-        },
-        "Kubernetes and Orchestration": {
-          "Beginner": [
-            "What is Kubernetes?",
-            "Basic kubectl Commands",
-            "Deploying First Pod"
-          ],
-          "Intermediate": [
-            "Services, ConfigMaps, Secrets",
-            "Helm Charts Basics"
-          ],
-          "Advanced": [
-            "Kubernetes Networking",
-            "Kubernetes Cluster Scaling and Monitoring"
-          ]
-        },
-        "Security and Best Practices": {
-          "Beginner": [
-            "Introduction to Cloud Security",
-            "SSH Key Management"
-          ],
-          "Intermediate": [
-            "VPC, Subnets, Security Groups",
-            "Secrets Management (Vault, AWS Secrets Manager)"
-          ],
-          "Advanced": [
-            "Container Security (Scanning Images)",
-            "Infrastructure Security (IAM, Policies)"
-          ]
-        }
+      "Kubernetes and Orchestration": {
+        "Beginner": [
+          "What is Kubernetes?",
+          "Basic kubectl Commands",
+          "Deploying First Pod"
+        ],
+        "Intermediate": ["Services, ConfigMaps, Secrets", "Helm Charts Basics"],
+        "Advanced": [
+          "Kubernetes Networking",
+          "Kubernetes Cluster Scaling and Monitoring"
+        ]
+      },
+      "Security and Best Practices": {
+        "Beginner": ["Introduction to Cloud Security", "SSH Key Management"],
+        "Intermediate": [
+          "VPC, Subnets, Security Groups",
+          "Secrets Management (Vault, AWS Secrets Manager)"
+        ],
+        "Advanced": [
+          "Container Security (Scanning Images)",
+          "Infrastructure Security (IAM, Policies)"
+        ]
       }
     }
   },
-  "cloud_engineer": {
+  "cloud-engineer": {
     "Level 1": {
       "Cloud Fundamentals": {
         "Beginner": [
@@ -685,9 +525,7 @@
           "Networking Commands (netstat, curl, wget)",
           "Shell Scripting Basics"
         ],
-        "Advanced": [
-          "Automating Tasks with Bash Scripts"
-        ]
+        "Advanced": ["Automating Tasks with Bash Scripts"]
       },
       "Networking Basics": {
         "Beginner": [
@@ -695,47 +533,29 @@
           "Subnetting Basics",
           "HTTP/HTTPS Basics"
         ],
-        "Intermediate": [
-          "Load Balancers",
-          "VPNs, VPCs, and Peering"
-        ],
-        "Advanced": [
-          "Network Routing",
-          "Firewall and Security Groups"
-        ]
+        "Intermediate": ["Load Balancers", "VPNs, VPCs, and Peering"],
+        "Advanced": ["Network Routing", "Firewall and Security Groups"]
       }
     },
     "Level 2": {
       "Compute Services": {
-        "Beginner": [
-          "Virtual Machines (EC2, Compute Engine, Azure VM)"
-        ],
-        "Intermediate": [
-          "Auto Scaling Groups",
-          "Elastic Load Balancer"
-        ],
-        "Advanced": [
-          "Serverless Computing (AWS Lambda, Azure Functions)"
-        ]
+        "Beginner": ["Virtual Machines (EC2, Compute Engine, Azure VM)"],
+        "Intermediate": ["Auto Scaling Groups", "Elastic Load Balancer"],
+        "Advanced": ["Serverless Computing (AWS Lambda, Azure Functions)"]
       },
       "Storage and Databases": {
         "Beginner": [
           "Cloud Storage Services (S3, Blob Storage, GCS)",
           "Relational Databases (RDS, Cloud SQL)"
         ],
-        "Intermediate": [
-          "NoSQL Databases (DynamoDB, CosmosDB, Firestore)"
-        ],
+        "Intermediate": ["NoSQL Databases (DynamoDB, CosmosDB, Firestore)"],
         "Advanced": [
           "Data Warehousing (Redshift, BigQuery)",
           "Storage Lifecycle Policies and Glacier/Cold Storage"
         ]
       },
       "Identity and Access Management (IAM)": {
-        "Beginner": [
-          "What is IAM?",
-          "Users, Groups, Roles, and Policies"
-        ],
+        "Beginner": ["What is IAM?", "Users, Groups, Roles, and Policies"],
         "Intermediate": [
           "Permission Management",
           "Role-Based Access Control (RBAC)"
@@ -748,67 +568,40 @@
     },
     "Level 3": {
       "DevOps Integration": {
-        "Beginner": [
-          "Basic DevOps Concepts (CI/CD)",
-          "Introduction to GitOps"
-        ],
+        "Beginner": ["Basic DevOps Concepts (CI/CD)", "Introduction to GitOps"],
         "Intermediate": [
           "Infrastructure as Code (Terraform, AWS CloudFormation)"
         ],
-        "Advanced": [
-          "Automating Deployments (Ansible, Pulumi)"
-        ]
+        "Advanced": ["Automating Deployments (Ansible, Pulumi)"]
       },
       "Monitoring and Logging": {
-        "Beginner": [
-          "Cloud Native Monitoring Tools (CloudWatch, Stackdriver)"
-        ],
-        "Intermediate": [
-          "Setting Up Metrics and Alarms"
-        ],
-        "Advanced": [
-          "Distributed Tracing (AWS X-Ray, OpenTelemetry)"
-        ]
+        "Beginner": ["Cloud Native Monitoring Tools (CloudWatch, Stackdriver)"],
+        "Intermediate": ["Setting Up Metrics and Alarms"],
+        "Advanced": ["Distributed Tracing (AWS X-Ray, OpenTelemetry)"]
       },
       "Security and Compliance": {
         "Beginner": [
           "Basic Security Principles (Encryption in Transit and at Rest)",
           "Cloud Security Best Practices"
         ],
-        "Intermediate": [
-          "Compliance Standards (HIPAA, GDPR, SOC2)"
-        ],
-        "Advanced": [
-          "Implementing WAF, Shield, Security Hub"
-        ]
+        "Intermediate": ["Compliance Standards (HIPAA, GDPR, SOC2)"],
+        "Advanced": ["Implementing WAF, Shield, Security Hub"]
+      }
+    },
+    "level 4": {
+      "Disaster Recovery and Backup": {
+        "Beginner": ["Backup and Restore Concepts"],
+        "Intermediate": ["Multi-Region Backup Strategies"],
+        "Advanced": ["Disaster Recovery Planning (RTO and RPO)"]
       },
-      "level 4": {
-        "Disaster Recovery and Backup": {
-          "Beginner": [
-            "Backup and Restore Concepts"
-          ],
-          "Intermediate": [
-            "Multi-Region Backup Strategies"
-          ],
-          "Advanced": [
-            "Disaster Recovery Planning (RTO and RPO)"
-          ]
-        },
-        "Advanced Architectures": {
-          "Beginner": [
-            "High Availability vs Fault Tolerance"
-          ],
-          "Intermediate": [
-            "Microservices and Serverless Architectures"
-          ],
-          "Advanced": [
-            "Multi-Cloud and Hybrid Cloud Architectures"
-          ]
-        }
+      "Advanced Architectures": {
+        "Beginner": ["High Availability vs Fault Tolerance"],
+        "Intermediate": ["Microservices and Serverless Architectures"],
+        "Advanced": ["Multi-Cloud and Hybrid Cloud Architectures"]
       }
     }
   },
-  "data_science": {
+  "data-scientist": {
     "Level 1": {
       "Mathematics and Statistics": {
         "Beginner": [
@@ -834,10 +627,7 @@
           "Working with Libraries (NumPy, Pandas)",
           "Data Structures (Lists, Dictionaries, Arrays)"
         ],
-        "Advanced": [
-          "OOP Concepts",
-          "Writing Modular and Efficient Code"
-        ]
+        "Advanced": ["OOP Concepts", "Writing Modular and Efficient Code"]
       },
       "Data Handling": {
         "Beginner": [
@@ -864,9 +654,7 @@
           "Data Visualization with Matplotlib and Seaborn",
           "Feature Engineering Basics"
         ],
-        "Advanced": [
-          "Dimensionality Reduction Techniques (PCA, t-SNE)"
-        ]
+        "Advanced": ["Dimensionality Reduction Techniques (PCA, t-SNE)"]
       },
       "Machine Learning Fundamentals": {
         "Beginner": [
@@ -883,31 +671,19 @@
         ]
       },
       "SQL and Databases": {
-        "Beginner": [
-          "Basic SQL Queries (SELECT, INSERT, UPDATE, DELETE)"
-        ],
-        "Intermediate": [
-          "Joins, Subqueries, Window Functions"
-        ],
-        "Advanced": [
-          "Optimizing SQL Queries",
-          "Working with Large Databases"
-        ]
+        "Beginner": ["Basic SQL Queries (SELECT, INSERT, UPDATE, DELETE)"],
+        "Intermediate": ["Joins, Subqueries, Window Functions"],
+        "Advanced": ["Optimizing SQL Queries", "Working with Large Databases"]
       }
     },
     "Level 3": {
       "Advanced Machine Learning": {
-        "Beginner": [
-          "Ensemble Methods (Bagging, Boosting, Random Forest)"
-        ],
+        "Beginner": ["Ensemble Methods (Bagging, Boosting, Random Forest)"],
         "Intermediate": [
           "Support Vector Machines (SVM)",
           "Clustering Techniques (K-Means, DBSCAN)"
         ],
-        "Advanced": [
-          "Recommendation Systems",
-          "Anomaly Detection"
-        ]
+        "Advanced": ["Recommendation Systems", "Anomaly Detection"]
       },
       "Deep Learning and AI": {
         "Beginner": [
@@ -922,38 +698,31 @@
           "Generative Adversarial Networks (GANs)",
           "Transformers and Attention Mechanism (BERT, GPT)"
         ]
+      }
+    },
+    "level 4": {
+      "Deployment and Production": {
+        "Beginner": ["Saving Models (Pickle, Joblib)"],
+        "Intermediate": ["Building REST APIs for ML Models (Flask, FastAPI)"],
+        "Advanced": [
+          "Model Deployment (AWS Sagemaker, GCP AI Platform)",
+          "MLOps Basics (CI/CD for Machine Learning)"
+        ]
       },
-      "level 4": {
-        "Deployment and Production": {
-          "Beginner": [
-            "Saving Models (Pickle, Joblib)"
-          ],
-          "Intermediate": [
-            "Building REST APIs for ML Models (Flask, FastAPI)"
-          ],
-          "Advanced": [
-            "Model Deployment (AWS Sagemaker, GCP AI Platform)",
-            "MLOps Basics (CI/CD for Machine Learning)"
-          ]
-        },
-        "Soft Skills and Business Acumen": {
-          "Beginner": [
-            "Data Storytelling Basics",
-            "Communication Skills"
-          ],
-          "Intermediate": [
-            "Understanding Business Problems",
-            "Framing Data Science Solutions"
-          ],
-          "Advanced": [
-            "Product Thinking for Data Scientists",
-            "End-to-End Project Management"
-          ]
-        }
+      "Soft Skills and Business Acumen": {
+        "Beginner": ["Data Storytelling Basics", "Communication Skills"],
+        "Intermediate": [
+          "Understanding Business Problems",
+          "Framing Data Science Solutions"
+        ],
+        "Advanced": [
+          "Product Thinking for Data Scientists",
+          "End-to-End Project Management"
+        ]
       }
     }
   },
-  "ui_ux": {
+  "ui-ux-designer": {
     "Level 1": {
       "Design Fundamentals": {
         "Beginner": [
@@ -1007,11 +776,7 @@
     },
     "Level 2": {
       "Tools Mastery": {
-        "Beginner": [
-          "Figma Basics",
-          "Sketch Basics",
-          "Adobe XD Basics"
-        ],
+        "Beginner": ["Figma Basics", "Sketch Basics", "Adobe XD Basics"],
         "Intermediate": [
           "Prototyping in Figma/Sketch/XD",
           "Plugins and Extensions"
@@ -1033,22 +798,22 @@
         "Advanced": [
           "Advanced Animation Prototyping (Principle, After Effects)"
         ]
-      },
-      "Level 3": {
-        "Research and Analysis": {
-          "Beginner": [
-            "Conducting User Interviews",
-            "Surveys and Feedback Collection"
-          ],
-          "Intermediate": [
-            "Analyzing User Behavior (Heatmaps, Analytics)",
-            "Creating Empathy Maps"
-          ],
-          "Advanced": [
-            "Advanced UX Research Techniques",
-            "Data-Driven Design Decisions"
-          ]
-        }
+      }
+    },
+    "Level 3": {
+      "Research and Analysis": {
+        "Beginner": [
+          "Conducting User Interviews",
+          "Surveys and Feedback Collection"
+        ],
+        "Intermediate": [
+          "Analyzing User Behavior (Heatmaps, Analytics)",
+          "Creating Empathy Maps"
+        ],
+        "Advanced": [
+          "Advanced UX Research Techniques",
+          "Data-Driven Design Decisions"
+        ]
       },
       "Advanced UX/UI Concepts": {
         "Beginner": [
@@ -1063,40 +828,37 @@
           "Augmented Reality (AR) and Virtual Reality (VR) UX",
           "Designing for Wearables and IoT"
         ]
+      }
+    },
+    "level 4": {
+      "Portfolio and Career Building": {
+        "Beginner": [
+          "Building a Design Portfolio",
+          "Case Study Writing Basics"
+        ],
+        "Intermediate": [
+          "Personal Branding for Designers",
+          "Networking in the Design Community"
+        ],
+        "Advanced": [
+          "Freelancing vs Full-time Opportunities",
+          "Job Interview Preparation (Whiteboard Challenges, Design Exercises)"
+        ]
       },
-      "level 4": {
-        "Portfolio and Career Building": {
-          "Beginner": [
-            "Building a Design Portfolio",
-            "Case Study Writing Basics"
-          ],
-          "Intermediate": [
-            "Personal Branding for Designers",
-            "Networking in the Design Community"
-          ],
-          "Advanced": [
-            "Freelancing vs Full-time Opportunities",
-            "Job Interview Preparation (Whiteboard Challenges, Design Exercises)"
-          ]
-        },
-        "Soft Skills and Design Thinking": {
-          "Beginner": [
-            "Critical Thinking",
-            "Creative Problem Solving"
-          ],
-          "Intermediate": [
-            "Collaboration with Developers and PMs",
-            "Agile UX and Scrum Basics"
-          ],
-          "Advanced": [
-            "Facilitating Design Workshops",
-            "Storytelling with Design"
-          ]
-        }
+      "Soft Skills and Design Thinking": {
+        "Beginner": ["Critical Thinking", "Creative Problem Solving"],
+        "Intermediate": [
+          "Collaboration with Developers and PMs",
+          "Agile UX and Scrum Basics"
+        ],
+        "Advanced": [
+          "Facilitating Design Workshops",
+          "Storytelling with Design"
+        ]
       }
     }
   },
-  "mobile_developer": {
+  "mobile-developer": {
     "Level 1": {
       "Programming Fundamentals": {
         "Beginner": [
@@ -1107,10 +869,7 @@
           "Object-Oriented Programming (OOP)",
           "Error Handling and Debugging"
         ],
-        "Advanced": [
-          "Memory Management Concepts",
-          "Multithreading Basics"
-        ]
+        "Advanced": ["Memory Management Concepts", "Multithreading Basics"]
       },
       "Mobile Development Basics": {
         "Beginner": [
@@ -1121,9 +880,7 @@
           "Native vs Cross-Platform Development",
           "Understanding App Lifecycle (Activity, Fragment, ViewController)"
         ],
-        "Advanced": [
-          "Mobile Architecture Patterns (MVC, MVP, MVVM)"
-        ]
+        "Advanced": ["Mobile Architecture Patterns (MVC, MVP, MVVM)"]
       }
     },
     "Level 2": {
@@ -1189,17 +946,13 @@
         ]
       },
       "Testing and Debugging": {
-        "Beginner": [
-          "Unit Testing Basics (JUnit, XCTest)"
-        ],
+        "Beginner": ["Unit Testing Basics (JUnit, XCTest)"],
         "Intermediate": [
           "UI Testing (Espresso, XCUITest)",
           "Debugging Techniques and Crash Reporting"
         ],
-        "Advanced": [
-          "Test-Driven Development (TDD) in Mobile"
-        ]
-      },
+        "Advanced": ["Test-Driven Development (TDD) in Mobile"]
+      }},
       "level 4": {
         "Security Best Practices": {
           "Beginner": [
@@ -1210,10 +963,7 @@
             "Data Encryption and Decryption",
             "Secure API Communication (SSL Pinning)"
           ],
-          "Advanced": [
-            "Code Obfuscation Techniques",
-            "App Integrity Checks"
-          ]
+          "Advanced": ["Code Obfuscation Techniques", "App Integrity Checks"]
         },
         "Deployment and Maintenance": {
           "Beginner": [
@@ -1244,10 +994,10 @@
         }
       }
     }
-  }, 
-  "blockchain": {
+  ,
+  "blockchain-developer": {
     "Level 1: Foundations": {
-      "Core Blockchain Concepts": {
+      "Core Concepts": {
         "Beginner": [
           "What is Blockchain?",
           "Decentralization and Distributed Ledgers",
@@ -1265,7 +1015,7 @@
           "Byzantine Fault Tolerance and Distributed Consensus"
         ]
       },
-      "Introduction to Smart Contracts": {
+      "Smart Contracts": {
         "Beginner": [
           "What are Smart Contracts and Their Purpose?",
           "Use Cases and Applications of Smart Contracts"
@@ -1281,7 +1031,7 @@
           "Smart Contract Standards (e.g., ERC-20 Basics)"
         ]
       },
-      "Decentralized Applications (dApps) Fundamentals": {
+      "Decentralized Applications": {
         "Beginner": [
           "Understanding the dApp Ecosystem (Frontend, Backend, Smart Contracts)",
           "Basic Interaction Flow of a dApp"
@@ -1319,7 +1069,7 @@
           "Design Patterns in Solidity"
         ]
       },
-      "Smart Contract Development and Testing": {
+      "Smart Contract Development": {
         "Beginner": [
           "Setting up a Development Environment (e.g., Remix IDE)",
           "Writing Basic Smart Contracts"
@@ -1335,10 +1085,8 @@
           "Working with Different Deployment Environments (Mainnet, Testnets)"
         ]
       },
-      "Backend Integration for Blockchain": {
-        "Beginner": [
-          "Introduction to APIs and Backend Concepts"
-        ],
+      "Backend Integration": {
+        "Beginner": ["Introduction to APIs and Backend Concepts"],
         "Intermediate": [
           "Using Node.js/Python to Interact with Blockchain Nodes (Infura, Alchemy, Local Nodes)",
           "Setting up Backend APIs to Serve dApp Data",
@@ -1353,7 +1101,7 @@
       }
     },
     "Level 3: Advanced Concepts and Ecosystem": {
-      "Advanced Smart Contract Topics": {
+      "Advanced Smart Contract": {
         "Beginner": [
           "Introduction to Token Standards (ERC-20, ERC-721, ERC-1155 - basic concepts)"
         ],
@@ -1369,10 +1117,8 @@
           "Interoperability Protocols (Cross-Chain Communication)"
         ]
       },
-      "Blockchain Scalability and Performance": {
-        "Beginner": [
-          "Understanding Blockchain Scalability Challenges"
-        ],
+      "Scalability": {
+        "Beginner": ["Understanding Blockchain Scalability Challenges"],
         "Intermediate": [
           "Layer 2 Scaling Solutions (Rollups - Optimistic and ZK, Sidechains - Practical Implementation)",
           "State Channels and Payment Channels"
@@ -1383,7 +1129,7 @@
           "Performance Optimization at the Protocol Level"
         ]
       },
-      "Security and Auditing in Blockchain": {
+      "Security and Auditing": {
         "Beginner": [
           "Awareness of Common Security Threats in the Blockchain Space"
         ],
@@ -1399,7 +1145,7 @@
           "Incident Response and Security Monitoring"
         ]
       },
-      "Blockchain Ecosystem and Tools": {
+      "Ecosystem and Tools": {
         "Beginner": [
           "Overview of Different Blockchain Platforms (Ethereum, Polygon, Binance Smart Chain, etc.)"
         ],
@@ -1417,7 +1163,7 @@
       }
     },
     "Level 4: Specializations and Future Trends": {
-      "Decentralized Finance (DeFi) Development": {
+      "DeFi Development": {
         "Beginner": [
           "Introduction to DeFi Concepts and Applications (Lending, Borrowing, DEXs)"
         ],
@@ -1432,7 +1178,7 @@
           "Governance and Sustainability of DeFi Protocols"
         ]
       },
-      "Non-Fungible Tokens (NFTs) and Metaverse Development": {
+      "NFTs and Metaverse": {
         "Beginner": [
           "Understanding NFT Standards (ERC-721, ERC-1155) and Use Cases",
           "Introduction to Metaverse Concepts"
@@ -1448,7 +1194,7 @@
           "Interoperability of NFTs and Metaverse Assets"
         ]
       },
-      "Enterprise Blockchain Solutions": {
+      "Enterprise Solutions": {
         "Beginner": [
           "Understanding Enterprise Use Cases for Blockchain (Supply Chain, Identity Management)"
         ],
@@ -1463,7 +1209,7 @@
           "Interoperability between Enterprise and Public Blockchains"
         ]
       },
-      "Emerging Trends and Research": {
+      "Emerging Trends": {
         "Beginner": [
           "Awareness of New Developments in the Blockchain Space (e.g., Account Abstraction, Zero-Knowledge Proofs)"
         ],
@@ -1478,7 +1224,7 @@
       }
     }
   },
-  "gameDevelopment": {
+  "game-developer": {
     "Level 1: Foundations": {
       "Game Design Fundamentals": {
         "Beginner": [
@@ -1617,10 +1363,8 @@
           "Virtual and Augmented Reality (VR/AR) Game Design Principles"
         ]
       },
-      "Advanced Programming Techniques": {
-        "Beginner": [
-          "Introduction to Design Patterns in Game Development"
-        ],
+      "Advanced Techniques": {
+        "Beginner": ["Introduction to Design Patterns in Game Development"],
         "Intermediate": [
           "Implementing Advanced AI Systems (Machine Learning Basics for Games)",
           "Networking Architectures for Multiplayer Games",
@@ -1633,10 +1377,8 @@
           "Procedural Content Generation (Advanced)"
         ]
       },
-      "Specialized Art and Audio": {
-        "Beginner": [
-          "Understanding Different Art Styles and Pipelines"
-        ],
+      "Specialized Art": {
+        "Beginner": ["Understanding Different Art Styles and Pipelines"],
         "Intermediate": [
           "Creating Specialized Art Assets (e.g., Environments, Vehicles)",
           "Advanced Character Art and Animation",
@@ -1649,10 +1391,8 @@
           "Working with External Audio Middleware (e.g., Wwise, FMOD)"
         ]
       },
-      "Game Production and Project Management": {
-        "Beginner": [
-          "Basic Understanding of Game Development Teams and Roles"
-        ],
+      "Game Production": {
+        "Beginner": ["Basic Understanding of Game Development Teams and Roles"],
         "Intermediate": [
           "Introduction to Agile and Waterfall Methodologies",
           "Using Project Management Tools (e.g., Jira, Trello)",
@@ -1667,7 +1407,7 @@
       }
     },
     "Level 4: Emerging Trends and Mastery": {
-      "Emerging Technologies in Games": {
+      "Emerging Technologies": {
         "Beginner": [
           "Awareness of New Technologies (Ray Tracing, Cloud Gaming, Blockchain in Games)"
         ],
@@ -1690,10 +1430,8 @@
           "Conducting Research and Applying Interdisciplinary Insights to Game Development"
         ]
       },
-      "Indie Game Development and Entrepreneurship": {
-        "Beginner": [
-          "Understanding the Basics of Indie Game Development"
-        ],
+      "Indie Development": {
+        "Beginner": ["Understanding the Basics of Indie Game Development"],
         "Intermediate": [
           "Planning and Developing an Indie Game Project",
           "Marketing and Promoting Indie Games",
@@ -1704,10 +1442,8 @@
           "Navigating the Business Side of Game Development"
         ]
       },
-      "Continuous Learning and Portfolio Building": {
-        "Beginner": [
-          "Understanding the Importance of Continuous Learning"
-        ],
+      "Continuous Learning": {
+        "Beginner": ["Understanding the Importance of Continuous Learning"],
         "Intermediate": [
           "Building a Strong Portfolio to Showcase Skills",
           "Actively Participating in the Game Development Community"
@@ -1720,7 +1456,7 @@
       }
     }
   },
-  "aiMl": {
+  "ai-ml-engineer": {
     "Level 1: Foundations": {
       "Python Programming": {
         "Beginner": [
@@ -1833,7 +1569,7 @@
       }
     },
     "Level 3: Deep Learning and Specialized Areas": {
-      "Neural Networks and Deep Learning": {
+      "Neural Networks": {
         "Beginner": [
           "Introduction to Neural Networks (Perceptrons, Layers)",
           "Activation Functions",
@@ -1851,7 +1587,7 @@
           "Interpretability of Deep Learning Models"
         ]
       },
-      "Natural Language Processing (NLP)": {
+      "NLP": {
         "Beginner": [
           "Text Preprocessing (Tokenization, Stemming, Lemmatization)",
           "Basic Text Representation (Bag-of-Words, TF-IDF)"
@@ -1903,10 +1639,8 @@
       }
     },
     "Level 4: Deployment, Ethics, and Future Trends": {
-      "Model Deployment and Scaling": {
-        "Beginner": [
-          "Basic Understanding of Model Deployment"
-        ],
+      "Model Deployment": {
+        "Beginner": ["Basic Understanding of Model Deployment"],
         "Intermediate": [
           "Deploying Models using Frameworks (e.g., Flask, FastAPI)",
           "Containerization (Docker)",
@@ -1919,10 +1653,8 @@
           "Edge AI Deployment"
         ]
       },
-      "Ethical Considerations in AI/ML": {
-        "Beginner": [
-          "Awareness of Bias and Fairness in AI"
-        ],
+      "Ethical Considerations": {
+        "Beginner": ["Awareness of Bias and Fairness in AI"],
         "Intermediate": [
           "Understanding Different Types of Bias",
           "Fairness Metrics and Mitigation Strategies",
@@ -1935,7 +1667,7 @@
           "Societal Impact of AI"
         ]
       },
-      "AI/ML in Specific Domains": {
+      "Specific Domains": {
         "Beginner": [
           "Awareness of AI/ML Applications in Different Fields (Healthcare, Finance, etc.)"
         ],
@@ -1946,13 +1678,11 @@
           "Contributing to Research and Development in a Specific AI/ML Application Domain"
         ]
       },
-      "Emerging Trends and Research": {
+      "Emerging Trends": {
         "Beginner": [
           "Awareness of New Developments in AI/ML (e.g., Transformers beyond NLP, Graph Neural Networks)"
         ],
-        "Intermediate": [
-          "Understanding the Core Concepts of Emerging Trends"
-        ],
+        "Intermediate": ["Understanding the Core Concepts of Emerging Trends"],
         "Advanced": [
           "Exploring and Implementing Cutting-Edge Research",
           "Contributing to the Advancement of the Field"
@@ -1960,7 +1690,7 @@
       }
     }
   },
-  "securityEngineering": {
+  "security-engineer": {
     "Level 1: Foundations": {
       "Networking Fundamentals": {
         "Beginner": [
@@ -2059,9 +1789,7 @@
         ]
       },
       "Identity and Access Management (IAM)": {
-        "Beginner": [
-          "Basic Concepts of User Management and Authentication"
-        ],
+        "Beginner": ["Basic Concepts of User Management and Authentication"],
         "Intermediate": [
           "Implementing and Managing IAM Systems (Directory Services, SSO)",
           "Multi-Factor Authentication (MFA)",
@@ -2077,9 +1805,7 @@
     },
     "Level 3: Specializations and Advanced Topics": {
       "Application Security": {
-        "Beginner": [
-          "Understanding Common Web Application Vulnerabilities"
-        ],
+        "Beginner": ["Understanding Common Web Application Vulnerabilities"],
         "Intermediate": [
           "Performing Web Application Security Assessments",
           "Using Security Testing Tools (Burp Suite, OWASP ZAP - Basic)",
@@ -2108,10 +1834,8 @@
           "Cloud Compliance and Governance"
         ]
       },
-      "Security Operations (SecOps) and Incident Response": {
-        "Beginner": [
-          "Basic Understanding of Security Monitoring and Logging"
-        ],
+      "SecOps": {
+        "Beginner": ["Basic Understanding of Security Monitoring and Logging"],
         "Intermediate": [
           "Setting up and Managing Security Information and Event Management (SIEM) Systems",
           "Basic Incident Handling Procedures",
@@ -2124,10 +1848,8 @@
           "Digital Forensics"
         ]
       },
-      "Cryptography and Applied Security": {
-        "Beginner": [
-          "Understanding Different Types of Encryption"
-        ],
+      "Cryptography and Security": {
+        "Beginner": ["Understanding Different Types of Encryption"],
         "Intermediate": [
           "Implementing Cryptographic Solutions",
           "Understanding PKI (Public Key Infrastructure)",
@@ -2142,10 +1864,8 @@
       }
     },
     "Level 4: Emerging Trends and Mastery": {
-      "Security Automation and Orchestration": {
-        "Beginner": [
-          "Introduction to Automation in Security"
-        ],
+      "Automation/Orchestration": {
+        "Beginner": ["Introduction to Automation in Security"],
         "Intermediate": [
           "Using Scripting Languages (Python, PowerShell) for Security Tasks",
           "Introduction to SOAR Platforms"
@@ -2156,10 +1876,8 @@
           "Developing Custom Security Automation Solutions"
         ]
       },
-      "Threat Intelligence and Analysis": {
-        "Beginner": [
-          "Understanding the Basics of Threat Intelligence"
-        ],
+      "Threat Intelligence": {
+        "Beginner": ["Understanding the Basics of Threat Intelligence"],
         "Intermediate": [
           "Collecting, Processing, and Analyzing Threat Data",
           "Using Threat Intelligence Platforms",
@@ -2186,7 +1904,7 @@
           "Legal and Regulatory Compliance in Privacy"
         ]
       },
-      "Emerging Security Technologies": {
+      "Emerging Technologies": {
         "Beginner": [
           "Awareness of New Security Trends (Zero Trust, Extended Detection and Response - XDR, Security AI/ML)"
         ],
@@ -2200,7 +1918,7 @@
       }
     }
   },
-  "qaEngineering": {
+  "qa-engineer": {
     "Level 1: Foundations": {
       "Software Testing Fundamentals": {
         "Beginner": [
@@ -2390,10 +2108,8 @@
       }
     },
     "Level 4: Leadership and Emerging Trends": {
-      "Test Management and Leadership": {
-        "Beginner": [
-          "Understanding Team Dynamics in QA"
-        ],
+      "Management and Leadership": {
+        "Beginner": ["Understanding Team Dynamics in QA"],
         "Intermediate": [
           "Leading Small QA Teams",
           "Test Planning and Estimation",
@@ -2406,10 +2122,8 @@
           "Vendor Management"
         ]
       },
-      "Test Automation Architecture and Framework Design": {
-        "Beginner": [
-          "Basic Understanding of Automation Framework Components"
-        ],
+      "Framework Design": {
+        "Beginner": ["Basic Understanding of Automation Framework Components"],
         "Intermediate": [
           "Designing Scalable and Maintainable Automation Frameworks",
           "Choosing the Right Automation Tools and Technologies",
@@ -2421,10 +2135,8 @@
           "Performance Optimization of Automation Suites"
         ]
       },
-      "Quality Engineering and DevOps": {
-        "Beginner": [
-          "Understanding the Role of QA in DevOps"
-        ],
+      "DevOps": {
+        "Beginner": ["Understanding the Role of QA in DevOps"],
         "Intermediate": [
           "Integrating Testing into CI/CD Pipelines",
           "Implementing Shift-Left Testing",
@@ -2452,80 +2164,178 @@
       }
     }
   },
-  
-  "technicalManagement": {
-      "Level 1: Foundations (Individual Contributor Expertise)": {
-        "Deep Technical Proficiency": {
-          "Beginner": ["Solid understanding of core technical domain (e.g., Software Development, Networking, Data Science - as per specialization)"],
-          "Intermediate": ["Hands-on experience in the technical domain, capable of contributing to projects and solving complex problems"],
-          "Advanced": ["Recognized as a technical expert within the team, able to architect solutions and mentor others technically"]
-        },
-        "Project Management Basics": {
-          "Beginner": ["Understanding basic project lifecycle", "Familiarity with project management methodologies (e.g., Agile, Waterfall - overview)"],
-          "Intermediate": ["Participating in project planning and execution", "Basic task management and tracking", "Identifying and escalating risks and issues"],
-          "Advanced": ["Managing small to medium-sized projects independently", "Creating project plans and timelines", "Risk and issue management with mitigation strategies"]
-        },
-        "Communication and Collaboration": {
-          "Beginner": ["Clear written and verbal communication within the team"],
-          "Intermediate": ["Communicating technical concepts to non-technical stakeholders", "Facilitating team discussions", "Providing constructive feedback"],
-          "Advanced": ["Presenting technical strategies and project updates to leadership", "Negotiation and conflict resolution skills", "Building strong working relationships across teams"]
-        }
+
+  "technical-manager": {
+    "Level 1: Foundations (Individual Contributor Expertise)": {
+      "Deep Technical Proficiency": {
+        "Beginner": [
+          "Solid understanding of core technical domain (e.g., Software Development, Networking, Data Science - as per specialization)"
+        ],
+        "Intermediate": [
+          "Hands-on experience in the technical domain, capable of contributing to projects and solving complex problems"
+        ],
+        "Advanced": [
+          "Recognized as a technical expert within the team, able to architect solutions and mentor others technically"
+        ]
       },
-      "Level 2: Team Leadership and Management": {
-        "Team Building and Motivation": {
-          "Beginner": ["Understanding team roles and responsibilities"],
-          "Intermediate": ["Contributing to a positive team environment", "Recognizing and appreciating team contributions", "Understanding basic motivational factors"],
-          "Advanced": ["Building high-performing teams", "Motivating and inspiring team members", "Fostering a culture of collaboration and innovation"]
-        },
-        "Performance Management": {
-          "Beginner": ["Understanding performance expectations"],
-          "Intermediate": ["Providing regular feedback to team members", "Identifying areas for improvement", "Participating in performance reviews"],
-          "Advanced": ["Conducting performance reviews and providing constructive criticism", "Setting clear goals and expectations for team members", "Coaching and mentoring team members for career growth"]
-        },
-        "Delegation and Empowerment": {
-          "Beginner": ["Completing assigned tasks effectively"],
-          "Intermediate": ["Taking ownership of assigned areas", "Seeking opportunities for growth"],
-          "Advanced": ["Delegating tasks effectively and providing necessary support", "Empowering team members to take ownership and make decisions", "Trusting team members' abilities"]
-        }
+      "Project Management Basics": {
+        "Beginner": [
+          "Understanding basic project lifecycle",
+          "Familiarity with project management methodologies (e.g., Agile, Waterfall - overview)"
+        ],
+        "Intermediate": [
+          "Participating in project planning and execution",
+          "Basic task management and tracking",
+          "Identifying and escalating risks and issues"
+        ],
+        "Advanced": [
+          "Managing small to medium-sized projects independently",
+          "Creating project plans and timelines",
+          "Risk and issue management with mitigation strategies"
+        ]
       },
-      "Level 3: Strategic Thinking and Execution": {
-        "Technical Strategy and Vision": {
-          "Beginner": ["Understanding the team's technical direction"],
-          "Intermediate": ["Contributing to technical discussions and providing input", "Understanding the business impact of technical decisions"],
-          "Advanced": ["Contributing to the development of the team's technical strategy", "Aligning technical decisions with business goals", "Identifying emerging technologies and their potential impact"]
-        },
-        "Resource Planning and Allocation": {
-          "Beginner": ["Awareness of team resources"],
-          "Intermediate": ["Providing input on resource needs", "Managing personal workload effectively"],
-          "Advanced": ["Planning and allocating team resources effectively", "Forecasting future resource needs", "Managing budgets and timelines"]
-        },
-        "Stakeholder Management": {
-          "Beginner": ["Interacting with immediate team members and direct stakeholders"],
-          "Intermediate": ["Building relationships with key stakeholders", "Understanding stakeholder needs and expectations", "Managing stakeholder communication"],
-          "Advanced": ["Managing relationships with diverse and senior stakeholders", "Influencing stakeholder decisions", "Negotiating priorities and managing expectations"]
-        }
+      "Communication and Collaboration": {
+        "Beginner": ["Clear written and verbal communication within the team"],
+        "Intermediate": [
+          "Communicating technical concepts to non-technical stakeholders",
+          "Facilitating team discussions",
+          "Providing constructive feedback"
+        ],
+        "Advanced": [
+          "Presenting technical strategies and project updates to leadership",
+          "Negotiation and conflict resolution skills",
+          "Building strong working relationships across teams"
+        ]
+      }
+    },
+    "Level 2: Team Leadership and Management": {
+      "Team Building and Motivation": {
+        "Beginner": ["Understanding team roles and responsibilities"],
+        "Intermediate": [
+          "Contributing to a positive team environment",
+          "Recognizing and appreciating team contributions",
+          "Understanding basic motivational factors"
+        ],
+        "Advanced": [
+          "Building high-performing teams",
+          "Motivating and inspiring team members",
+          "Fostering a culture of collaboration and innovation"
+        ]
       },
-      "Level 4: Organizational Leadership and Growth": {
-        "Organizational Strategy Alignment": {
-          "Beginner": ["Understanding the organization's mission and values"],
-          "Intermediate": ["Understanding how the team's work contributes to organizational goals"],
-          "Advanced": ["Aligning team strategy with overall organizational strategy", "Contributing to organizational planning and decision-making"]
-        },
-        "Developing Organizational Talent": {
-          "Beginner": ["Focusing on personal growth and development"],
-          "Intermediate": ["Mentoring junior team members", "Identifying training needs within the team"],
-          "Advanced": ["Developing talent development strategies for the team and organization", "Identifying and fostering future leaders", "Creating a learning organization"]
-        },
-        "Driving Innovation and Change": {
-          "Beginner": ["Adapting to changes within the team"],
-          "Intermediate": ["Identifying opportunities for improvement", "Contributing to the implementation of new ideas"],
-          "Advanced": ["Leading and driving innovation within the team and organization", "Managing change effectively", "Fostering a culture of continuous improvement"]
-        },
-        "Financial and Business Acumen": {
-          "Beginner": ["Awareness of project budgets"],
-          "Intermediate": ["Understanding the financial implications of technical decisions", "Contributing to budget planning"],
-          "Advanced": ["Managing team budgets and resources effectively", "Understanding key business metrics", "Making business-driven technical decisions"]
-        }
+      "Performance Management": {
+        "Beginner": ["Understanding performance expectations"],
+        "Intermediate": [
+          "Providing regular feedback to team members",
+          "Identifying areas for improvement",
+          "Participating in performance reviews"
+        ],
+        "Advanced": [
+          "Conducting performance reviews and providing constructive criticism",
+          "Setting clear goals and expectations for team members",
+          "Coaching and mentoring team members for career growth"
+        ]
+      },
+      "Delegation and Empowerment": {
+        "Beginner": ["Completing assigned tasks effectively"],
+        "Intermediate": [
+          "Taking ownership of assigned areas",
+          "Seeking opportunities for growth"
+        ],
+        "Advanced": [
+          "Delegating tasks effectively and providing necessary support",
+          "Empowering team members to take ownership and make decisions",
+          "Trusting team members' abilities"
+        ]
+      }
+    },
+    "Level 3: Strategic Thinking and Execution": {
+      "Technical Strategy and Vision": {
+        "Beginner": ["Understanding the team's technical direction"],
+        "Intermediate": [
+          "Contributing to technical discussions and providing input",
+          "Understanding the business impact of technical decisions"
+        ],
+        "Advanced": [
+          "Contributing to the development of the team's technical strategy",
+          "Aligning technical decisions with business goals",
+          "Identifying emerging technologies and their potential impact"
+        ]
+      },
+      "Resource Planning and Allocation": {
+        "Beginner": ["Awareness of team resources"],
+        "Intermediate": [
+          "Providing input on resource needs",
+          "Managing personal workload effectively"
+        ],
+        "Advanced": [
+          "Planning and allocating team resources effectively",
+          "Forecasting future resource needs",
+          "Managing budgets and timelines"
+        ]
+      },
+      "Stakeholder Management": {
+        "Beginner": [
+          "Interacting with immediate team members and direct stakeholders"
+        ],
+        "Intermediate": [
+          "Building relationships with key stakeholders",
+          "Understanding stakeholder needs and expectations",
+          "Managing stakeholder communication"
+        ],
+        "Advanced": [
+          "Managing relationships with diverse and senior stakeholders",
+          "Influencing stakeholder decisions",
+          "Negotiating priorities and managing expectations"
+        ]
+      }
+    },
+    "Level 4: Organizational Leadership and Growth": {
+      "Strategy Alignment": {
+        "Beginner": ["Understanding the organization's mission and values"],
+        "Intermediate": [
+          "Understanding how the team's work contributes to organizational goals"
+        ],
+        "Advanced": [
+          "Aligning team strategy with overall organizational strategy",
+          "Contributing to organizational planning and decision-making"
+        ]
+      },
+      "Developing Talent": {
+        "Beginner": ["Focusing on personal growth and development"],
+        "Intermediate": [
+          "Mentoring junior team members",
+          "Identifying training needs within the team"
+        ],
+        "Advanced": [
+          "Developing talent development strategies for the team and organization",
+          "Identifying and fostering future leaders",
+          "Creating a learning organization"
+        ]
+      },
+      "Driving Innovation": {
+        "Beginner": ["Adapting to changes within the team"],
+        "Intermediate": [
+          "Identifying opportunities for improvement",
+          "Contributing to the implementation of new ideas"
+        ],
+        "Advanced": [
+          "Leading and driving innovation within the team and organization",
+          "Managing change effectively",
+          "Fostering a culture of continuous improvement"
+        ]
+      },
+      "Business Acumen": {
+        "Beginner": ["Awareness of project budgets"],
+        "Intermediate": [
+          "Understanding the financial implications of technical decisions",
+          "Contributing to budget planning"
+        ],
+        "Advanced": [
+          "Managing team budgets and resources effectively",
+          "Understanding key business metrics",
+          "Making business-driven technical decisions"
+        ]
       }
     }
   }
+}
