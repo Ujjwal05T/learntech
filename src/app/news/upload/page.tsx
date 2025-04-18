@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
+import { useUserStore } from '@/../stores/user-store'
 
 interface UploadForm {
   title: string
@@ -19,14 +20,22 @@ interface UploadForm {
 export default function UploadPage() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
+  const {user} = useUserStore();
   const [formData, setFormData] = useState<UploadForm>({
     title: '',
     description: '',
     mediaType: 'text',
-    author: '',
+    author: '', // Will be set to user.username
     mediaUrl: null as unknown as File
   })
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
+
+  // Set the author field to user.username when the component mounts
+  useEffect(() => {
+    if (user?.username) {
+      setFormData(prev => ({ ...prev, author: user.username }))
+    }
+  }, [user])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,18 +44,27 @@ export default function UploadPage() {
     try {
       if (!selectedFile) {
         toast.error('Please select a file')
+        setIsLoading(false)
         return
       }
 
+      if (!user?.username) {
+        toast.error('User information is missing')
+        setIsLoading(false)
+        return
+      }
+
+      // Create form data for file upload
+      const uploadData = new FormData()
+      uploadData.append('title', formData.title)
+      uploadData.append('description', formData.description)
+      uploadData.append('mediaType', formData.mediaType)
+      uploadData.append('author', user.username) // Always use user.username here
+      uploadData.append('mediaUrl', selectedFile)
+
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/api/blogs/upload`, 
-        {
-          title: formData.title,
-          description: formData.description,
-          mediaType: formData.mediaType,
-          author: formData.author,
-          mediaUrl: selectedFile
-        }, 
+        uploadData,
         {
           headers: {
             'Content-Type': 'multipart/form-data',
@@ -140,14 +158,14 @@ export default function UploadPage() {
 
           <div className="space-y-2">
             <label className="text-sm font-medium">Author</label>
-            <Input
-              type="text"
-              value={formData.author}
-              onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-              className="bg-white/5 border-white/10"
-              placeholder="Enter author name"
-              required
-            />
+            {/* Read-only display of the username */}
+            <div className="bg-white/5 border border-white/10 rounded-md px-3 py-2 text-gray-300 flex items-center">
+              <span>{user?.username || 'Loading username...'}</span>
+              <span className="ml-2 text-xs px-2 py-1 bg-blue-900/50 text-blue-300 rounded-full">
+                Auto-filled
+              </span>
+            </div>
+            <p className="text-xs text-gray-400 mt-1">Content will be published under your username</p>
           </div>
 
           <div className="space-y-2">
@@ -170,7 +188,7 @@ export default function UploadPage() {
 
           <Button
             type="submit"
-            disabled={isLoading || !selectedFile}
+            disabled={isLoading || !selectedFile || !user?.username}
             className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? (

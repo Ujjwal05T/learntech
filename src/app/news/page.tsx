@@ -59,7 +59,7 @@ export default function NewsPage() {
                     title={item.title}
                     description={item.description}
                     authorName={item.author}
-                    uploadedTime={new Date(item.createdAt).toLocaleString()}
+                    uploadedTime={item.createdAt}
                   />
               ) : (
                 // <ArticleCards

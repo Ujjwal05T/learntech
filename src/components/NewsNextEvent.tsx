@@ -29,7 +29,7 @@ function NewsNextEvent() {
 
     const comment: Comment = {
       id: Math.random().toString(36).substr(2, 9),
-      userId: user.id,
+      userId: user.userId,
       username: user.username,
       content: newComment,
       likes: [],
@@ -47,7 +47,7 @@ function NewsNextEvent() {
 
     const reply: Comment = {
       id: Math.random().toString(36).substr(2, 9),
-      userId: user.id,
+      userId: user.userId,
       username: user.username,
       content: replyContent,
       likes: [],
@@ -72,10 +72,10 @@ function NewsNextEvent() {
 
     setComments(comments.map(comment => {
       if (comment.id === commentId) {
-        const likes = comment.likes.includes(user.id)
-          ? comment.likes.filter(id => id !== user.id)
-          : [...comment.likes, user.id];
-        const dislikes = comment.dislikes.filter(id => id !== user.id);
+        const likes = comment.likes.includes(user.userId)
+          ? comment.likes.filter(id => id !== user.userId)
+          : [...comment.likes, user.userId];
+        const dislikes = comment.dislikes.filter(id => id !== user.userId);
         return { ...comment, likes, dislikes };
       }
       return comment;
@@ -87,10 +87,10 @@ function NewsNextEvent() {
 
     setComments(comments.map(comment => {
       if (comment.id === commentId) {
-        const dislikes = comment.dislikes.includes(user.id)
-          ? comment.dislikes.filter(id => id !== user.id)
-          : [...comment.dislikes, user.id];
-        const likes = comment.likes.filter(id => id !== user.id);
+        const dislikes = comment.dislikes.includes(user.userId)
+          ? comment.dislikes.filter(id => id !== user.userId)
+          : [...comment.dislikes, user.userId];
+        const likes = comment.likes.filter(id => id !== user.userId);
         return { ...comment, likes, dislikes };
       }
       return comment;
@@ -139,7 +139,7 @@ function NewsNextEvent() {
                   {new Date(comment.createdAt).toLocaleDateString()}
                 </p>
               </div>
-              {user?.id === comment.userId && (
+              {user?.userId === comment.userId && (
                 <Button
                   variant="ghost"
                   onClick={() => handleDelete(comment.id)}
@@ -157,7 +157,7 @@ function NewsNextEvent() {
                 variant="ghost"
                 onClick={() => handleLike(comment.id)}
                 className={`flex items-center gap-2 hover:bg-blue-500/10 ${
-                  comment.likes.includes(user?.id || '') ? 'text-blue-400' : 'text-gray-500'
+                  comment.likes.includes(user?.userId || '') ? 'text-blue-400' : 'text-gray-500'
                 }`}
               >
                 <FaThumbsUp size={14} />
@@ -167,7 +167,7 @@ function NewsNextEvent() {
                 variant="ghost"
                 onClick={() => handleDislike(comment.id)}
                 className={`flex items-center gap-2 hover:bg-red-500/10 ${
-                  comment.dislikes.includes(user?.id || '') ? 'text-red-400' : 'text-gray-500'
+                  comment.dislikes.includes(user?.userId || '') ? 'text-red-400' : 'text-gray-500'
                 }`}
               >
                 <FaThumbsDown size={14} />
