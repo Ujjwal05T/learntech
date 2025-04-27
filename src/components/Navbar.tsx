@@ -78,6 +78,11 @@ function Navbar() {
                                 <LucideCalendar className="w-4 h-4 mr-1.5" />
                                 Events
                             </NavLink>
+                            <NavLink href="/test" isActive={pathname === "/test"}>
+                                <LucideNewspaper className="w-4 h-4 mr-1.5" />
+                                Test
+                            </NavLink>
+                           
 
                             <ProfileButton />
                         </div>
