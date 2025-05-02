@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
+import ReactPlayer from 'react-player/youtube';
 
 interface VideoCardProps {
   videoSrc: string;
@@ -19,14 +19,9 @@ function VideoCards({
 }: VideoCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  // const [playerRef, setPlayerRef] = useState<any>(null);
 
-  const getVideoEmbedUrl = (url: string) => {
-    if (url.includes('youtube.com') || url.includes('youtu.be')) {
-      const baseUrl = url.replace("youtu.be/", "www.youtube.com/embed/");
-      return `${baseUrl}?modestbranding=1&rel=0&showinfo=0`;
-    }
-    return url;
-  };
+
 
   return (
     <>
@@ -42,19 +37,33 @@ function VideoCards({
         <div className="bg-[#0c0c1d] rounded-xl overflow-hidden border-2 border-purple-500/30 hover:border-purple-500/70 shadow-xl hover:shadow-purple-500/20 transition-all duration-300">
           {/* Thumbnail Container */}
           <div className="relative aspect-video w-full overflow-hidden">
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors z-10" />
-            <video
-              src={getVideoEmbedUrl(videoSrc)}
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-              preload="metadata"
-              muted
-              onMouseOver={e => (e.target as HTMLVideoElement).play()}
-              onMouseOut={e => {
-                const video = e.target as HTMLVideoElement;
-                video.pause();
-                video.currentTime = 0;
-              }}
-            />
+<div 
+  className="w-full h-full" 
+ 
+>
+<ReactPlayer
+        url={(videoSrc)}
+        width="100%"
+        height="100%"
+        className="absolute top-0 left-0"
+        config={{
+            playerVars: {
+              // Updated parameters to minimize YouTube branding
+              autoplay: 0,
+              controls: 0,
+              mute: 1,
+              modestbranding: 1,
+              rel: 0,
+              showinfo: 0,
+              iv_load_policy: 3, // Hide video annotations
+              disablekb: 1, // Disable keyboard controls
+              fs: 0, // Hide fullscreen button
+            },
+             }
+        }
+      />
+</div>
+
             {/* Play Button Overlay */}
             <div className={`absolute inset-0 flex items-center justify-center z-20 transition-opacity duration-200 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
               <div className="w-16 h-16 rounded-full bg-purple-600/80 flex items-center justify-center transform scale-90 group-hover:scale-100 transition-transform shadow-lg shadow-purple-600/20">
@@ -124,20 +133,27 @@ function VideoCards({
               exit={{ scale: 0.95, opacity: 0 }}
               className="relative w-[90%] max-w-6xl aspect-video bg-[#0a0a20] rounded-xl shadow-2xl overflow-hidden border-2 border-purple-500/50"
             >
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
-              >
-                <X className="w-6 h-6 text-white" />
-              </button>
-
-              <video
-                src={getVideoEmbedUrl(videoSrc)}
-                className="w-full h-full object-contain"
-                controls
-                autoPlay
-                controlsList="nodownload"
-              />
+              <ReactPlayer
+        url={(videoSrc)}
+        width="100%"
+        height="100%"
+        className="absolute top-0 left-0"
+        config={{
+            playerVars: {
+              // Updated parameters to minimize YouTube branding
+              autoplay: 0,
+              controls: 1,
+              mute: 1,
+              modestbranding: 1,
+              rel: 0,
+              showinfo: 0,
+              iv_load_policy: 3, // Hide video annotations
+              disablekb: 1, // Disable keyboard controls
+              fs: 0, // Hide fullscreen button
+            },
+             }
+        }
+      />
             </motion.div>
           </motion.div>
         )}
