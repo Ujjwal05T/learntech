@@ -56,6 +56,13 @@ const topics = [
     description: 'Practice questions from all categories',
     count: alphabetSeries.length + series.length + analogy.length + codingDecoding.length + arithmaicReasoning.length,
     color: 'from-indigo-500 to-purple-500'
+  },
+  {
+    id: 'mainTest',
+    title: 'Main Test',
+    description: 'Take the main test',
+    count: 0,
+    color: 'from-red-500 to-yellow-500'
   }
 ]
 
@@ -77,6 +84,10 @@ export default function SelectionPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">Select a Topic to Practice</h1>
           <p className="text-gray-600">Choose from our collection of aptitude questions or try a random mix</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">

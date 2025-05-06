@@ -16,18 +16,18 @@ function HomeUpdates() {
   const updates: Update[] = [
     {
       id: 1,
-      title: "New JavaScript Roadmap",
-      description: "Updated learning path for modern JavaScript development",
+      title: "New Roadmaps",
+      description: "Updated learning path for modern development",
       imageUrl: "/file.svg",
       date: "2 hours ago"
-    },
-    {
-      id: 2,
-      title: "Frontend Development Guide",
-      description: "Complete guide to becoming a frontend developer",  
-      imageUrl: "/window.svg",
-      date: "1 day ago"
     }
+    // {
+    //   id: 2,
+    //   title: "Frontend Development Guide",
+    //   description: "Complete guide to becoming a frontend developer",  
+    //   imageUrl: "/window.svg",
+    //   date: "1 day ago"
+    // }
   ]
 
   return (

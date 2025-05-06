@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { FaGithub, FaTwitter, FaLinkedin, FaDiscord } from "react-icons/fa";
+// import { FaGithub, FaTwitter, FaLinkedin, FaDiscord } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 
 export default function LandingPage() {
@@ -55,22 +55,22 @@ export default function LandingPage() {
 
   const upcomingEvents = [
     {
-      title: "Web Development Bootcamp",
-      date: "April 20, 2024",
-      type: "Workshop",
-      slots: "50 slots remaining",
+      title: "Summer Hackathon",
+      date: "May, 2025",
+      type: "Hackathon",
+      slots: "Open for registration",
     },
     {
-      title: "Tech Interview Preparation",
-      date: "April 25, 2024",
-      type: "Masterclass",
-      slots: "Limited seats",
+      title: "Aptitude Test ",
+      date: "May 08, 2025",
+      type: "Test",
+      slots: "Available for all",
     },
     {
-      title: "Spring Hackathon 2024",
-      date: "May 1-3, 2024",
-      type: "Competition",
-      slots: "Team registrations open",
+      title: "Miscellaneous events ",
+      date: "May-June",
+      type: "Events",
+      slots: "Team and Single events",
     },
   ];
 
@@ -144,7 +144,7 @@ export default function LandingPage() {
             </motion.section>
 
             {/* Testimonials with more space */}
-            <motion.section
+            {/* <motion.section
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="bg-white/5 backdrop-blur-md p-16 rounded-2xl border border-white/10"
@@ -156,13 +156,13 @@ export default function LandingPage() {
                   - Ujjwal Tamrakar, CTO at LearnTech Co.
                 </footer>
               </p>
-            </motion.section>
+            </motion.section> */}
 
             {/* Upcoming Events with more details */}
             <motion.section
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="space-y-12"
+              className="space-y-12 mb-14"
             >
               <h2 className="text-3xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text text-center">
                 Upcoming Events & Opportunities
@@ -185,13 +185,13 @@ export default function LandingPage() {
             </motion.section>
 
             {/* Community Call to Action with more emphasis */}
-            <motion.section
+            {/* <motion.section
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-center py-12"
             >
               <h2 className="text-2xl font-semibold bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text mb-6">
-                Join Our Growing Community
+                Join Our  Community
               </h2>
 			  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
     <motion.div
@@ -223,26 +223,25 @@ export default function LandingPage() {
       <p className="text-gray-400">Students Placed</p>
     </motion.div>
   </div>
-            </motion.section>
+            </motion.section> */}
           </div>
         )}
 
-<footer className="bg-[#070714]/80 backdrop-blur-md border-t border-white/10">
+<footer className="bg-[#070714]/80 backdrop-blur-md border-t border-white/10 mt-14 ">
       <div className="container mx-auto px-6 py-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-white">LearnTech</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              19/B, Arun Villa<br />
               Rajendra Nagar<br />
               Indore, 402012<br />
               Madhya Pradesh<br/>
 			  India
             </p>
             <p className="text-gray-400 text-sm">
-              Email: contact@learntech.com<br />
-              Phone: +91 123-456-7890<br />
+              {/* Email: contact@learntech.com<br /> */}
+              Phone: +91 6263350883<br />
             </p>
           </div>
 
@@ -293,7 +292,7 @@ export default function LandingPage() {
         {/* Social Links & Copyright */}
         <div className="mt-12 pt-8 border-t border-white/10">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <div className="flex space-x-6">
+            {/* <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <FaGithub size={24} />
               </a>
@@ -306,7 +305,7 @@ export default function LandingPage() {
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <FaDiscord size={24} />
               </a>
-            </div>
+            </div> */}
             <p className="text-gray-400 text-sm">
               © {new Date().getFullYear()} LearnTech. All rights reserved.
             </p>

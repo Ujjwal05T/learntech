@@ -9,8 +9,7 @@ export const shouldShowNavbar = (pathname: string): boolean => {
     '/organisation',
     '/login',
     '/register',
-    '/test',
-    '/events'
+    '/test'
   ];
   
   return !noNavbarPaths.some(path => pathname.startsWith(path));
