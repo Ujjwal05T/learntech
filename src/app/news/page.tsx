@@ -36,11 +36,6 @@ export default function NewsPage() {
 
   return (
     <div className="flex flex-col md:flex-row bg-[#060317] min-h-screen">
-      {/* Sidebar - YouTube dimensions */}
-      <div className="md:w-60 flex-shrink-0">
-        <NewsSidebar />
-      </div>
-
       {/* Main Content */}
       <main className="flex-1">
         {/* Content wrapper with max-width and padding like YouTube */}
