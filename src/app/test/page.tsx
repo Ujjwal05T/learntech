@@ -44,8 +44,8 @@ const topics = [
     color: 'from-green-500 to-emerald-500'
   },
   {
-    id: 'arithmaicReasoning',
-    title: 'Arithmaic Reasoning',
+    id: 'arithmaticReasoning',
+    title: 'Arithmatic Reasoning',
     description: 'Practice Arithmaic Reasoning questions',
     count: arithmaicReasoning.length,
     color: 'from-green-500 to-emerald-500'
@@ -58,7 +58,7 @@ const topics = [
     color: 'from-indigo-500 to-purple-500'
   },
   {
-    id: 'mainTest',
+    id: 'main-test',
     title: 'Main Test',
     description: 'Take the main test',
     count: 0,
@@ -110,7 +110,7 @@ export default function SelectionPage() {
                   <p className="text-gray-600 mb-4">{topic.description}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-500">
-                      {topic.count} questions available
+                      {topic.count || 50} questions available
                     </span>
                     <Button
                       variant="ghost"

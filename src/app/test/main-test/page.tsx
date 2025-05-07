@@ -68,6 +68,8 @@ export default function MainTestPage() {
   const handleNext = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1)
+    } else{
+      handleSubmit()
     }
   }
 
@@ -203,7 +205,7 @@ export default function MainTestPage() {
                 onClick={handleNext}
                 className="flex items-center gap-2"
               >
-                {currentQuestionIndex === questions.length - 1 ? 'Review' : 'Next'} 
+                {currentQuestionIndex === questions.length - 1 ? 'Submit' : 'Next'} 
                 <ChevronRight className="w-5 h-5" />
               </Button>
             </div>

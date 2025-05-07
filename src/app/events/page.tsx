@@ -555,6 +555,29 @@ export default function EventPage() {
           </motion.div>
         )}
 
+        {/* Main Test Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="mt-12 mb-8 flex justify-center mx-auto"
+        >
+          <div className="w-full max-w-5xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl p-8 flex flex-col items-center">
+            <p className="text-white text-lg mb-2 text-center w-full">
+              To start the main test, click on the button below.
+            </p>
+            <p className="text-gray-300 text-base mb-6 text-center w-full">
+              This test will assess your understanding of the event topics. Make sure you are ready before starting.
+            </p>
+            <button
+              onClick={() => router.push("/test/main-test")}
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-lg rounded-xl font-semibold shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all border border-blue-400"
+            >
+              Start Test
+            </button>
+          </div>
+        </motion.div>
+
         {/* Questions and Answers Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

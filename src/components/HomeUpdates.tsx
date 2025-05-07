@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 // Define update item type
 interface Update {
@@ -44,6 +45,8 @@ function HomeUpdates() {
             animate={{ opacity: 1, y: 0 }}
             className="p-4 bg-white/5 backdrop-blur-md rounded-xl border border-white/10 hover:border-blue-500/30 transition-all duration-300"
           >
+          <Link href={`/roadmaps`} className="block w-full h-full">
+          
             <div className="flex items-center gap-4">
               <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-white/5">
                 <Image
@@ -61,6 +64,7 @@ function HomeUpdates() {
                 </span>
               </div>
             </div>
+            </Link>
           </motion.div>
         ))}
       </div>

@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import VideoCards from '@/components/VideoCards'
 // import ArticleCards from '@/components/ArticleCards'
-import NewsSidebar from '@/components/NewsSidebar'
+// import NewsSidebar from '@/components/NewsSidebar'
 import axios from 'axios'
 
 interface NewsItem {
