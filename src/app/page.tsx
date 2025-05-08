@@ -74,9 +74,68 @@ export default function LandingPage() {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  
+  // Handle form input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+  
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add form submission logic here
+    
+    // Form validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setSubmitStatus("error");
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    
+    try {
+      const response = await fetch("https://formspree.io/f/xdkeaawn", {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+      });
+      
+      if (response.ok) {
+        setSubmitStatus("success");
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus("error");
+        console.error("Form submission failed:", await response.text());
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+      // Reset status after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus("idle");
+      }, 3000);
+    }
   };
 
   return (
@@ -153,7 +212,7 @@ export default function LandingPage() {
                 This platform gave me direction when I was lost in my tech journey. The
                 roadmap and expert guidance helped me land my first internship and made me CTO!
                 <footer className="mt-6 text-sm text-gray-400 not-italic">
-                  - Ujjwal Tamrakar, CTO at LearnTech Co.
+                  - Ujjwal Tamrakar, CTO at Learnext Co.
                 </footer>
               </p>
             </motion.section> */}
@@ -232,7 +291,7 @@ export default function LandingPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-white">LearnTech</h3>
+            <h3 className="text-xl font-semibold text-white">Learnext</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
               Rajendra Nagar<br />
               Indore, 402012<br />
@@ -240,7 +299,7 @@ export default function LandingPage() {
 			  India
             </p>
             <p className="text-gray-400 text-sm">
-              {/* Email: contact@learntech.com<br /> */}
+              {/* Email: contact@Learnext.com<br /> */}
               Phone: +91 6263350883<br />
             </p>
           </div>
@@ -260,32 +319,66 @@ export default function LandingPage() {
           <div className="space-y-4 lg:col-span-2">
             <h3 className="text-xl font-semibold text-white">Get in Touch</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Input
-                  type="text"
-                  placeholder="Name"
-                  className="bg-white/5 border-white/10 text-white"
-                  required
-                />
-                <Input
-                  type="email"
-                  placeholder="Email"
-                  className="bg-white/5 border-white/10 text-white"
-                  required
-                />
-              </div>
-              <Textarea
-                placeholder="Message"
-                className="bg-white/5 border-white/10 text-white h-24"
-                required
-              />
-              <Button
-                type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
-              >
-                Send Message
-              </Button>
-            </form>
+  {submitStatus === "success" && (
+    <div className="p-3 bg-green-500/20 border border-green-500/30 rounded-md text-green-300">
+      Thank you! Your message has been sent successfully.
+    </div>
+  )}
+  
+  {submitStatus === "error" && (
+    <div className="p-3 bg-red-500/20 border border-red-500/30 rounded-md text-red-300">
+      Sorry, there was a problem sending your message. Please try again.
+    </div>
+  )}
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <Input
+      type="text"
+      name="name"
+      value={formData.name}
+      onChange={handleInputChange}
+      placeholder="Name"
+      className="bg-white/5 border-white/10 text-white"
+      disabled={isSubmitting}
+      required
+    />
+    <Input
+      type="email"
+      name="email"
+      value={formData.email}
+      onChange={handleInputChange}
+      placeholder="Email"
+      className="bg-white/5 border-white/10 text-white"
+      disabled={isSubmitting}
+      required
+    />
+  </div>
+  
+  <Textarea
+    name="message"
+    value={formData.message}
+    onChange={handleInputChange}
+    placeholder="Message"
+    className="bg-white/5 border-white/10 text-white h-24"
+    disabled={isSubmitting}
+    required
+  />
+  
+  <Button
+    type="submit"
+    disabled={isSubmitting}
+    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition-all"
+  >
+    {isSubmitting ? (
+      <div className="flex items-center justify-center">
+        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+        Sending...
+      </div>
+    ) : (
+      "Send Message"
+    )}
+  </Button>
+</form>
           </div>
         </div>
 
@@ -307,7 +400,7 @@ export default function LandingPage() {
               </a>
             </div> */}
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} LearnTech. All rights reserved.
+              © {new Date().getFullYear()} Learnext. All rights reserved.
             </p>
           </div>
         </div>

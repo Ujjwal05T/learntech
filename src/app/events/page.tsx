@@ -556,11 +556,11 @@ export default function EventPage() {
         )}
 
         {/* Main Test Section */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15 }}
-          className="mt-12 mb-8 flex justify-center mx-auto"
+          className="mt-12 mb-8 sm:flex justify-center mx-auto hidden"
         >
           <div className="w-full max-w-5xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl p-8 flex flex-col items-center">
             <p className="text-white text-lg mb-2 text-center w-full">
@@ -571,12 +571,61 @@ export default function EventPage() {
             </p>
             <button
               onClick={() => router.push("/test/main-test")}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-lg rounded-xl font-semibold shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all border border-blue-400"
+              className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-lg rounded-xl font-semibold shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all border border-blue-400"
             >
               Start Test
             </button>
           </div>
-        </motion.div>
+        </motion.div> */}
+
+        {/* Leaderboard Section */}
+        {/* <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="mt-12 mb-8 flex justify-center mx-auto"
+        >
+          <div className="w-full max-w-5xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl p-8 flex flex-col items-center">
+            <div className="flex items-center mb-4">
+              <svg 
+                className="w-8 h-8 text-yellow-400 mr-3" 
+                fill="currentColor" 
+                viewBox="0 0 20 20" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  fillRule="evenodd" 
+                  d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zm7-10a1 1 0 01.707.293l.707.707L15.414 4l.707-.707a1 1 0 111.414 1.414L16.828 5.414l.707.707a1 1 0 01-1.414 1.414L15.414 6.828l-.707.707A1 1 0 1113.293 6.12l.707-.707-1.414-1.414-.707.707A1 1 0 0112 2z" 
+                  clipRule="evenodd" 
+                />
+              </svg>
+              <h2 className="text-2xl font-bold text-white">Event Leaderboard</h2>
+            </div>
+            <p className="text-gray-300 text-base mb-6 text-center max-w-lg">
+              See where you stand among other participants! View the leaderboard to check top scores and performance metrics.
+            </p>
+            <button
+              onClick={() => router.push("/leaderboard")}
+              className="px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-600 text-white text-md rounded-xl font-semibold shadow-lg hover:from-amber-600 hover:to-yellow-700 transition-all border border-amber-400/30 flex items-center"
+            >
+              <svg 
+                className="w-5 h-5 mr-2" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth="2" 
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                />
+              </svg>
+              View Leaderboard
+            </button>
+          </div>
+        </motion.div> */}
 
         {/* Questions and Answers Section */}
         <motion.div
