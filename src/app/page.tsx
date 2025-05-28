@@ -56,13 +56,13 @@ export default function LandingPage() {
   const upcomingEvents = [
     {
       title: "Summer Hackathon",
-      date: "May, 2025",
+      date: "31 May, 2025",
       type: "Hackathon",
       slots: "Open for registration",
     },
     {
       title: "Aptitude Test ",
-      date: "May 08, 2025",
+      date: "June 14, 2025",
       type: "Test",
       slots: "Available for all",
     },

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { useUserStore } from "@/../stores/user-store";
+import Image from "next/image";
 // import {  } from 'date-fns'
 
 interface IEvent {
@@ -364,7 +365,7 @@ export default function EventPage() {
             </h2>
             <p className="text-gray-300 mb-8">No active event was found</p>
             <button
-              onClick={() => router.push("/dashboard")}
+              onClick={() => router.push("/home")}
               className="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40">
               Return to Dashboard
             </button>
@@ -404,11 +405,14 @@ export default function EventPage() {
             {event.imageUrl ? (
               <div className="h-80 w-full relative">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/30 z-10"></div>
-                <img
-                  src={event.imageUrl}
+                {/* <img
+                  src='/WhatsApp Image 2025-05-17 at 19.25.35_d823976a.jpg'
                   alt={event.title}
-                  className="w-full h-full object-cover"
-                />
+                  className="w-full h-[80%] sm:h-full object-cover"
+                /> */}
+                <Image src='/WhatsApp Image 2025-05-17 at 19.25.35_d823976a.jpg' alt={event.title} fill={true }   className="w-full h-full object-cover" />
+
+               
                 <div className="absolute bottom-0 left-0 p-8 z-20 w-full">
                   <div className="flex items-center justify-between flex-wrap gap-4">
                     <h1 className="text-3xl md:text-5xl font-bold text-white">
@@ -561,7 +565,7 @@ export default function EventPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15 }}
           className="mt-12 mb-8 sm:flex justify-center mx-auto hidden"
-        >
+          >
           <div className="w-full max-w-5xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl p-8 flex flex-col items-center">
             <p className="text-white text-lg mb-2 text-center w-full">
               To start the main test, click on the button below.
@@ -575,6 +579,55 @@ export default function EventPage() {
             >
               Start Test
             </button>
+          </div>
+        </motion.div> */}
+
+        {/* Registration Section */}
+        {/* <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="mt-12 mb-8 flex justify-center mx-auto">
+          <div className="w-full max-w-5xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl p-8 flex flex-col items-center">
+            <div className="flex items-center mb-4">
+              <svg
+                className="w-8 h-8 text-purple-400 mr-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                </path>
+              </svg>
+              <h2 className="text-2xl font-bold text-white">Hackathon Registration</h2>
+            </div>
+            <p className="text-gray-300 text-base mb-6 text-center max-w-lg">
+              Don&apos;t miss your chance to participate in this exciting event! Register now to secure your spot and showcase your skills.
+            </p>
+            <a
+              href="https://forms.gle/q7qkqtVUP2qvL9ueA" // Replace with your actual Google Form URL
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-md rounded-xl font-semibold shadow-lg hover:from-purple-700 hover:to-indigo-700 transition-all border border-purple-400/30 flex items-center">
+              <svg
+                className="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                </path>
+              </svg>
+              Fill Registration Form
+            </a>
           </div>
         </motion.div> */}
 
@@ -599,7 +652,7 @@ export default function EventPage() {
                   clipRule="evenodd" 
                 />
               </svg>
-              <h2 className="text-2xl font-bold text-white">Event Leaderboard</h2>
+              <h2 className="text-2xl font-bold text-white">Aptitude Test Leaderboard</h2>
             </div>
             <p className="text-gray-300 text-base mb-6 text-center max-w-lg">
               See where you stand among other participants! View the leaderboard to check top scores and performance metrics.

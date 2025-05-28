@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     siteName: "Learnext",
     images: [
       {
-        url: "https://www.learnext.live/og-image.jpg",
+        url: "https://www.learnext.live/Learn.jpg",
         width: 1200,
         height: 630,
         alt: "Learnext - Learn, Test, Improve",

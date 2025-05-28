@@ -44,8 +44,8 @@ const topics = [
     color: 'from-green-500 to-emerald-500'
   },
   {
-    id: 'arithmaticReasoning',
-    title: 'Arithmatic Reasoning',
+    id: 'arithmeticReasoning',
+    title: 'Arithmetic Reasoning',
     description: 'Practice arithmetic reasoning questions',
     count: arithmaicReasoning.length,
     color: 'from-teal-500 to-emerald-500'
