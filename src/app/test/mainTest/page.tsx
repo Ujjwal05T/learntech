@@ -10,7 +10,9 @@ import {
   series, 
   analogy, 
   codingDecoding,
-  arithmaicReasoning
+  arithmaicReasoning,
+  math,
+  misc
 } from '@/data/questionsData'
 
 export default function MainTestPage() {
@@ -25,7 +27,9 @@ export default function MainTestPage() {
       ...series, 
       ...analogy,
       ...codingDecoding,
-      ...arithmaicReasoning
+      ...arithmaicReasoning,
+      ...math,
+      ...misc
     ].sort(() => Math.random() - 0.5).slice(0, TOTAL_QUESTIONS)
     return allQuestions
   })

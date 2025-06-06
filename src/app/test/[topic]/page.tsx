@@ -10,7 +10,9 @@ import {
   series, 
   analogy, 
   codingDecoding,
-  arithmaicReasoning
+  arithmaicReasoning,
+  math,
+  misc
 } from '@/data/questionsData'
 
 const questionsByType = {
@@ -19,7 +21,9 @@ const questionsByType = {
   logical: analogy,
   verbal: codingDecoding,
   arithmaicReasoning: arithmaicReasoning,
-  random: [...alphabetSeries, ...series, ...analogy, ...codingDecoding, ...arithmaicReasoning]
+  math: math,
+  misc:misc,
+  random: [...alphabetSeries, ...series, ...analogy, ...codingDecoding, ...arithmaicReasoning, ...math, ...misc],
 }
 
 export default function TestPage() {

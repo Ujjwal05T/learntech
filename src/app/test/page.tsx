@@ -11,7 +11,9 @@ import {
   series, 
   analogy, 
   codingDecoding,
-  arithmaicReasoning
+  arithmaicReasoning,
+  math,
+  misc
 } from '@/data/questionsData'
 
 const topics = [
@@ -41,20 +43,27 @@ const topics = [
     title: 'Verbal Ability',
     description: 'Practice verbal ability questions',
     count: codingDecoding.length,
-    color: 'from-green-500 to-emerald-500'
+    color: 'from-pink-500 to-orange-500'
   },
   {
     id: 'arithmaicReasoning',
     title: 'Arithmaic Reasoning',
     description: 'Practice Arithmaic Reasoning questions',
     count: arithmaicReasoning.length,
+    color: 'from-yellow-500 to-orange-500'
+  }, 
+  {
+    id: 'math',
+    title: 'Maths',
+    description: 'Practice Maths questions',
+    count: math.length, 
     color: 'from-green-500 to-emerald-500'
   },
   {
     id: 'random',
     title: 'Random Mix',
     description: 'Practice questions from all categories',
-    count: alphabetSeries.length + series.length + analogy.length + codingDecoding.length + arithmaicReasoning.length,
+    count: alphabetSeries.length + series.length + analogy.length + codingDecoding.length + arithmaicReasoning.length + math.length + misc.length,
     color: 'from-indigo-500 to-purple-500'
   },
   {
