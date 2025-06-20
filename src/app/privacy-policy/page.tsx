@@ -280,7 +280,7 @@ export default function PrivacyPage() {
                <div className="space-y-3">
                  <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-blue-400" />
-                  <a href="mailto:info@learntech.com" className="text-blue-400 hover:text-blue-300 hover:underline font-medium">
+                  <a href="mailto:info@learnext.live" className="text-blue-400 hover:text-blue-300 hover:underline font-medium">
                     info@learnext.live
                   </a>
                  </div>
@@ -295,7 +295,7 @@ export default function PrivacyPage() {
             
             {/* Footer */}
             <div className="text-center text-sm text-gray-500 pb-8">
-              <p>© 2025 LearnTech. All rights reserved.</p>
+              <p>© 2025 Learnext. All rights reserved.</p>
               <p className="mt-2">
                 By using our platform, you acknowledge that you have read and understood this Privacy Policy.
               </p>

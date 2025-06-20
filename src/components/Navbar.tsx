@@ -85,7 +85,7 @@ function Navbar() {
                             <div className="h-8 w-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-md flex items-center justify-center">
                                 <span className="text-white font-bold text-lg">L</span>
                             </div>
-                            <span className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 hidden sm:inline-block">LearnTech</span>
+                            <span className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 hidden sm:inline-block">Learnext</span>
                         </Link>
                         
                         {/* Loading placeholder */}
@@ -107,13 +107,13 @@ function Navbar() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
                     <div className="flex justify-between items-center h-full">
                         {/* Logo */}
-                        <Link href="/" className="flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md" aria-label="LearnTech Home">
+                        <Link href="/" className="flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md" aria-label="Learnext Home">
                             <div className="relative h-8 w-8">
                                 <div className="h-8 w-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-md flex items-center justify-center">
                                     <span className="text-white font-bold text-lg">L</span>
                                 </div>
                             </div>
-                            <span className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 hidden sm:inline-block">LearnTech</span>
+                            <span className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 hidden sm:inline-block">Learnext</span>
                         </Link>
 
                         {/* Desktop Navigation - Always show all options */}
