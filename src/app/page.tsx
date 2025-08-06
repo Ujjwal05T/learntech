@@ -15,28 +15,72 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useRouter } from "next/navigation";
 
 const LandingPage = () => {
-  const [currentView, setCurrentView] = useState<string | null>(null); // Start with null instead of "student"
-
+  const [currentView, setCurrentView] = useState<string | null>(null);
+  
   const toggleView = (view: string) => {
     setCurrentView(view);
+    
+    // Add smooth scroll with enhanced timing
+    setTimeout(() => {
+      const scrollTarget = window.innerHeight * 0.85;
+      const startPosition = window.pageYOffset;
+      const distance = scrollTarget - startPosition;
+      const duration = 800; // 800ms for smooth animation
+      let startTime: number | null = null;
+
+      function animation(currentTime: number) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = ease(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      }
+
+      // Easing function for smooth animation
+      function ease(t: number, b: number, c: number, d: number) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+      }
+
+      requestAnimationFrame(animation);
+    }, 400);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* View Switcher - Always show */}
-      <ViewSwitcher currentView={currentView} onToggle={toggleView}  />
+      <ViewSwitcher currentView={currentView} onToggle={toggleView} />
 
       {/* Conditional Content - Only render when a view is selected */}
-      {currentView === "student" && <StudentView />}
-      {currentView === "company" && <CompanyView />}
+      {currentView === "student" && (
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+        >
+          <StudentView />
+        </motion.div>
+      )}
+      {currentView === "company" && (
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+        >
+          <CompanyView />
+        </motion.div>
+      )}
     </div>
   );
 };
 
 // View Switcher Component - Updated to handle null state
-const ViewSwitcher = ({ currentView, onToggle }: { currentView: string | null; onToggle: (view: string) => void}) => {
+const ViewSwitcher = ({ currentView, onToggle }: { currentView: string | null; onToggle: (view: string) => void }) => {
   return (
     <div className="relative min-h-[100vh] w-full bg-gradient-to-br from-indigo-900 via-gray-900 to-slate-900 flex flex-col items-center justify-center overflow-hidden">      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -87,8 +131,9 @@ const ViewSwitcher = ({ currentView, onToggle }: { currentView: string | null; o
           <Building2 size={20} className={`transition-colors ${currentView === "company" ? "text-white" : "text-indigo-400 group-hover:text-white"}`} />
           <span className="text-base sm:text-lg font-semibold">For Organizations</span>
         </button>
-      </motion.div>      {/* Scroll indicator - Only show when no view is selected */}
-      { (
+      </motion.div>  
+
+      {currentView && (
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -98,7 +143,7 @@ const ViewSwitcher = ({ currentView, onToggle }: { currentView: string | null; o
           <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-1 sm:p-2">
             <motion.div 
               animate={{ 
-                y: [0, 8, 0],
+                y: [0, 12, 0],
               }}
               transition={{
                 duration: 1.5,
@@ -509,7 +554,7 @@ const CompanyView = () => {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
-
+const router = useRouter();
   // Handle form input changes
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -632,12 +677,40 @@ const CompanyView = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16 px-4">
             <button 
-              onClick={() => document.getElementById('contact-section')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() =>  router.push('/company/register')}
               className="w-full sm:w-auto bg-indigo-600 text-white px-6 sm:px-8 py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-indigo-700 transition-colors">
               Partner With Us
             </button>
             <button
-            onClick={() => document.getElementById('success-section')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              const targetElement = document.getElementById('events-gallery-title');
+              if (targetElement) {
+                // Get the absolute position of the element
+                const rect = targetElement.getBoundingClientRect();
+                const absoluteTop = rect.top + window.pageYOffset;
+                const targetPosition = absoluteTop - 80; // 80px offset from top
+                const startPosition = window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                const duration = 1000; // 1.5 seconds for smooth animation
+                let startTime: number | null = null;
+
+                function animation(currentTime: number) {
+                  if (startTime === null) startTime = currentTime;
+                  const timeElapsed = currentTime - startTime;
+                  const run = ease(timeElapsed, startPosition, distance, duration);
+                  window.scrollTo(0, run);
+                  if (timeElapsed < duration) requestAnimationFrame(animation);
+                }
+
+                // Enhanced easing function for smoother animation
+                function ease(t: number, b: number, c: number, d: number) {
+                  t /= d;
+                  return -c * t * (t - 2) + b;
+                }
+
+                requestAnimationFrame(animation);
+              }
+            }}
             className="w-full sm:w-auto border-2 border-indigo-400 text-indigo-400 px-6 sm:px-8 py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-indigo-400 hover:text-white transition-colors">
               View Success Stories
             </button>
@@ -647,53 +720,57 @@ const CompanyView = () => {
           <div className="w-full max-w-5xl bg-gray-800 border border-gray-700 rounded-2xl shadow-2xl p-6 sm:p-8 md:p-12 mb-12 sm:mb-16 md:mb-20 mx-auto">
             <div className="grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
               <div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-3 justify-center md:justify-start">
-                  <Target className="w-6 h-6 sm:w-7 sm:h-7 text-red-400 animate-pulse" />
-                  The Challenge
-                </h2>
-                <ul className="space-y-3 sm:space-y-5">
-                  {/*
-                    Traditional hiring may take months and costs $$$
-                    Resumes don't show real coding abilities
-                    Hard to find passionate, motivated developers
-                  */}
-                  {["Traditional hiring may take months and costs $$$", "Resumes don't show real coding abilities", "Hard to find passionate, motivated developers"].map((text, idx) => (
-                    <motion.li
-                      key={idx}                      whileHover={{ scale: 1.06, backgroundColor: '#ef4444', color: '#fff', x: 8 }}
-                      transition={{ type: 'spring', stiffness: 300 }}
-                      className="flex items-center gap-3 px-4 sm:px-5 py-3 sm:py-4 rounded-xl bg-gray-700/60 text-gray-200 shadow-md cursor-pointer hover:shadow-lg hover:text-white transition-all group"
-                    >
-                      <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-400 rounded-full group-hover:scale-125 transition-transform"></div>
-                      <span className="text-sm sm:text-base font-medium">{text}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>              <div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-3 justify-center md:justify-start">
-                  <Zap className="w-6 h-6 sm:w-7 sm:h-7 text-green-400 animate-pulse" />
-                  Our Solution
-                </h2>
-                <ul className="space-y-3 sm:space-y-5">
-                  {/*
-                    See developers build real projects in real time hackathons
-                    Access to pre-vetted, passionate talent
-                    Faster hiring with portfolio-backed candidates
-                  */}
-                  {["See developers build real projects in real time hackathons", "Access to pre-vetted, passionate talent", "Faster hiring with portfolio-backed candidates"].map((text, idx) => (
-                    <motion.li
-                      key={idx}                      whileHover={{ scale: 1.06, backgroundColor: '#22c55e', color: '#fff', x: 8 }}
-                      transition={{ type: 'spring', stiffness: 300 }}
-                      className="flex items-center gap-3 px-4 sm:px-5 py-3 sm:py-4 rounded-xl bg-gray-700/60 text-gray-200 shadow-md cursor-pointer hover:shadow-lg hover:text-white transition-all group"
-                    >
-                      <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full group-hover:scale-125 transition-transform"></div>
-                      <span className="text-sm sm:text-base font-medium">{text}</span>
-                    </motion.li>
-                  ))}
-                </ul>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-3 justify-center md:justify-start">
+            <Target className="w-6 h-6 sm:w-7 sm:h-7 text-red-400" />
+            The Challenge
+          </h2>
+          <ul className="space-y-3 sm:space-y-4">
+            {["Traditional hiring may take months and costs $$$", "Resumes don't show real coding abilities", "Hard to find passionate, motivated developers"].map((text, idx) => (
+              <motion.li
+                key={idx}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                whileHover={{ 
+            x: 8,
+            transition: { type: 'spring', stiffness: 400, damping: 30 }
+                }}
+                className="flex items-center gap-3 px-4 sm:px-5 py-3 sm:py-4 rounded-lg bg-gray-700/40 text-gray-200 shadow-sm cursor-pointer hover:bg-red-500/10 hover:border-red-400/30 border border-transparent transition-all duration-300 group"
+              >
+                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-red-400 rounded-full group-hover:bg-red-300 transition-colors"></div>
+                <span className="text-sm sm:text-base font-medium group-hover:text-red-100 transition-colors">{text}</span>
+              </motion.li>
+            ))}
+          </ul>
+              </div>
+
+              <div>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-3 justify-center md:justify-start">
+            <Zap className="w-6 h-6 sm:w-7 sm:h-7 text-green-400" />
+            Our Solution
+          </h2>
+          <ul className="space-y-3 sm:space-y-4">
+            {["See developers build real projects in hackathons", "Access to pre-vetted, passionate talent", "Faster hiring with portfolio-backed candidates"].map((text, idx) => (
+              <motion.li
+                key={idx}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: idx * 0.1 + 0.3 }}
+                whileHover={{ 
+            x: 8,
+            transition: { type: 'spring', stiffness: 400, damping: 30 }
+                }}
+                className="flex items-center gap-3 px-4 sm:px-5 py-3 sm:py-4 rounded-lg bg-gray-700/40 text-gray-200 shadow-sm cursor-pointer hover:bg-green-500/10 hover:border-green-400/30 border border-transparent transition-all duration-300 group"
+              >
+                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-400 rounded-full group-hover:bg-green-300 transition-colors"></div>
+                <span className="text-sm sm:text-base font-medium group-hover:text-green-100 transition-colors">{text}</span>
+              </motion.li>
+            ))}
+          </ul>
               </div>
             </div>
           </div>
-        </section>        {/* Features Grid */}
+        </section>{/* Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
           <div className="bg-gray-800 border border-gray-700 rounded-lg p-4 sm:p-6 shadow-2xl text-center hover:bg-gray-750 transition-colors">
             <Users className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-indigo-400 mx-auto mb-3 sm:mb-4" />
@@ -731,7 +808,7 @@ const CompanyView = () => {
           </div>
         </div>        {/* Hackathon Showcase */}
         <div id='success-section' className="bg-gray-800 border border-gray-700 rounded-xl shadow-2xl p-4 sm:p-6 md:p-8 mb-12 sm:mb-16 mt-8 sm:mt-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 text-center">
+          <h2 id="events-gallery-title" className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 text-center">
             Events Gallery
           </h2>
           <p className="text-sm sm:text-base text-gray-300 text-center mb-6 sm:mb-8 px-4">

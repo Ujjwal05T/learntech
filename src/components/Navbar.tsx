@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
@@ -108,12 +109,12 @@ function Navbar() {
                     <div className="flex justify-between items-center h-full">
                         {/* Logo */}
                         <Link href="/" className="flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md" aria-label="Learnext Home">
-                            <div className="relative h-8 w-8">
-                                <div className="h-8 w-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-md flex items-center justify-center">
-                                    <span className="text-white font-bold text-lg">L</span>
-                                </div>
-                            </div>
-                            <span className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 hidden sm:inline-block">Learnext</span>
+                            <Image
+                                src="/logo.png"
+                                alt="Learnext Logo"
+                                width={125}
+                                height={32}
+                            />
                         </Link>
 
                         {/* Desktop Navigation - Always show all options */}
