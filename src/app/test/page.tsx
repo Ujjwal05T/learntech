@@ -11,7 +11,7 @@ import {
   series, 
   analogy, 
   codingDecoding,
-  arithmaicReasoning
+  arithmaticReasoning
 } from '@/data/questionsData'
 
 const topics = [
@@ -44,17 +44,17 @@ const topics = [
     color: 'from-green-500 to-emerald-500'
   },
   {
-    id: 'arithmeticReasoning',
+    id: 'arithmetic',
     title: 'Arithmetic Reasoning',
     description: 'Practice arithmetic reasoning questions',
-    count: arithmaicReasoning.length,
+    count: arithmaticReasoning.length,
     color: 'from-teal-500 to-emerald-500'
   },
   {
     id: 'random',
     title: 'Random Mix',
     description: 'Practice questions from all categories',
-    count: alphabetSeries.length + series.length + analogy.length + codingDecoding.length + arithmaicReasoning.length,
+    count: alphabetSeries.length + series.length + analogy.length + codingDecoding.length + arithmaticReasoning.length,
     color: 'from-indigo-500 to-purple-500'
   },
   // Main test commented out for now

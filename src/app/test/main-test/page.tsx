@@ -9,7 +9,7 @@ import {
   series, 
   analogy, 
   codingDecoding,
-  arithmaicReasoning
+  arithmaticReasoning
 } from '@/data/questionsData'
 import axios from 'axios'
 
@@ -25,7 +25,7 @@ export default function MainTestPage() {
       ...series, 
       ...analogy,
       ...codingDecoding,
-      ...arithmaicReasoning
+      ...arithmaticReasoning
     ].sort(() => Math.random() - 0.5).slice(0, TOTAL_QUESTIONS)
     return allQuestions
   })

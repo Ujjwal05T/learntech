@@ -114,7 +114,7 @@ export const codingDecoding = [
   { question: " If the letters in PRABA are coded as 27595 and THILAK as 368451, how can BHARATHI be coded?", options: ["96575368", "57686535", "96855368", "37536689"], correctAnswer: 0, type: "coding-decoding" },
   { question: " If JAILAPPAS is coded as AIJAPLASP, ECONOMICS will be coded as:", options: ["COEMONCSI", "COEOMNCSI", "OECMONSCI", "OECOMNCIS"], correctAnswer: 1, type: "coding-decoding" }
 ];
-export const arithmaicReasoning = [
+export const arithmaticReasoning = [
   { question: " Rajesh walks 7 km to the north then turns left and walks 3 km. Then takes another left and continue walking this time another 7 km forward. How much distance in km is he away from the starting point?", options: ["10km", "6km", "3km", "2km"], correctAnswer: 2, type: "arithmetic" },
   { question: " Balwant had 17 sheep. A storm in the village killed all but 7 sheep. How many was he left with?", options: ["10", "6", "7", "9"], correctAnswer: 3, type: "arithmetic" },
   { question: " What is the smallest number of ducks that can swim in this formation- two ducks in front of a duck two ducks behind a duck and a duck between two ducks?", options: ["3", "5", "7", "9"], correctAnswer: 1, type: "logical" },

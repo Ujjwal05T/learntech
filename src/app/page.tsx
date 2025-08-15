@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -208,12 +209,12 @@ const StudentView = () => {
     },
   ];
 
-  const upcomingEvents = [
+  const pastEvents = [
     {
       title: "Summer Hackathon",
       date: "31 May, 2025",
       type: "Hackathon",
-      slots: "Open for registration",
+      slots: "Results announced",
     },
     {
       title: "Aptitude Test ",
@@ -329,14 +330,14 @@ const StudentView = () => {
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4">
                 <Link href="/roadmaps">
-                  <Button className="w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 text-sm sm:text-base">
+                  <Button className="magnetic w-full sm:w-auto px-4 sm:px-6 lg:px-5 py-2 sm:py-3 lg:py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 text-sm sm:text-base lg:text-sm">
                     Explore Roadmaps
                   </Button>
                 </Link>
                 <Link href="/register">
                   <Button
                     variant="outline"
-                    className="w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-6 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-xl hover:bg-white/20 text-sm sm:text-base">
+                    className="magnetic w-full sm:w-auto px-4 sm:px-6 lg:px-5 py-2 sm:py-3 lg:py-2.5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-xl hover:bg-white/20 text-sm sm:text-base lg:text-sm">
                     Join the Community
                   </Button>
                 </Link>
@@ -361,16 +362,16 @@ const StudentView = () => {
                   </span>
                 </motion.div>
               ))}
-            </motion.section>            {/* Upcoming Events with more details */}
+            </motion.section>            {/* Past Events with more details */}
             <motion.section
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               className="space-y-8 sm:space-y-12 mb-8 sm:mb-14">
               <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text text-center px-4">
-                Upcoming Events & Opportunities
+                Past Events & Opportunities
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                {upcomingEvents.map((event) => (
+                {pastEvents.map((event) => (
                   <div
                     key={event.title}
                     className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-white/10 shadow-xl">
@@ -388,6 +389,69 @@ const StudentView = () => {
                 ))}
               </div>
             </motion.section>
+
+            {/* Past Events Gallery */}
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-8 sm:space-y-12 mb-8 sm:mb-14">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text text-center px-4">
+                Past Events 
+              </h2>
+              
+
+              {/* Photo Gallery Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-12 sm:mb-16">
+                <div className="aspect-square rounded-lg overflow-hidden border border-gray-600 hover:scale-105 transition-transform cursor-pointer relative group">
+                  <Image 
+                    src="/hackathon/hackathon1.jpg" 
+                    alt="Team collaboration during hackathon" 
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-end justify-start p-2 sm:p-3">
+                    <span className="text-white text-xs sm:text-sm font-medium">Hackathons</span>
+                  </div>
+                </div>
+                
+                <div className="aspect-square rounded-lg overflow-hidden border border-gray-600 hover:scale-105 transition-transform cursor-pointer relative group">
+                  <Image 
+                    src="/hackathon/hackathon2.jpg" 
+                    alt="Developers coding together" 
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-end justify-start p-2 sm:p-3">
+                    <span className="text-white text-xs sm:text-sm font-medium">Competition</span>
+                  </div>
+                </div>
+                
+                <div className="aspect-square rounded-lg overflow-hidden border border-gray-600 hover:scale-105 transition-transform cursor-pointer relative group">
+                  <Image 
+                    src="/hackathon/hackathon3.jpg" 
+                    alt="Winners celebrating with trophy" 
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-end justify-start p-2 sm:p-3">
+                    <span className="text-white text-xs sm:text-sm font-medium">Coding Session</span>
+                  </div>
+                </div>
+                
+                <div className="aspect-square rounded-lg overflow-hidden border border-gray-600 hover:scale-105 transition-transform cursor-pointer relative group">
+                  <Image 
+                    src="/hackathon/hackathon4.jpg" 
+                    alt="Networking session between participants" 
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-end justify-start p-2 sm:p-3">
+                    <span className="text-white text-xs sm:text-sm font-medium">Networking</span>
+                  </div>
+                </div>
+              </div>
+            </motion.section>
+
           </div>
         )}
 
@@ -545,6 +609,7 @@ const StudentView = () => {
 };
 
 const CompanyView = () => {
+  const [mounted, setMounted] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -554,7 +619,28 @@ const CompanyView = () => {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
-const router = useRouter();
+  const router = useRouter();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
+
   // Handle form input changes
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -615,354 +701,299 @@ const router = useRouter();
         setSubmitStatus("idle");
       }, 3000);
     }
-  };  return (
+  };
+
+  return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="min-h-screen bg-gradient-to-br from-gray-900 to-slate-800 relative overflow-x-hidden"
+      className="min-h-screen bg-[#0a0a20] relative overflow-hidden"
     >
-      {/* Floating Animated Programming Puns in Background */}
-      <div className="pointer-events-none absolute inset-0 z-0 select-none">
-        <motion.span
-          className="absolute top-10 left-10 text-5xl font-mono font-bold text-indigo-300 opacity-30 blur-sm"
-          initial={{ y: 0 }}
-          animate={{ y: [0, 30, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          {'</>'}
-        </motion.span>
-        <motion.span
-          className="absolute bottom-20 right-20 text-3xl font-mono font-semibold text-purple-300 opacity-20"
-          initial={{ y: 0 }}
-          animate={{ y: [0, -40, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          {`Hello_World('print')`}
-        </motion.span>
-        <motion.span
-          className="absolute top-1/ left-1/3 text-4xl font-mono font-bold text-pink-300 opacity-20 blur-sm"
-          initial={{ x: 0 }}
-          animate={{ x: [0, 40, 0] }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          {'missing ;'}
-        </motion.span>
-        <motion.span
-          className="absolute bottom-1/3 left-2/5 text-3xl font-mono font-semibold text-blue-300 opacity-20"
-          initial={{ y: 0 }}
-          animate={{ y: [25, 45, 0] }}
-          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          {'{debug: true}'}
-        </motion.span>
-        <motion.span
-          className="absolute top-1/4 right-1/4 text-4xl font-mono font-bold text-green-300 opacity-20 blur-sm"
-          initial={{ x: 0 }}
-          animate={{ x: [0, -30, 0] }}
-          transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          {'// TODO: Coffee'}
-        </motion.span>
-      </div>      <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8 relative z-10">
-        {/* Hero Section */}
-        <div className="text-center py-12 sm:py-16 md:py-20">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-            Find Tomorrow&apos;s <span className="text-indigo-400">Tech Talent</span>
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
-            Partner with Learnext to discover passionate developers through
-            hackathons. Connect with pre-vetted talent who&apos;ve proven their
-            skills in real projects.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16 px-4">
-            <button 
-              onClick={() =>  router.push('/company/register')}
-              className="w-full sm:w-auto bg-indigo-600 text-white px-6 sm:px-8 py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-indigo-700 transition-colors">
-              Partner With Us
-            </button>
-            <button
-            onClick={() => {
-              const targetElement = document.getElementById('events-gallery-title');
-              if (targetElement) {
-                // Get the absolute position of the element
-                const rect = targetElement.getBoundingClientRect();
-                const absoluteTop = rect.top + window.pageYOffset;
-                const targetPosition = absoluteTop - 80; // 80px offset from top
-                const startPosition = window.pageYOffset;
-                const distance = targetPosition - startPosition;
-                const duration = 1000; // 1.5 seconds for smooth animation
-                let startTime: number | null = null;
+      {/* Decorative Background */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full bg-blue-600/20 blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 rounded-full bg-purple-600/20 blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/4 w-24 h-24 sm:w-36 sm:h-36 md:w-48 md:h-48 rounded-full bg-pink-600/20 blur-3xl animate-pulse"></div>
+      </div>      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24 relative z-10 max-w-6xl">
+        {mounted && (
+          <div className="space-y-16 sm:space-y-24 md:space-y-32">
+            {/* Hero Section */}
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center space-y-6 sm:space-y-8 py-8 sm:py-12">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text leading-tight">
+                Find Tomorrow&apos;s Tech Talent
+              </h1>
+              <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto px-4">
+                Partner with Learnext to discover passionate developers through
+                hackathons. Connect with pre-vetted talent who&apos;ve proven their
+                skills in real projects.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4">
+                <button 
+                  onClick={() =>  router.push('/company/register')}
+                  className="magnetic w-full sm:w-auto px-4 sm:px-6 lg:px-5 py-2 sm:py-3 lg:py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/40 text-sm sm:text-base lg:text-sm">
+                  Partner With Us
+                </button>
+                <button
+                  onClick={() => {
+                    const targetElement = document.getElementById('success-section');
+                    if (targetElement) {
+                      const rect = targetElement.getBoundingClientRect();
+                      const absoluteTop = rect.top + window.pageYOffset;
+                      const targetPosition = absoluteTop - 80;
+                      const startPosition = window.pageYOffset;
+                      const distance = targetPosition - startPosition;
+                      const duration = 1000;
+                      let startTime: number | null = null;
 
-                function animation(currentTime: number) {
-                  if (startTime === null) startTime = currentTime;
-                  const timeElapsed = currentTime - startTime;
-                  const run = ease(timeElapsed, startPosition, distance, duration);
-                  window.scrollTo(0, run);
-                  if (timeElapsed < duration) requestAnimationFrame(animation);
-                }
+                      function animation(currentTime: number) {
+                        if (startTime === null) startTime = currentTime;
+                        const timeElapsed = currentTime - startTime;
+                        const run = ease(timeElapsed, startPosition, distance, duration);
+                        window.scrollTo(0, run);
+                        if (timeElapsed < duration) requestAnimationFrame(animation);
+                      }
 
-                // Enhanced easing function for smoother animation
-                function ease(t: number, b: number, c: number, d: number) {
-                  t /= d;
-                  return -c * t * (t - 2) + b;
-                }
+                      function ease(t: number, b: number, c: number, d: number) {
+                        t /= d;
+                        return -c * t * (t - 2) + b;
+                      }
 
-                requestAnimationFrame(animation);
-              }
-            }}
-            className="w-full sm:w-auto border-2 border-indigo-400 text-indigo-400 px-6 sm:px-8 py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-indigo-400 hover:text-white transition-colors">
-              View Success Stories
-            </button>
-          </div>
-        </div>        {/* Pain Points & Solution */}
-        <section className="flex items-center justify-center py-8 sm:py-12 md:py-16">
-          <div className="w-full max-w-5xl bg-gray-800 border border-gray-700 rounded-2xl shadow-2xl p-6 sm:p-8 md:p-12 mb-12 sm:mb-16 md:mb-20 mx-auto">
-            <div className="grid md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
-              <div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-3 justify-center md:justify-start">
-            <Target className="w-6 h-6 sm:w-7 sm:h-7 text-red-400" />
-            The Challenge
-          </h2>
-          <ul className="space-y-3 sm:space-y-4">
-            {["Traditional hiring may take months and costs $$$", "Resumes don't show real coding abilities", "Hard to find passionate, motivated developers"].map((text, idx) => (
-              <motion.li
-                key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                whileHover={{ 
-            x: 8,
-            transition: { type: 'spring', stiffness: 400, damping: 30 }
-                }}
-                className="flex items-center gap-3 px-4 sm:px-5 py-3 sm:py-4 rounded-lg bg-gray-700/40 text-gray-200 shadow-sm cursor-pointer hover:bg-red-500/10 hover:border-red-400/30 border border-transparent transition-all duration-300 group"
-              >
-                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-red-400 rounded-full group-hover:bg-red-300 transition-colors"></div>
-                <span className="text-sm sm:text-base font-medium group-hover:text-red-100 transition-colors">{text}</span>
-              </motion.li>
-            ))}
-          </ul>
+                      requestAnimationFrame(animation);
+                    }
+                  }}
+                  className="magnetic w-full sm:w-auto px-4 sm:px-6 lg:px-5 py-2 sm:py-3 lg:py-2.5 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-lg hover:bg-white/20 text-sm sm:text-base lg:text-sm">
+                  View Success Stories
+                </button>
+              </div>
+            </motion.section>            {/* Value Proposition */}
+            <motion.section
+              variants={container}
+              initial="hidden"
+              animate="show"
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
+              <motion.div variants={item} className="space-y-6">
+                <h2 className="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+                  <Target className="w-6 h-6 sm:w-7 sm:h-7 text-red-400" />
+                  The Challenge
+                </h2>
+                <div className="space-y-4">
+                  {["Traditional hiring may take months and costs $$$", "Resumes don't show real coding abilities", "Hard to find passionate, motivated developers"].map((text, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                      whileHover={{ x: 8, transition: { type: 'spring', stiffness: 400, damping: 30 } }}
+                      className="flex items-center gap-3 px-4 sm:px-5 py-3 sm:py-4 rounded-lg bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md text-gray-200 shadow-sm cursor-pointer hover:bg-red-500/10 hover:border-red-400/30 border border-white/10 transition-all duration-300 group"
+                    >
+                      <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-red-400 rounded-full group-hover:bg-red-300 transition-colors"></div>
+                      <span className="text-sm sm:text-base font-medium group-hover:text-red-100 transition-colors">{text}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div variants={item} className="space-y-6">
+                <h2 className="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+                  <Zap className="w-6 h-6 sm:w-7 sm:h-7 text-green-400" />
+                  Our Solution
+                </h2>
+                <div className="space-y-4">
+                  {["See developers build real projects in hackathons", "Access to pre-vetted, passionate talent", "Faster hiring with portfolio-backed candidates"].map((text, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.1 + 0.3 }}
+                      whileHover={{ x: 8, transition: { type: 'spring', stiffness: 400, damping: 30 } }}
+                      className="flex items-center gap-3 px-4 sm:px-5 py-3 sm:py-4 rounded-lg bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md text-gray-200 shadow-sm cursor-pointer hover:bg-green-500/10 hover:border-green-400/30 border border-white/10 transition-all duration-300 group"
+                    >
+                      <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-400 rounded-full group-hover:bg-green-300 transition-colors"></div>
+                      <span className="text-sm sm:text-base font-medium group-hover:text-green-100 transition-colors">{text}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.section>
+
+            {/* Features Grid */}
+            <motion.section
+              variants={container}
+              initial="hidden"
+              animate="show"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+              {[
+                { icon: Users, title: "Talent Pipeline", desc: "1000+ motivated developers", color: "text-indigo-400" },
+                { icon: Code, title: "Project-Based", desc: "Real projects, not just interviews", color: "text-purple-400" },
+                { icon: Trophy, title: "Sponsorship", desc: "Brand visibility + talent access", color: "text-yellow-400" },
+                { icon: HandshakeIcon, title: "Custom Match", desc: "Specific skills for your needs", color: "text-green-400" }
+              ].map((feature) => (
+                <motion.div
+                  key={feature.title}
+                  variants={item}
+                  className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-white/10 shadow-xl text-center hover:scale-105 transition-all duration-300">
+                  <feature.icon className={`w-10 h-10 sm:w-12 sm:h-12 ${feature.color} mx-auto mb-4`} />
+                  <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm sm:text-base">{feature.desc}</p>
+                </motion.div>
+              ))}
+            </motion.section>
+            {/* Events Gallery */}
+            <div id='success-section' className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-xl p-6 sm:p-8 mb-12 sm:mb-16">
+              <h2 id="events-gallery-title" className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 text-center">
+                Events Gallery
+              </h2>
+              <p className="text-sm sm:text-base text-gray-300 text-center mb-6 sm:mb-8 px-4">
+                Highlights from our past hackathons, workshops, and community events
+              </p>
+
+              {/* Photo Gallery Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-12">
+                {[
+                  { src: "/hackathon/hackathon1.jpg", alt: "Team collaboration during hackathon", label: "Team Building" },
+                  { src: "/hackathon/hackathon2.jpg", alt: "Developers coding together", label: "Competition" },
+                  { src: "/hackathon/hackathon3.jpg", alt: "Winners celebrating with trophy", label: "Coding Session" },
+                  { src: "/hackathon/hackathon4.jpg", alt: "Networking session between participants", label: "Networking" }
+                ].map((image, idx) => (
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="aspect-square rounded-lg overflow-hidden border border-white/20 hover:scale-105 transition-transform cursor-pointer relative group"
+                  >
+                    <Image 
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-end justify-start p-2 sm:p-3">
+                      <span className="text-white text-xs sm:text-sm font-medium">{image.label}</span>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
 
-              <div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-3 justify-center md:justify-start">
-            <Zap className="w-6 h-6 sm:w-7 sm:h-7 text-green-400" />
-            Our Solution
-          </h2>
-          <ul className="space-y-3 sm:space-y-4">
-            {["See developers build real projects in hackathons", "Access to pre-vetted, passionate talent", "Faster hiring with portfolio-backed candidates"].map((text, idx) => (
-              <motion.li
-                key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.1 + 0.3 }}
-                whileHover={{ 
-            x: 8,
-            transition: { type: 'spring', stiffness: 400, damping: 30 }
-                }}
-                className="flex items-center gap-3 px-4 sm:px-5 py-3 sm:py-4 rounded-lg bg-gray-700/40 text-gray-200 shadow-sm cursor-pointer hover:bg-green-500/10 hover:border-green-400/30 border border-transparent transition-all duration-300 group"
-              >
-                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-400 rounded-full group-hover:bg-green-300 transition-colors"></div>
-                <span className="text-sm sm:text-base font-medium group-hover:text-green-100 transition-colors">{text}</span>
-              </motion.li>
-            ))}
-          </ul>
-              </div>
-            </div>
-          </div>
-        </section>{/* Features Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
-          <div className="bg-gray-800 border border-gray-700 rounded-lg p-4 sm:p-6 shadow-2xl text-center hover:bg-gray-750 transition-colors">
-            <Users className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-indigo-400 mx-auto mb-3 sm:mb-4" />
-            <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
-              Talent Pipeline
-            </h3>
-            <p className="text-gray-400 text-xs sm:text-sm">1000+ motivated developers</p>
-          </div>
-          <div className="bg-gray-800 border border-gray-700 rounded-lg p-4 sm:p-6 shadow-2xl text-center hover:bg-gray-750 transition-colors">
-            <Code className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-indigo-400 mx-auto mb-3 sm:mb-4" />
-            <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
-              Project-Based
-            </h3>
-            <p className="text-gray-400 text-xs sm:text-sm">
-              Real projects, not just interviews
-            </p>
-          </div>
-          <div className="bg-gray-800 border border-gray-700 rounded-lg p-4 sm:p-6 shadow-2xl text-center hover:bg-gray-750 transition-colors">
-            <Trophy className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-indigo-400 mx-auto mb-3 sm:mb-4" />
-            <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
-              Sponsorship
-            </h3>
-            <p className="text-gray-400 text-xs sm:text-sm">
-              Brand visibility + talent access
-            </p>
-          </div>
-          <div className="bg-gray-800 border border-gray-700 rounded-lg p-4 sm:p-6 shadow-2xl text-center hover:bg-gray-750 transition-colors">
-            <HandshakeIcon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-indigo-400 mx-auto mb-3 sm:mb-4" />
-            <h3 className="text-base sm:text-lg font-semibold text-white mb-2">
-              Custom Match
-            </h3>
-            <p className="text-gray-400 text-xs sm:text-sm">
-              Specific skills for your needs
-            </p>
-          </div>
-        </div>        {/* Hackathon Showcase */}
-        <div id='success-section' className="bg-gray-800 border border-gray-700 rounded-xl shadow-2xl p-4 sm:p-6 md:p-8 mb-12 sm:mb-16 mt-8 sm:mt-12">
-          <h2 id="events-gallery-title" className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 text-center">
-            Events Gallery
-          </h2>
-          <p className="text-sm sm:text-base text-gray-300 text-center mb-6 sm:mb-8 px-4">
-            Highlights from our past hackathons, workshops, and community events
-          </p>
-
-          {/* Photo Gallery Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-8 sm:mt-12 mb-12 sm:mb-16">
-            {/* Row 1 */}
-            <div className="aspect-square rounded-lg overflow-hidden border border-gray-600 hover:scale-105 transition-transform cursor-pointer relative group">
-              <img 
-                src="/hackathon/hackathon1.jpg" 
-                alt="Team collaboration during hackathon" 
-                className="w-full h-full object-cover"
-              />              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-end justify-start p-2 sm:p-3">
-                <span className="text-white text-xs sm:text-sm font-medium">Team Building</span>
-              </div>
-            </div>
-            
-            <div className="aspect-square rounded-lg overflow-hidden border border-gray-600 hover:scale-105 transition-transform cursor-pointer relative group">
-              <img 
-                src="/hackathon/hackathon2.jpg" 
-                alt="Developers coding together" 
-                className="w-full h-full object-cover"
-              />              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-end justify-start p-2 sm:p-3">
-                <span className="text-white text-xs sm:text-sm font-medium">Competition</span>
-              </div>
-            </div>
-            
-            <div className="aspect-square rounded-lg overflow-hidden border border-gray-600 hover:scale-105 transition-transform cursor-pointer relative group">
-              <img 
-                src="/hackathon/hackathon3.jpg" 
-                alt="Winners celebrating with trophy" 
-                className="w-full h-full object-cover"
-              />              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-end justify-start p-2 sm:p-3">
-                <span className="text-white text-xs sm:text-sm font-medium">Coding Session</span>
-              </div>
-            </div>
-            
-            <div className="aspect-square rounded-lg overflow-hidden border border-gray-600 hover:scale-105 transition-transform cursor-pointer relative group">
-              <img 
-                src="/hackathon/hackathon4.jpg" 
-                alt="Networking session between participants" 
-                className="w-full h-full object-cover"
-              />              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-end justify-start p-2 sm:p-3">
-                <span className="text-white text-xs sm:text-sm font-medium">Networking</span>
+              {/* Event Stats */}
+              <div className="grid grid-cols-3 gap-4 text-center">
+                {[
+                  { number: "5+", label: "Events Hosted", color: "text-indigo-400" },
+                  { number: "100+", label: "Participants", color: "text-purple-400" },
+                  { number: "10+", label: "Projects Built", color: "text-green-400" }
+                ].map((stat, idx) => (
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 + 0.5 }}
+                    className="bg-gradient-to-br from-white/5 to-white/10 rounded-lg p-4 border border-white/10"
+                  >
+                    <div className={`text-xl sm:text-2xl font-bold ${stat.color}`}>{stat.number}</div>
+                    <div className="text-xs sm:text-sm text-gray-300">{stat.label}</div>
+                  </motion.div>
+                ))}
               </div>
             </div>
 
-          </div>          {/* Event Stats */}
-          <div className="mt-6 sm:mt-8 grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 text-center mb-6 sm:mb-8">
-            <div className="bg-gray-700/50 rounded-lg p-3 sm:p-4">
-              <div className="text-xl sm:text-2xl font-bold text-indigo-400">5+</div>
-              <div className="text-xs sm:text-sm text-gray-300">Events Hosted</div>
-            </div>
-            <div className="bg-gray-700/50 rounded-lg p-3 sm:p-4">
-              <div className="text-xl sm:text-2xl font-bold text-purple-400">100+</div>
-              <div className="text-xs sm:text-sm text-gray-300">Participants</div>
-            </div>
-            <div className="bg-gray-700/50 rounded-lg p-3 sm:p-4">
-              <div className="text-xl sm:text-2xl font-bold text-green-400">10+</div>
-              <div className="text-xs sm:text-sm text-gray-300">Projects Built</div>
-            </div>
-          </div>
-        </div>        {/* Contact Form */}
-        <div id="contact-section" className="bg-gray-800 border border-gray-700 rounded-xl shadow-2xl p-4 sm:p-6 md:p-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 text-center">
-            Partner With Us
-          </h2>
-          <p className="text-sm sm:text-base text-gray-300 text-center mb-6 sm:mb-8 px-4">
-            Ready to discover exceptional talent? Let&apos;s discuss your hiring needs.
-          </p>
-          
-          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 max-w-2xl mx-auto">
-            {submitStatus === "success" && (
-              <div className="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-300 text-center">
-          <strong>Thank you!</strong> We&apos;ll get back to you within 24 hours to discuss your partnership.
-              </div>
-            )}
-
-            {submitStatus === "error" && (
-              <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300 text-center">
-          <strong>Oops!</strong> There was a problem sending your message. Please try again or contact us directly.
-              </div>
-            )}            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-              <div className="space-y-2">
-          <label className="text-xs sm:text-sm font-medium text-gray-300">Company Name *</label>
-          <Input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            placeholder="Enter your company name"
-            className="bg-gray-700/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-indigo-500 focus:ring-indigo-500/20 h-10 sm:h-12 text-sm sm:text-base"
-            disabled={isSubmitting}
-            required
-          />
+            {/* Contact Form */}
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-xl p-6 sm:p-8">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+                  Partner With Us
+                </h2>
+                <p className="text-sm sm:text-base text-gray-300 max-w-2xl mx-auto">
+                  Ready to discover exceptional talent? Let&apos;s discuss your hiring needs.
+                </p>
               </div>
               
-              <div className="space-y-2">
-          <label className="text-xs sm:text-sm font-medium text-gray-300">Business Email *</label>
-          <Input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            placeholder="your.name@company.com"
-            className="bg-gray-700/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-indigo-500 focus:ring-indigo-500/20 h-10 sm:h-12 text-sm sm:text-base"
-            disabled={isSubmitting}
-            required
-          />
-              </div>
-            </div>
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 max-w-2xl mx-auto">
+                {submitStatus === "success" && (
+                  <div className="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-300 text-center">
+                    <strong>Thank you!</strong> We&apos;ll get back to you within 24 hours to discuss your partnership.
+                  </div>
+                )}
 
-            <div className="space-y-2">
-              <label className="text-xs sm:text-sm font-medium text-gray-300">Tell us about your hiring needs *</label>
-              <Textarea
-          name="message"
-          value={formData.message}
-          onChange={handleInputChange}
-          placeholder="What roles are you looking to fill? What skills are most important? How many developers do you need?"
-          className="bg-gray-700/50 border-gray-600 text-white placeholder:text-gray-400 focus:border-indigo-500 focus:ring-indigo-500/20 h-24 sm:h-32 resize-none text-sm sm:text-base"
-          disabled={isSubmitting}
-          required
-              />
-            </div>            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
-              <Button
-          type="submit"
-          disabled={isSubmitting}
-          className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg transition-all shadow-lg hover:shadow-xl disabled:opacity-50 text-sm sm:text-base">
-          {isSubmitting ? (
-            <div className="flex items-center justify-center">
-              <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
-              <span className="hidden sm:inline">Sending Request...</span>
-              <span className="sm:hidden">Sending...</span>
-            </div>
-          ) : (
-            <div className="flex items-center justify-center gap-2">
-              <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="hidden sm:inline">Start Partnership Discussion</span>
-              <span className="sm:hidden">Partner With Us</span>
-            </div>
-          )}
-              </Button>
-              
-              <div className="flex items-center justify-center text-gray-400 text-xs sm:text-sm">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-            <span className="hidden sm:inline">Response within 24h</span>
-            <span className="sm:hidden">24h response</span>
-          </div>              </div>
-            </div>
-          </form>
-        </div>
+                {submitStatus === "error" && (
+                  <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300 text-center">
+                    <strong>Oops!</strong> There was a problem sending your message. Please try again.
+                  </div>
+                )}
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="space-y-2">
+                    <label className="text-xs sm:text-sm font-medium text-gray-300">Company Name *</label>
+                    <Input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Enter your company name"
+                      className="bg-white/5 border-white/10 text-white placeholder:text-gray-400 focus:border-indigo-500 focus:ring-indigo-500/20 h-10 sm:h-12 text-sm sm:text-base rounded-xl"
+                      disabled={isSubmitting}
+                      required
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="text-xs sm:text-sm font-medium text-gray-300">Business Email *</label>
+                    <Input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="your.name@company.com"
+                      className="bg-white/5 border-white/10 text-white placeholder:text-gray-400 focus:border-indigo-500 focus:ring-indigo-500/20 h-10 sm:h-12 text-sm sm:text-base rounded-xl"
+                      disabled={isSubmitting}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-xs sm:text-sm font-medium text-gray-300">Tell us about your hiring needs *</label>
+                  <Textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    placeholder="What roles are you looking to fill? What skills are most important? How many developers do you need?"
+                    className="bg-white/5 border-white/10 text-white placeholder:text-gray-400 focus:border-indigo-500 focus:ring-indigo-500/20 h-24 sm:h-32 resize-none text-sm sm:text-base rounded-xl"
+                    disabled={isSubmitting}
+                    required
+                  />
+                </div>
+
+                <div className="flex justify-center pt-4">
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="magnetic bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold py-3 px-8 sm:px-12 rounded-xl transition-all shadow-lg hover:shadow-xl disabled:opacity-50 text-sm sm:text-base flex items-center gap-2">
+                    {isSubmitting ? (
+                      <div className="flex items-center justify-center">
+                        <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                        Sending...
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-center gap-2">
+                        <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+                        Start Partnership Discussion
+                      </div>
+                    )}
+                  </Button>
+                </div>
+              </form>
+            </motion.section>
+          </div>
+        )}
       </div>
     </motion.div>
   );
