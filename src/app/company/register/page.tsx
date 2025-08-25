@@ -1,10 +1,13 @@
 "use client";
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import {  Building2, User, ArrowLeft } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Building2, User, ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import axios from "axios";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { v4 as uuidv4 } from 'uuid';
 
 interface FormData {
   companyName: string;
@@ -22,11 +25,12 @@ export default function CompanyRegistrationPage() {
     position: "",
     contactNumber: "",
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  // Handle form input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -35,11 +39,9 @@ export default function CompanyRegistrationPage() {
     }));
   };
 
-  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Form validation
     if (
       !formData.companyName.trim() ||
       !formData.companyEmail.trim() ||
@@ -48,28 +50,38 @@ export default function CompanyRegistrationPage() {
       !formData.contactNumber.trim()
     ) {
       setSubmitStatus("error");
+      setErrorMessage("All fields are required.");
       return;
     }
 
     setIsSubmitting(true);
     setSubmitStatus("idle");
+    setErrorMessage(null);
+    setSuccessMessage(null);
 
     try {
-      const response = await fetch("https://formspree.io/f/xdkeaawn", {
-        method: "POST",
-        body: JSON.stringify({
-          ...formData,
-          formType: "Company Registration", // To distinguish from contact form
-        }),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/auth/registercompany`,
+        {
+          companyName: formData.companyName,
+          companyEmail: formData.companyEmail,
+          companyId: uuidv4(),
+          contactPerson: {
+            fullName: formData.personName,
+            position: formData.position,
+            contact: formData.contactNumber,
+          },
         },
-      });
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      if (response.ok) {
+      if (response.status === 200 || response.status === 201) {
         setSubmitStatus("success");
-        // Reset form
+        setSuccessMessage("Company registered successfully! We’ll contact you soon.");
         setFormData({
           companyName: "",
           companyEmail: "",
@@ -79,20 +91,29 @@ export default function CompanyRegistrationPage() {
         });
       } else {
         setSubmitStatus("error");
-        console.error("Form submission failed:", await response.text());
+        setErrorMessage("Unexpected response. Please try again.");
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
       setSubmitStatus("error");
+      if (axios.isAxiosError(error)) {
+        const backendMessage = error.response?.data?.message;
+        if (typeof backendMessage === "string") {
+          setErrorMessage(backendMessage);
+        } else {
+          setErrorMessage("Registration failed. Please check your input.");
+        }
+      } else {
+        setErrorMessage("Network or server error. Please try again later.");
+      }
     } finally {
       setIsSubmitting(false);
-      // Reset status after 3 seconds
       setTimeout(() => {
         setSubmitStatus("idle");
-      }, 3000);
+        setErrorMessage(null);
+        setSuccessMessage(null);
+      }, 5000);
     }
   };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-slate-800 relative overflow-hidden">
       {/* Floating Animated Programming Elements */}
@@ -157,26 +178,28 @@ export default function CompanyRegistrationPage() {
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Success Message */}
-              {submitStatus === "success" && (
+              {successMessage && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-300 text-center"
                 >
-                  <strong>Registration Successful!</strong> We&apos;ll contact you within 24 hours to discuss partnership opportunities.
+                  {successMessage}
                 </motion.div>
               )}
 
               {/* Error Message */}
-              {submitStatus === "error" && (
+              {errorMessage && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300 text-center"
                 >
-                  <strong>Registration Failed!</strong> Please check all fields and try again.
+                  {errorMessage}
                 </motion.div>
               )}
+
+
 
               {/* Company Information */}
               <div className="space-y-4">
