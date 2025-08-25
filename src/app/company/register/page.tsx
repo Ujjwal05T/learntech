@@ -27,7 +27,7 @@ export default function CompanyRegistrationPage() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  //const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
@@ -49,13 +49,13 @@ export default function CompanyRegistrationPage() {
       !formData.position.trim() ||
       !formData.contactNumber.trim()
     ) {
-      setSubmitStatus("error");
+      //setSubmitStatus("error");
       setErrorMessage("All fields are required.");
       return;
     }
 
     setIsSubmitting(true);
-    setSubmitStatus("idle");
+    //setSubmitStatus("idle");
     setErrorMessage(null);
     setSuccessMessage(null);
 
@@ -80,7 +80,7 @@ export default function CompanyRegistrationPage() {
       );
 
       if (response.status === 200 || response.status === 201) {
-        setSubmitStatus("success");
+        //setSubmitStatus("success");
         setSuccessMessage("Company registered successfully! We’ll contact you soon.");
         setFormData({
           companyName: "",
@@ -90,11 +90,11 @@ export default function CompanyRegistrationPage() {
           contactNumber: "",
         });
       } else {
-        setSubmitStatus("error");
+       // setSubmitStatus("error");
         setErrorMessage("Unexpected response. Please try again.");
       }
     } catch (error) {
-      setSubmitStatus("error");
+      //setSubmitStatus("error");
       if (axios.isAxiosError(error)) {
         const backendMessage = error.response?.data?.message;
         if (typeof backendMessage === "string") {
@@ -108,7 +108,7 @@ export default function CompanyRegistrationPage() {
     } finally {
       setIsSubmitting(false);
       setTimeout(() => {
-        setSubmitStatus("idle");
+        //setSubmitStatus("idle");
         setErrorMessage(null);
         setSuccessMessage(null);
       }, 5000);
