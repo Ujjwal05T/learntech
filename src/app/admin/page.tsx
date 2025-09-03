@@ -8,7 +8,8 @@ import { useUserStore } from '../../../stores/user-store';
 import { useRouter } from 'next/navigation';
 import axios, { AxiosError } from 'axios';
 import { 
-  Users, 
+  Users,
+   
   Search, 
   Mail, 
   Shield,
@@ -16,7 +17,8 @@ import {
   Trash2,
   RefreshCw,
   AlertTriangle,
-  User as UserIcon
+  User as UserIcon,
+  Building2  as CompanyIcon
 } from 'lucide-react';
 
 interface User {
@@ -29,11 +31,32 @@ interface UserStats {
   totalUsers: number;
 }
 
+interface Company {
+  _id: string;
+  companyName: string;
+  companyEmail: string;
+}
+
+interface CompanyStats {
+  totalCompanies: number;
+}
+
 export default function AdminPage() {
   const [users, setUsers] = useState<User[]>([]);
   const [stats, setStats] = useState<UserStats>({
     totalUsers: 0
   });
+  
+  // ---------- COMPANIES ----------
+  const [companies, setCompanies] = useState<Company[]>([]);
+  const [companyStats, setCompanyStats] = useState<CompanyStats>({
+    totalCompanies: 0,
+  });
+  const [loadingCompanies, setLoadingCompanies] = useState(true);
+  const [searchTermCompanies, setSearchTermCompanies] = useState("");
+  const [currentPageCompanies, setCurrentPageCompanies] = useState(1);
+  const [companiesPerPage] = useState(10);
+  // -------------------------------
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -65,6 +88,7 @@ export default function AdminPage() {
     }
 
     fetchUsers();
+    fetchCompanies();
   }, [mounted, user, router]);
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
@@ -143,6 +167,51 @@ export default function AdminPage() {
     }
   };
 
+  const fetchCompanies = async () => {
+    try {
+      setLoadingCompanies(true);
+      setError("");
+
+      const token = getToken();
+      if (!token) throw new Error("No authentication token found");
+
+      const response = await axios.get(`${API_URL}/admin/companies`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (response.data.success) {
+        const companyData = response.data.data;
+        setCompanies(companyData);
+        setCompanyStats({ totalCompanies: companyData.length });
+      }
+    } catch (err: unknown) {
+      const error = err as AxiosError;
+      setError(error.message || "Failed to fetch companies");
+    } finally {
+      setLoadingCompanies(false);
+    }
+  };
+
+  const deleteCompany = async (companyId: string) => {
+    if (!confirm("Delete this company?")) return;
+    try {
+      const token = getToken();
+      const response = await axios.delete(
+        `${API_URL}/admin/companies/${companyId}`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      if (response.data.success) {
+        setCompanies((prev) => prev.filter((c) => c._id !== companyId));
+        setCompanyStats((prev) => ({
+          totalCompanies: prev.totalCompanies - 1,
+        }));
+      }
+    } catch (err: unknown) {
+      const error = err as AxiosError;
+      setError(error.message || "Failed to delete company");
+    }
+  };
+
   // Filter users based on search term
   const filteredUsers = users.filter(user =>
     user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -154,6 +223,26 @@ export default function AdminPage() {
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
   const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
+
+
+  const filteredCompanies = companies.filter(
+    (c) =>
+      c.companyName
+        .toLowerCase()
+        .includes(searchTermCompanies.toLowerCase()) ||
+      c.companyEmail
+        .toLowerCase()
+        .includes(searchTermCompanies.toLowerCase())
+  );
+  const indexOfLastCompany = currentPageCompanies * companiesPerPage;
+  const indexOfFirstCompany = indexOfLastCompany - companiesPerPage;
+  const currentCompanies = filteredCompanies.slice(
+    indexOfFirstCompany,
+    indexOfLastCompany
+  );
+  const totalPagesCompanies = Math.ceil(
+    filteredCompanies.length / companiesPerPage
+  );
 
   // Show loading during mount
   if (!mounted) {
@@ -197,7 +286,7 @@ export default function AdminPage() {
               <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
                 Admin Dashboard
               </h1>
-              <p className="text-gray-400">Manage users and view system statistics</p>
+              <p className="text-gray-400">Manage users, comapnies and view system statistics</p>
             </div>
           </div>
         </div>
@@ -224,6 +313,17 @@ export default function AdminPage() {
                   <p className="text-3xl font-bold text-white">{stats.totalUsers}</p>
                 </div>
                 <Users className="h-10 w-10 text-blue-400" />
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="bg-gray-900/40 backdrop-blur-sm border-gray-800/30">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-gray-400 text-sm">Total Companies</p>
+                  <p className="text-3xl font-bold text-white">{companyStats.totalCompanies}</p>
+                </div>
+                <CompanyIcon className="h-10 w-10 text-blue-400" />
               </div>
             </CardContent>
           </Card>
@@ -300,14 +400,17 @@ export default function AdminPage() {
                           </td>
                           <td className="py-4 px-4">
                             <div className="flex items-center gap-2">
+                              {/* <Link href={`/user/${user._id}`}> */}
                               <Button
                                 size="sm"
                                 variant="outline"
                                 className="bg-blue-600/10 text-blue-400 border border-blue-500/30 hover:bg-blue-600/20"
+                                 onClick={() => router.push(`/admin/profile/${user._id}`)}                               
                               >
                                 <Eye className="h-3 w-3 mr-1" />
                                 View
                               </Button>
+                              {/* </Link> */}
                               <Button
                                 size="sm"
                                 variant="outline"
@@ -359,6 +462,149 @@ export default function AdminPage() {
                         size="sm"
                         onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                         disabled={currentPage === totalPages}
+                        className="bg-gray-800/30 text-gray-300 border border-gray-600/30"
+                      >
+                        Next
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Companies Table */}
+        <Card className="bg-gray-900/40 backdrop-blur-sm border-gray-800/30 mt-8">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-white flex items-center gap-2">
+                <CompanyIcon className="h-5 w-5" />
+                Company Management
+              </CardTitle>
+              <div className="flex items-center gap-3">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <Input
+                    placeholder="Search companies..."
+                    value={searchTermCompanies}
+                    onChange={(e) => setSearchTermCompanies(e.target.value)}
+                    className="pl-10 bg-gray-800/50 border-gray-700 text-white w-64"
+                  />
+                </div>
+                <Button
+                  onClick={fetchCompanies}
+                  variant="outline"
+                  size="sm"
+                  className="bg-blue-600/10 text-blue-400 border border-blue-500/30 hover:bg-blue-600/20"
+                  disabled={loadingCompanies}
+                >
+                  <RefreshCw className={`h-4 w-4 mr-2 ${loadingCompanies ? 'animate-spin' : ''}`} />
+                  Refresh
+                </Button>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {loadingCompanies ? (
+              <div className="flex items-center justify-center py-12">
+                <RefreshCw className="h-8 w-8 animate-spin text-blue-400" />
+                <span className="ml-3 text-gray-400">Loading companies...</span>
+              </div>
+            ) : (
+              <>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-gray-700">
+                        <th className="text-left py-3 px-4 text-gray-300 font-medium">Company</th>
+                        <th className="text-left py-3 px-4 text-gray-300 font-medium">Email</th>
+                        <th className="text-left py-3 px-4 text-gray-300 font-medium">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {currentCompanies.map((company) => (
+                        <tr key={company._id} className="border-b border-gray-800/50 hover:bg-gray-800/30">
+                          <td className="py-4 px-4">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                                <span className="text-white text-sm font-medium">
+                                  {company.companyName[0].toUpperCase()}
+                                </span>
+                              </div>
+                              <div>
+                                <p className="text-white font-medium text-lg">{company.companyName}</p>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="py-4 px-4">
+                            <div className="flex items-center gap-2">
+                              <Mail className="h-4 w-4 text-gray-400" />
+                              <span className="text-gray-300">{company.companyEmail}</span>
+                            </div>
+                          </td>
+                          <td className="py-4 px-4">
+                            <div className="flex items-center gap-2">
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="bg-blue-600/10 text-blue-400 border border-blue-500/30 hover:bg-blue-600/20"
+                                onClick={() => router.push(`/admin/company/${company._id}`)}
+                              >
+                                <Eye className="h-3 w-3 mr-1" />
+                                View
+                              </Button>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="bg-red-600/10 text-red-400 border border-red-500/30 hover:bg-red-600/20"
+                                onClick={() => deleteCompany(company._id)}
+                              >
+                                <Trash2 className="h-3 w-3 mr-1" />
+                                Delete
+                              </Button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Empty State */}
+                {currentCompanies.length === 0 && !loadingCompanies && (
+                  <div className="text-center py-12">
+                    <CompanyIcon className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                    <p className="text-gray-400">
+                      {searchTermCompanies ? 'No users found matching your search.' : 'No users found.'}
+                    </p>
+                  </div>
+                )}
+
+                {/* Pagination */}
+                {totalPagesCompanies > 1 && (
+                  <div className="flex items-center justify-between mt-6">
+                    <p className="text-gray-400 text-sm">
+                      Showing {indexOfFirstCompany + 1} to {Math.min(indexOfLastCompany, filteredCompanies.length)} of {filteredCompanies.length} companies
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setCurrentPageCompanies(prev => Math.max(prev - 1, 1))}
+                        disabled={currentPageCompanies === 1}
+                        className="bg-gray-800/30 text-gray-300 border border-gray-600/30"
+                      >
+                        Previous
+                      </Button>
+                      <span className="text-gray-400 text-sm">
+                        Page {currentPageCompanies} of {totalPagesCompanies}
+                      </span>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setCurrentPageCompanies(prev => Math.min(prev + 1, totalPagesCompanies))}
+                        disabled={currentPageCompanies === totalPagesCompanies}
                         className="bg-gray-800/30 text-gray-300 border border-gray-600/30"
                       >
                         Next
