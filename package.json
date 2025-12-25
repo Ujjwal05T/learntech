@@ -22,7 +22,7 @@
     "jwt-decode": "^4.0.0",
     "learntech": "file:",
     "lucide-react": "^0.474.0",
-    "next": "15.2.3",
+    "next": "15.2.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.2",
